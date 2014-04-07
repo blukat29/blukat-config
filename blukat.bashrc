@@ -2,17 +2,16 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH=$PATH:$HOME/pintos/src/utils:$HOME/local/bin
+export PATH=$PATH:$HOME/local/bin
 export GIT_SSL_NO_VERIFY=1
 
 alias cls='clear'
-alias pintosq='pintos -v -- -q'
 alias gitl="git log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)'"
 alias gits='git status'
 alias grepc='grep -2 -n --color=always'
-alias bt='backtrace kernel.o'
 alias gitp="git push -u origin --all" 
 alias tma="tmux attach -t"
+alias ww="w | grep `whoami`"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return

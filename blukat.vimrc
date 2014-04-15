@@ -5,16 +5,15 @@ syntax on
 set number
 set autoindent
 "set tags=~/pintos/src/tags
+filetype plugin on
 
 " Vim Deco
 set bg=dark
 hi LineNr ctermfg=Yellow
-"hi LineNr ctermfg=DarkGrey
 hi Errormsg cterm=bold,underline ctermfg=Red ctermbg=DarkGrey
 
 "Syntax Deco
 hi Comment ctermfg=Blue
-"hi Comment ctermfg=DarkGrey
 hi Constant ctermfg=LightRed
 hi PreProc ctermfg=DarkMagenta
 hi Special ctermfg=Yellow

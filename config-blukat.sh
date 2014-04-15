@@ -22,4 +22,6 @@ if [ $? != 0 ]; then
   echo "tmux is not installed. run \"sh tmux_local_install.sh\""
 fi
 
+sh taglist-install.sh
+
 echo "Config complete. Undo config using unconfig-blukat.sh"

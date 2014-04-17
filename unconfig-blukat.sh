@@ -1,18 +1,18 @@
 #!/bin/sh
 BASE=$HOME
 
-rm $BASE/.vimrc
 if [ -f $BASE/.vimrc.old ]; then
+    rm $BASE/.vimrc
     mv $BASE/.vimrc.old $BASE/.vimrc
 fi
 
-rm $BASE/.bashrc
 if [ -f $BASE/.bashrc.old ]; then
+    rm $BASE/.bashrc
     mv $BASE/.bashrc.old $BASE/.bashrc
 fi
 
-rm $BASE/.tmux.conf
 if [ -f $BASE/.tmux.conf.old ]; then
+    rm $BASE/.tmux.conf
     mv $BASE/.tmux.conf.old $BASE/.tmux.conf
 fi
 

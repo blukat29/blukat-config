@@ -11,6 +11,9 @@ filetype plugin on
 set bg=dark
 hi LineNr ctermfg=Yellow
 hi Errormsg cterm=bold,underline ctermfg=Red ctermbg=DarkGrey
+set laststatus=2
+hi Statusline cterm=bold,underline ctermfg=White ctermbg=none
+hi Visual ctermfg=Black ctermbg=White
 
 " Syntax Deco
 hi Comment ctermfg=Blue
@@ -19,15 +22,4 @@ hi PreProc ctermfg=DarkMagenta
 hi Special ctermfg=Yellow
 hi Statement ctermfg=Green cterm=bold
 hi Type ctermfg=DarkCyan cterm=bold 
-
-" Putty + Windows style cursor movement
-map <ESC>[C w
-map <ESC>[D b
-imap <ESC>[C <C-O>w
-imap <ESC>[D <C-O>b
-
-map <ESC>[A H
-map <ESC>[B L
-imap <ESC>[A <C-O>H
-imap <ESC>[B <C-O>L
 

@@ -4,6 +4,7 @@
 
 export PATH=$PATH:$HOME/local/bin
 export GIT_SSL_NO_VERIFY=1
+export TZ=Asia/Seoul
 
 alias cls='clear'
 alias gitl="git log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)'"

@@ -1,3 +1,7 @@
+" Vim
+filetype plugin on
+set viminfo=
+
 " Programming
 set tabstop=2
 set expandtab
@@ -5,13 +9,19 @@ syntax on
 set number
 set autoindent
 "set tags=~/pintos/src/tags
-filetype plugin on
 
 " Vim Deco
 set bg=dark
 hi LineNr ctermfg=Yellow
 hi Errormsg cterm=bold,underline ctermfg=Red ctermbg=DarkGrey
 hi Visual cterm=bold ctermfg=White ctermbg=DarkBlue
+
+" Autocompletion Deco
+hi Pmenu ctermfg=Black ctermbg=Green
+hi PmenuSel cterm=bold ctermfg=White ctermbg=Red
+
+" Close Omni-Completion tip window when leaving insert mode
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Statusline Deco
 set laststatus=2
@@ -43,6 +53,9 @@ function! FileSize()
 endfunction
 
 function! FileTime()
+  if getftime(expand('%')) < 0
+    return "new file"
+  endif
   let tm = localtime() - getftime(expand('%'))
   if tm < 60
     return tm." seconds ago"
@@ -52,8 +65,10 @@ function! FileTime()
     return (tm/60/60)." hours ago"
   elseif tm < 60*60*24*14
     return (tm/60/60/24)." days ago"
-  else
+  elseif tm < 60*60*24*60
     return (tm/60/60/24/7)." weeks ago"
+  else
+    return " 2 months or older"
   endif
 endfunction
 

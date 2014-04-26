@@ -11,10 +11,18 @@ set autoindent
 "set tags=~/pintos/src/tags
 
 " Vim Deco
-set bg=dark
-hi LineNr ctermfg=Yellow
-hi Errormsg cterm=bold,underline ctermfg=Red ctermbg=DarkGrey
+if &term == "xterm"
+  set t_Co=256
+elseif &term == "screen"
+  set t_Co=256
+endif
+hi clear
+hi LineNr ctermfg=248 ctermbg=232
+hi Errormsg cterm=bold,underline ctermfg=Red ctermbg=black
+hi Warningmsg cterm=bold,underline ctermfg=Red ctermbg=black
 hi Visual cterm=bold ctermfg=White ctermbg=DarkBlue
+set cursorline
+hi Cursorline cterm=none ctermbg=233
 
 " Autocompletion Deco
 hi Pmenu ctermfg=Black ctermbg=Green
@@ -23,23 +31,34 @@ hi PmenuSel cterm=bold ctermfg=White ctermbg=Red
 " Close Omni-Completion tip window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+" Searching deco
+set hlsearch
+hi Search cterm=bold ctermfg=White ctermbg=Magenta
+
 " Statusline Deco
 set laststatus=2
-set statusline=\ \ %t\ (%{FileSize()})
+set statusline=\ %{FileName()}\ (%{FileSize()})
 set statusline+=%4(%m%)%5(%r%)%h
 set statusline+=%=%l/%L\ (%P)
 set statusline+=\ %15{FileTime()}\ 
-hi Statusline cterm=bold,underline ctermfg=White ctermbg=none
+hi Statusline cterm=bold,underline ctermfg=119 ctermbg=236
 
 " Syntax Deco
+hi Normal ctermfg=251
 hi Comment ctermfg=Blue
-hi Constant ctermfg=LightRed
-hi PreProc ctermfg=DarkMagenta
+hi Constant ctermfg=9
+hi Number ctermfg=9
+hi String ctermfg=9
+hi PreProc ctermfg=Magenta
 hi Special ctermfg=Yellow
 hi Statement ctermfg=Green cterm=bold
-hi Type ctermfg=DarkCyan cterm=bold 
+hi Type ctermfg=DarkCyan cterm=bold
 
 " Functions
+function! FileName()
+  return split(resolve(expand('%')), '/')[-1]
+endfunction
+
 function! FileSize()
   let bytes = getfsize(expand("%:p"))
   if bytes <= 0

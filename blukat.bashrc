@@ -12,7 +12,8 @@ alias gitl="git log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %C
 alias gits='git status'
 alias grepc='grep -2 -n --color=always'
 alias gitp='git push -u origin --all'
-alias tma='tmux attach -t'
+alias tma='tmux -2 attach -t'
+alias tmux='tmux -2'
 alias ww='w | grep `whoami`'
 
 # If not running interactively, don't do anything

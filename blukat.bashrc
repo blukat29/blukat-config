@@ -5,14 +5,15 @@
 export PATH=$PATH:$HOME/local/bin
 export GIT_SSL_NO_VERIFY=1
 export TZ=Asia/Seoul
+export LESSHISTFILE=/dev/null
 
 alias cls='clear'
 alias gitl="git log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)'"
 alias gits='git status'
 alias grepc='grep -2 -n --color=always'
-alias gitp="git push -u origin --all" 
-alias tma="tmux attach -t"
-alias ww="w | grep `whoami`"
+alias gitp='git push -u origin --all'
+alias tma='tmux attach -t'
+alias ww='w | grep `whoami`'
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -65,7 +66,7 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
+    PROMPT_COMMAND='echo -ne "\033]0;${USER} ${PWD/$HOME/~}\007"'
     ;;
 *)
     ;;
@@ -84,18 +85,7 @@ esac
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
-    #alias dir='ls --color=auto --format=vertical'
-    #alias vdir='ls --color=auto --format=long'
-
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
 fi
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

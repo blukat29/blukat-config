@@ -27,7 +27,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set laststatus=2
 set statusline=\ \ %t\ (%{FileSize()})
 set statusline+=%4(%m%)%5(%r%)%h
-set statusline+=%=%l/%L:%c\ (%P)
+set statusline+=%=%l/%L\ (%P)
 set statusline+=\ %15{FileTime()}\ 
 hi Statusline cterm=bold,underline ctermfg=White ctermbg=none
 

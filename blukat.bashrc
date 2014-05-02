@@ -11,8 +11,9 @@ alias cls='clear'
 alias gitl="git log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)'"
 alias gits='git status'
 alias grepc='grep -2 -n --color=always'
+alias grep='grep --color=auto'
 alias gitp='git push -u origin --all'
-alias tma='tmux -2 attach -t'
+alias tma='tmux attach -t'
 alias tmux='tmux -2'
 alias ww='w | grep `whoami`'
 
@@ -85,7 +86,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
-    alias ls='ls --color=auto'
+    alias ls='ls -F --color=auto'
 fi
 
 # enable programmable completion features (you don't need to enable

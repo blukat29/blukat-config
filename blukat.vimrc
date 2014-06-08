@@ -1,7 +1,18 @@
 " Vim
-filetype plugin on
 set viminfo=
 autocmd!
+
+" Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'taglist.vim'
+Bundle 'xolox/vim-misc.git'
+Bundle 'easytags.vim'
+filetype plugin indent on
 
 " General
 set tabstop=2
@@ -12,7 +23,7 @@ syntax on
 set number
 set nuw=5
 set hlsearch
-set tags=~/kens/tags
+set tags+=~/pintos/src/tags
 
 " Close Omni-Completion tip window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif

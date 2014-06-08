@@ -1,17 +1,17 @@
 " Vim
 set viminfo=
-autocmd!
 
 " Vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'taglist.vim'
-Bundle 'xolox/vim-misc.git'
-Bundle 'easytags.vim'
+Plugin 'gmarik/vundle.vim'
+Plugin 'taglist.vim'
+Plugin 'xolox/vim-misc.git'
+Plugin 'easytags.vim'
+call vundle#end()
 filetype plugin indent on
 
 " General

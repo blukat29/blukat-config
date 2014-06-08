@@ -1,25 +1,28 @@
 #!/bin/sh
-BASE=$HOME
-
-if [ -f $BASE/.vimrc ]; then
-    mv $BASE/.vimrc $BASE/.vimrc.old
+if [ -f $HOME/.vimrc ]; then
+    mv $HOME/.vimrc $HOME/.vimrc.old
 fi
-cp ./blukat.vimrc $BASE/.vimrc
+cp ./blukat.vimrc $HOME/.vimrc
 
-if [ -f $BASE/.bashrc ]; then
-    mv $BASE/.bashrc $BASE/.bashrc.old
+if [ -f $HOME/.bashrc ]; then
+    mv $HOME/.bashrc $HOME/.bashrc.old
 fi
-cp ./blukat.bashrc $BASE/.bashrc
-source $BASE/.bashrc
+cp ./blukat.bashrc $HOME/.bashrc
+source $HOME/.bashrc
 
-if [ -f $BASE/.tmux.conf ]; then
-    mv $BASE/.tmux.conf $BASE/.tmux.conf.old
+if [ -f $HOME/.tmux.conf ]; then
+    mv $HOME/.tmux.conf $HOME/.tmux.conf.old
 fi
-cp ./blukat.tmux.conf $BASE/.tmux.conf
+cp ./blukat.tmux.conf $HOME/.tmux.conf
 
 type -a tmux
 if [ $? != 0 ]; then
   echo "tmux is not installed. run \"sh tmux_local_install.sh\""
 fi
 
-echo "Config complete. Undo config using unconfig-blukat.sh"
+if [ ! -d "$HOME/.vim/bundle" ]; then
+  echo "installing Vundle.vim ..."
+  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
+echo "Config complete. Undo using unconfig-blukat.sh"

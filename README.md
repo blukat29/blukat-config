@@ -20,5 +20,13 @@ Installation
   ```
 This commands will automatically install vim [Bundle] plugin and replace any existing .bashrc, .vimrc, .tmux.conf files in home directory.
 
+If your workspace has no tmux installed and you are not sudo, run
+
+  ```sh
+  run tmux_local_install.sh
+  ```
+
+This script is borrowed from https://gist.github.com/ryin/3106801
+
 [Bundle]:https://github.com/gmarik/Vundle.vim
 [tmux]:http://tmux.sourceforge.net/

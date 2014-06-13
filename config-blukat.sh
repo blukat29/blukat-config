@@ -15,7 +15,7 @@ if [ -f $HOME/.tmux.conf ]; then
 fi
 cp ./blukat.tmux.conf $HOME/.tmux.conf
 
-type -a tmux
+which tmux
 if [ $? != 0 ]; then
   echo "tmux is not installed. run \"sh tmux_local_install.sh\""
 fi

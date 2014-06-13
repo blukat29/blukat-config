@@ -23,13 +23,16 @@ syntax on
 set number
 set nuw=5
 set hlsearch
-set tags+=~/pintos/src/tags
+set tags=~/pintos/src/tags
 
 " Close Omni-Completion tip window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" <Ctrl-m> selects code block inside matching parenthesis.
+nmap <C-m> v%<CR>
 
 " TagList
 nnoremap <silent> <F8> :TlistToggle<CR>
@@ -39,7 +42,7 @@ let Tlist_Show_One_File = 1
 
 " Easytags
 let g:easytags_dynamic_files = 1
-let g:easytags_events = ['BufWritePost','VimEnter']
+let g:easytags_events = ['BufWritePost','VimEnter','BufEnter','Winenter']
 
 " Statusline
 set laststatus=2
@@ -59,13 +62,14 @@ if &term == "xterm" || &term == "screen"
 
   colorscheme default
 
+  hi Comment ctermfg=blue
   hi LineNr ctermfg=248
   hi ErrorMsg cterm=bold,underline ctermfg=Red ctermbg=none
   hi WarningMsg cterm=bold,underline ctermfg=Red ctermbg=none
-  hi Visual cterm=bold ctermfg=White ctermbg=DarkBlue
+  hi Visual cterm=bold ctermbg=236
   hi Search cterm=bold ctermfg=White ctermbg=DarkBlue
-  hi StatusLine cterm=bold,underline ctermfg=119 ctermbg=236
-  hi StatusLineNC cterm=bold,underline ctermfg=244 ctermbg=236
+  hi StatusLine cterm=bold,underline ctermfg=119 ctermbg=232
+  hi StatusLineNC cterm=bold,underline ctermfg=244 ctermbg=232
   hi Pmenu ctermfg=Grey
   hi PmenuSel ctermfg=Black
   hi VertSplit cterm=none ctermfg=248 ctermbg=236

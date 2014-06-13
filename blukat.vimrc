@@ -1,6 +1,18 @@
 " Vim
-filetype plugin on
 set viminfo=
+
+" Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/vundle.vim'
+Plugin 'taglist.vim'
+Plugin 'xolox/vim-misc.git'
+Plugin 'easytags.vim'
+call vundle#end()
+filetype plugin indent on
 
 " General
 set tabstop=2
@@ -11,13 +23,26 @@ syntax on
 set number
 set nuw=5
 set hlsearch
-"set tags=~/pintos/src/tags
+set tags=~/pintos/src/tags
 
 " Close Omni-Completion tip window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" <Ctrl-m> selects code block inside matching parenthesis.
+nmap <C-m> v%<CR>
+
+" TagList
+nnoremap <silent> <F8> :TlistToggle<CR>
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Show_One_File = 1
+
+" Easytags
+let g:easytags_dynamic_files = 1
+let g:easytags_events = ['BufWritePost','VimEnter','BufEnter','Winenter']
 
 " Statusline
 set laststatus=2
@@ -31,57 +56,29 @@ if &term == "xterm" || &term == "screen"
 
   hi clear
   set t_Co=256
-  set cursorline
 
-  hi LineNr ctermfg=248 ctermbg=232
+  hi CursorLine cterm=none ctermbg=233
+  hi Question cterm=bold,underline ctermfg=Cyan
+
+  colorscheme default
+
+  hi Comment ctermfg=blue
+  hi LineNr ctermfg=248
   hi ErrorMsg cterm=bold,underline ctermfg=Red ctermbg=none
   hi WarningMsg cterm=bold,underline ctermfg=Red ctermbg=none
-  hi Visual cterm=bold ctermfg=White ctermbg=DarkBlue
-  hi CursorLine cterm=none ctermbg=233
-  hi Pmenu ctermfg=Black ctermbg=Green
-  hi PmenuSel cterm=bold ctermfg=White ctermbg=Red
-  hi Search cterm=bold ctermfg=White ctermbg=Magenta
-  hi StatusLine cterm=bold,underline ctermfg=119 ctermbg=236
-  hi StatusLineNC cterm=bold,underline ctermfg=244 ctermbg=236
-  hi Question cterm=bold,underline ctermfg=Cyan
-  hi VertSplit cterm=none ctermbg=236
-
-  hi FoldColumn ctermfg=yellow ctermbg=236
-  hi Folded cterm=underline ctermfg=yellow ctermbg=236
-  hi DiffAdd ctermbg=22
-  hi DiffDelete ctermfg=52 ctermbg=52
-  hi DiffChange ctermbg=17
-  hi DiffText ctermbg=19
-
-  hi Normal ctermfg=251
-  hi Comment ctermfg=Blue
-  hi Constant ctermfg=9
-  hi Number ctermfg=9
-  hi String ctermfg=9
-  hi PreProc ctermfg=Magenta
-  hi Special ctermfg=Yellow
-  hi Statement ctermfg=Green cterm=bold
-  hi Type ctermfg=DarkCyan cterm=bold
+  hi Visual cterm=bold ctermbg=236
+  hi Search cterm=bold ctermfg=White ctermbg=DarkBlue
+  hi StatusLine cterm=bold,underline ctermfg=119 ctermbg=232
+  hi StatusLineNC cterm=bold,underline ctermfg=244 ctermbg=232
+  hi Pmenu ctermfg=Grey
+  hi PmenuSel ctermfg=Black
+  hi VertSplit cterm=none ctermfg=248 ctermbg=236
+  hi FoldColumn ctermfg=119 ctermbg=236
 
 else
-
+ 
   hi clear
-
-  hi LineNr ctermfg=Yellow
-  hi ErrorMsg cterm=bold,underline ctermfg=Red ctermbg=black
-  hi WarningMsg cterm=bold,underline ctermfg=Red ctermbg=black
-  hi Visual cterm=bold ctermfg=White ctermbg=DarkBlue
-  hi Pmenu ctermfg=Black ctermbg=Green
-  hi PmenuSel cterm=bold ctermfg=White ctermbg=Red
-  hi Search cterm=bold ctermfg=White ctermbg=LightMagenta
-  hi StatusLine cterm=bold,underline ctermfg=white ctermbg=none
-
-  hi Comment ctermfg=Blue
-  hi Constant ctermfg=LightRed
-  hi PreProc ctermfg=Magenta
-  hi Special ctermfg=Yellow
-  hi Statement ctermfg=Green cterm=bold
-  hi Type ctermfg=DarkCyan cterm=bold
+  colorscheme default
 
 endif
 

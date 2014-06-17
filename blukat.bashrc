@@ -10,6 +10,7 @@ export LESSHISTFILE=/dev/null
 alias cls='clear'
 alias gitl="git log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)'"
 alias gits='git status'
+alias gitlb='gitl --simplify-by-decoration --all'
 alias grepc='grep -2 -n --color=auto'
 alias grep='grep --color=auto'
 alias gitp='git push -u origin --all'

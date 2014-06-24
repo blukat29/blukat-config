@@ -24,6 +24,11 @@ set number
 set nuw=5
 set hlsearch
 set tags=~/pintos/src/tags
+set nowrap
+
+" Python specific tab settings.
+autocmd BufNewFile,BufRead *.wsgi set filetype=python
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " Close Omni-Completion tip window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif

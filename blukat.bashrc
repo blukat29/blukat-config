@@ -4,9 +4,11 @@
 
 export PATH=$PATH:$HOME/local/bin
 export GIT_SSL_NO_VERIFY=1
-export TZ=Asia/Seoul
 export LESSHISTFILE=/dev/null
 
+alias ll='ls -al'
+alias ls='ls -F --color=auto'
+alias dir='ls'
 alias cls='clear'
 alias gitl="git log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)'"
 alias gits='git status'
@@ -67,7 +69,7 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
+# If this is an xterm set the title to 'user dir'
 case "$TERM" in
 xterm*|rxvt*)
     PROMPT_COMMAND='echo -ne "\033]0;${USER} ${PWD/$HOME/~}\007"'
@@ -76,24 +78,10 @@ xterm*|rxvt*)
     ;;
 esac
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-#if [ -f ~/.bash_aliases ]; then
-#    . ~/.bash_aliases
-#fi
-
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
     alias ls='ls -F --color=auto'
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

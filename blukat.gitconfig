@@ -1,0 +1,10 @@
+[push]
+    default = simple
+[core]
+    editor = vim
+[pager]
+    status = true
+[alias]
+    lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)'
+    lb = log --oneline --graph --decorate --simplify-by-decoration --all
+    s = status

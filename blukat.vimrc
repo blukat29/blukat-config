@@ -9,6 +9,8 @@ Plugin 'gmarik/vundle.vim'
 Plugin 'taglist.vim'
 Plugin 'xolox/vim-misc.git'
 Plugin 'easytags.vim'
+Plugin 'ervandew/supertab.git'
+Plugin 'davidhalter/jedi-vim'
 call vundle#end()
 filetype plugin indent on
 

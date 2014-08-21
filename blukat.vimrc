@@ -25,7 +25,7 @@ set nuw=5
 set hlsearch
 set tags=~/pintos/src/tags
 set nowrap
-set viminfo="NONE"
+set viminfo=""
 
 " Python specific tab settings.
 autocmd BufNewFile,BufRead *.wsgi set filetype=python

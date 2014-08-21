@@ -38,5 +38,19 @@ apt_repo() {
   fi
 }
 
+python_pip() {
+  head "Install Python-pip and virtualenv"
+  info "  dirs affected: /usr/lib/python2.7/*"
+  prompt
+  if [ $? -eq 1 ]; then
+    cd ~
+    wget https://bootstrap.pypa.io/get-pip.py
+    sudo python get-pip.py
+    rm get-pip.py
+    sudo pip install virtualenv
+  fi
+}
+
 apt_repo
+python_pip
 

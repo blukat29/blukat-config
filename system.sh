@@ -61,9 +61,20 @@ setup_ntpd() {
   fi
 }
 
+secure_tmp() {
+  head "Change permissions of /tmp directory."
+  info "  dirs affected: /tmp/*"
+  prompt
+  if [ $? -eq 1 ]; then
+    sudo chmod 1777 /tmp
+    ls -al --color=always / | grep --color=none tmp
+  fi
+}
+
 apt_repo
 python_pip
 setup_ntpd
+secure_tmp
 
 head "Done!"
 

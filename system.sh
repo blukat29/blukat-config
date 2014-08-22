@@ -51,6 +51,19 @@ python_pip() {
   fi
 }
 
+setup_ntpd() {
+  head "Setup NTP daemon to sync system time. (recommended in VM)."
+  info "  packages installed: ntp"
+  info "  files affected: /etc/ntp.conf"
+  prompt
+  if [ $? -eq 1 ]; then
+    sudo apt-get -y install ntp
+  fi
+}
+
 apt_repo
 python_pip
+setup_ntpd
+
+head "Done!"
 

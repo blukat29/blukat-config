@@ -20,6 +20,17 @@ prompt() {
   done
 }
 
+core_pkgs() {
+  head "Install basic packages for dev. and hack."
+  info "  pkgs installed: ctags gcc gdb make curl"
+  info "                  build-essential"
+  prompt
+  if [ $? -eq 1 ]; then
+    sudo apt-get install ctags gcc gdb make curl \
+                         build-essential
+  fi
+}
+
 apt_repo() {
   head "Change apt-get repository into kr.archive.ubuntu.com"
   info "  files affected: /etc/apt/sources.list"

@@ -1,21 +1,9 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# ~/.bashrc
 
-export PATH=$PATH:$HOME/local/bin
-export GIT_SSL_NO_VERIFY=1
-export LESSHISTFILE=/dev/null
+SCRIPT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
 
-alias ll='ls -al'
-alias ls='ls -F --color=auto'
-alias dir='ls'
-alias cls='clear'
-alias grepc='grep -2 -n --color=auto'
-alias grep='grep --color=auto'
-alias tma='tmux attach -t'
-alias tmux='tmux -2'
-alias ww='w | grep `whoami`'
-alias less='less -R'
+source $SCRIPT_DIR/exports
+source $SCRIPT_DIR/aliases
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -80,4 +68,3 @@ if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     alias ls='ls -F --color=auto'
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

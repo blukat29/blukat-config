@@ -27,6 +27,9 @@ set tags=~/pintos/src/tags
 set nowrap
 set viminfo=""
 
+" Assign dotfiles filetype=sh
+autocmd BufNewFile,BufRead aliases,exports,functions,prompts set filetype=sh
+
 " Python specific tab settings.
 autocmd BufNewFile,BufRead *.wsgi set filetype=python
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4

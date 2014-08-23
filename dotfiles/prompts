@@ -1,0 +1,18 @@
+# prompts: Defines bash prompt and terminal title.
+
+# If color prompt is supported, use ANSI control chars.
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+
+# If this is an xterm set the title to 'user dir'
+case "$TERM" in
+xterm*|rxvt*)
+    PROMPT_COMMAND='echo -ne "\033]0;${USER} ${PWD/$HOME/~}\007"'
+    ;;
+*)
+    ;;
+esac
+

@@ -10,3 +10,6 @@
     s = status
     c = checkout
     co = commit
+[filter "gitconfig_nouser"]
+  clean = sed -e '/\\[user\\]/,/\\[/ { //!d }' -e '/\\[user\\]/d'
+  smudge = cat

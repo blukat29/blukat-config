@@ -31,11 +31,11 @@ __droppath () {
 # If color prompt is supported, use ANSI control chars.
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
   PS1=""
-  PS1+="$cPURPLE"'$(__git_ps1 "%s] ")'
-  PS1+="$cGREEN_\u"
-  PS1+="$cRESET_:"
-  PS1+="$cBLUE__"'$(__droppath "\w" 50)'
-  PS1+="$cRESET_\$ "
+  PS1+="\[$cPURPLE\]"'$(__git_ps1 "%s] ")'
+  PS1+="\[$cGREEN_\]\u"
+  PS1+="\[$cRESET_\]:"
+  PS1+="\[$cBLUE__\]"'$(__droppath "\w" 50)'
+  PS1+="\[$cRESET_\]\$ "
 else
   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi

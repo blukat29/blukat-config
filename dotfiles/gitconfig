@@ -8,3 +8,5 @@
     lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)'
     lb = log --oneline --graph --decorate --simplify-by-decoration --all
     s = status
+    c = checkout
+    co = commit

@@ -91,6 +91,10 @@ else
 
 endif
 
+" Trailing Whitespace
+hi TrailingWhitespace ctermbg=red
+match TrailingWhitespace /\s\+$/
+
 " Functions
 function! FileName()
   let fn = expand('%')

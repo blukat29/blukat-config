@@ -56,7 +56,7 @@ let g:easytags_events = ['BufWritePost','VimEnter','BufEnter','Winenter']
 " Statusline
 set laststatus=2
 set statusline=\ %{FileName()}\ %<(%{FileSize()})
-set statusline+=%4(%m%)%5(%r%)%7(%h%)
+set statusline+=%4(%m%)%5(%r%)%7(%y%)%7(%h%)
 set statusline+=%=%l/%L\ (%P)
 set statusline+=\ %15{FileTime()}\ 
 

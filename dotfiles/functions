@@ -1,0 +1,3 @@
+trailing_whitespaces () {
+  find . -type f -exec egrep -l " +$" {} \;
+}

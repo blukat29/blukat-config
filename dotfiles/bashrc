@@ -8,6 +8,7 @@ SCRIPT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
 source $SCRIPT_DIR/exports
 source $SCRIPT_DIR/aliases
 source $SCRIPT_DIR/prompts
+source $SCRIPT_DIR/functions
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

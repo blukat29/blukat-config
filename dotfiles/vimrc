@@ -60,7 +60,7 @@ set statusline+=%4(%m%)%5(%r%)%7(%y%)%7(%h%)
 set statusline+=%=%l/%L\ (%P)
 set statusline+=\ %15{FileTime()}\ 
 
-" Coloring 
+" Coloring
 if &term == "xterm" || &term == "screen"
 
   hi clear
@@ -85,7 +85,7 @@ if &term == "xterm" || &term == "screen"
   hi FoldColumn ctermfg=119 ctermbg=236
 
 else
- 
+
   hi clear
   colorscheme default
 
@@ -99,7 +99,7 @@ match TrailingWhitespace /\s\+$/
 function! FileName()
   let fn = expand('%')
   if fn == ""
-    return "[nonamed]" 
+    return "[nonamed]"
   else
     return split(resolve(fn), '/')[-1]
   endif

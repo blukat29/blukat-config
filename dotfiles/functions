@@ -1,3 +1,7 @@
 trailing_whitespaces () {
   find . -type f -exec egrep -l " +$" {} \;
 }
+
+disas () {
+  objdump -D -b binary -mi386 $1
+}

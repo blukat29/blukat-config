@@ -12,4 +12,5 @@ alias tmux='tmux -2'
 alias ww='w | grep `whoami`'
 alias less='less -R'
 alias g='git'
+alias gdb='gdb -q -x gdbinit'
 

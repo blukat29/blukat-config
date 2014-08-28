@@ -6,11 +6,20 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'taglist.vim'
-Plugin 'xolox/vim-misc.git'
-Plugin 'easytags.vim'
+
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+
 Plugin 'ervandew/supertab.git'
 Plugin 'davidhalter/jedi-vim'
+
+Plugin 'closetag.vim'
+
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -39,15 +48,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
-
-" <Ctrl-m> selects code block inside matching parenthesis.
-nmap <C-m> v%<CR>
-
-" TagList
-nnoremap <silent> <F8> :TlistToggle<CR>
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Use_Right_Window = 1
-let Tlist_Show_One_File = 1
 
 " Easytags
 let g:easytags_dynamic_files = 1

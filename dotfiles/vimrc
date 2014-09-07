@@ -14,6 +14,7 @@ Plugin 'ervandew/supertab.git'
 Plugin 'davidhalter/jedi-vim'
 
 Plugin 'closetag.vim'
+Plugin 'gregsexton/MatchTag'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -48,6 +49,12 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" Map common mistakes.
+command WQ wq
+command Wq wq
+command W w
+command Q q
 
 " Easytags
 let g:easytags_dynamic_files = 1

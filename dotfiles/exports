@@ -6,3 +6,6 @@ export LESSHISTFILE=/dev/null
 # don't put duplicate lines or same sucessive entries in the history.
 export HISTCONTROL=ignoreboth
 
+# Override LS colors
+export LS_COLORS="di=1;34"
+

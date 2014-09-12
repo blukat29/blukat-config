@@ -44,6 +44,9 @@ autocmd BufNewFile,BufRead aliases,exports,functions,prompts set filetype=sh
 autocmd BufNewFile,BufRead *.wsgi set filetype=python
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
+" Assign .phps to php type
+autocmd BufNewFile,BufRead *.phps set filetype=php
+
 " Close Omni-Completion tip window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
@@ -59,6 +62,9 @@ command Q q
 " Easytags
 let g:easytags_dynamic_files = 1
 let g:easytags_events = ['BufWritePost','VimEnter','BufEnter','Winenter']
+
+" Jedi-Vim - no documentation window during completion.
+autocmd FileType python setlocal completeopt-=preview
 
 " Statusline
 set laststatus=2

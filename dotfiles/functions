@@ -5,3 +5,54 @@ trailing_whitespaces () {
 disas () {
   objdump -D -b binary -mi386 $1
 }
+
+gl () {
+
+  # Collect start-of-the-day commits
+  border=`git log --date=short --pretty=format:'%cd %h' |
+          awk '
+            BEGIN {
+              date = "";
+              hash = "";
+              cnt = 0;
+            }
+            {
+              cnt=cnt+1;
+              if (date != $1) {
+                if (date != "") {
+                  print date, hash, cnt;
+                }
+                date = $1;
+                hash = $2;
+                cnt = 0;
+              }
+            }
+            END {
+              print date, hash, cnt+1;
+            }'`
+
+  # Inject date markers during git log.
+  git log --oneline --color | awk -v border="$border" '
+    BEGIN {
+      split(border, arr, "\n");
+      head = 1;
+    }
+    match($0, /[0-9a-f]{6,}/) {
+      hash = substr($0, RSTART, RLENGTH);
+      for (i in arr) {
+        split(arr[i], d, " ");
+        if (d[2] == hash) {
+          printf "\n\033[1;4;37m%s\033[0m ", d[1];
+          head = 1;
+        }
+      }
+    }
+    {
+      if (head == 1) { print $0; head = 0; }
+      else { print "          ", $0; }
+    }
+    END {
+      print "\033[0m";
+    }
+    ' | less -r -X
+}

@@ -5,11 +5,14 @@
 [pager]
     status = true
 [alias]
-    lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)'
+    lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)%Creset'
     lb = log --oneline --graph --decorate --simplify-by-decoration --all
     s = status
     c = checkout
     co = commit
+    b = branch
 [filter "gitconfig_nouser"]
   clean = sed -e '/\\[user\\]/,/\\[/ { //!d }' -e '/\\[user\\]/d'
   smudge = cat
+[credential]
+	helper = cache --timeout=3600

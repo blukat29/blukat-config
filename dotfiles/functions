@@ -8,6 +8,11 @@ disas () {
 
 gl () {
 
+  total=`git rev-list HEAD --count`
+  since=`git log --date=short --reverse --pretty=format:'%cd, %cr' | head -1`
+  remote=`git config --get-regexp remote.*.url`
+  branch=`git symbolic-ref --short HEAD`
+
   # Collect additions and deletions stats.
   stat=`git log --oneline --numstat --no-merges --date=short --pretty=format:'%cd %h' | python -c '
 import sys
@@ -60,11 +65,15 @@ for commit in raw.split("\n\n"):
             }'`
 
   # Inject date markers during git log.
-  git log --oneline --color | awk -v border="$border" -v stat="$stat" '
+  git log --oneline --color | awk \
+    -v border="$border" -v stat="$stat" \
+    -v total="$total" -v since="$since" \
+    -v remote="$remote" -v branch="$branch" '
     BEGIN {
       split(border, barr, "\n");
       split(stat, sarr, "\n");
       first = 1;
+      printf "      Total %d commits since %s\n", total, since;
     }
     match($0, /[0-9a-f]{6,}/) {
       hash = substr($0, RSTART, RLENGTH);

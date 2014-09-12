@@ -8,6 +8,34 @@ disas () {
 
 gl () {
 
+  # Collect additions and deletions stats.
+  stat=`git log --oneline --numstat --no-merges --date=short --pretty=format:'%cd %h' | python -c '
+import sys
+
+raw = sys.stdin.read()
+
+stat = {}
+max = 0
+
+for commit in raw.split("\n\n"):
+    commit = commit.split("\n")
+    head = commit[0]
+    body = filter(None, commit[1:])
+
+    date, sha1 = head.split(" ")
+
+    pos = 0
+    neg = 0
+    for change in body:
+        p, n, name = change.split("\t")
+        if p == "-":
+            continue
+        pos += int(p)
+        neg += int(n)
+
+    print sha1, pos, neg
+'`
+
   # Collect start-of-the-day commits
   border=`git log --date=short --pretty=format:'%cd %h' |
           awk '
@@ -32,27 +60,47 @@ gl () {
             }'`
 
   # Inject date markers during git log.
-  git log --oneline --color | awk -v border="$border" '
+  git log --oneline --color | awk -v border="$border" -v stat="$stat" '
     BEGIN {
-      split(border, arr, "\n");
-      head = 1;
+      split(border, barr, "\n");
+      split(stat, sarr, "\n");
+      first = 1;
     }
     match($0, /[0-9a-f]{6,}/) {
       hash = substr($0, RSTART, RLENGTH);
-      for (i in arr) {
-        split(arr[i], d, " ");
-        if (d[2] == hash) {
-          printf "\n\033[1;4;37m%s\033[0m ", d[1];
-          head = 1;
+
+      for (i in sarr) {
+        split(sarr[i], s, " ");
+        if (s[1] == hash) {
+          pos = s[2];
+          neg = s[3];
         }
       }
-    }
-    {
-      if (head == 1) { print $0; head = 0; }
-      else { print "          ", $0; }
+
+      for (i in barr) {
+        split(barr[i], b, " ");
+        if (b[2] == hash) {
+          date = b[1];
+          cnt = b[3];
+          first = 1;
+        }
+      }
+
+      if (first == 1) {
+        str = sprintf("\n\033[1;4;37m%s\033[0m", date);
+        first = 0;
+      }
+      else {
+        str = "          ";
+      }
+      posstr = sprintf("+%d", pos);
+      negstr = sprintf("-%d", neg);
+      diff = sprintf("\033[32m%5s \033[31m%5s\033[0m", posstr, negstr);
+      printf "%s %26s %s\n", str, diff, $0;
     }
     END {
       print "\033[0m";
     }
     ' | less -r -X
+
 }

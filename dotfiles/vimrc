@@ -59,6 +59,9 @@ command Wq wq
 command W w
 command Q q
 
+" Vertical split
+nnoremap <Tab> <C-w>w
+
 " Easytags
 let g:easytags_dynamic_files = 1
 let g:easytags_events = ['BufWritePost','VimEnter','BufEnter','Winenter']

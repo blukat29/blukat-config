@@ -6,6 +6,12 @@ disas () {
   objdump -D -b binary -mi386 $1
 }
 
+reif () {
+  sudo ifdown eth0
+  sudo ifup eth0
+  ping google.com
+}
+
 gl () {
 
   total=`git rev-list HEAD --count`

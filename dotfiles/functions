@@ -1,3 +1,6 @@
+
+SCRIPT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
+
 trailing_whitespaces () {
   find . -type f -exec egrep -l " +$" {} \;
 }
@@ -119,3 +122,8 @@ for commit in raw.split("\n\n"):
     ' | less -r -X
 
 }
+
+memstat () {
+  vmstat -s | head -2 | python $SCRIPT_DIR/../scripts/memstat.py
+}
+

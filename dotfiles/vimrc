@@ -22,6 +22,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
 Plugin 'bling/vim-airline'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 filetype plugin indent on
@@ -33,7 +34,6 @@ set expandtab
 set autoindent
 syntax on
 set number
-set nuw=5
 set hlsearch
 set tags=~/pintos/src/tags
 set nowrap
@@ -86,6 +86,14 @@ set statusline+=\ %15{FileTime()}\     " Last modified time relative to now.
 " Vim-airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline#extensions#hunks#enabled = 0
+
+" GitGutter
+let g:gitgutter_sign_removed = "-"
+let g:gitgutter_map_keys = 0
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
 
 " Coloring
 if &term == "xterm" || &term == "screen"
@@ -108,6 +116,7 @@ if &term == "xterm" || &term == "screen"
   hi PmenuSel ctermfg=Black
   hi VertSplit cterm=none ctermfg=248 ctermbg=236
   hi FoldColumn ctermfg=119 ctermbg=236
+  hi SignColumn ctermbg=Black
 
 else
 

@@ -21,6 +21,8 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
+Plugin 'bling/vim-airline'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -80,6 +82,10 @@ set statusline+=%=                     " End leftalign. Start rightalign.
 set statusline+=%l/%L\ (%P)            " currentLine/totalLines (percentage)
 set statusline+=\ :%2(%c%)             " column
 set statusline+=\ %15{FileTime()}\     " Last modified time relative to now.
+
+" Vim-airline
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " Coloring
 if &term == "xterm" || &term == "screen"

@@ -65,6 +65,7 @@ nnoremap <Tab> <C-w>w
 " Easytags
 let g:easytags_dynamic_files = 1
 let g:easytags_events = ['BufWritePost','VimEnter','BufEnter','Winenter']
+let g:easytags_suppress_report = 1
 
 " Jedi-Vim - no documentation window during completion.
 autocmd FileType python setlocal completeopt-=preview

@@ -1,5 +1,6 @@
 
-SCRIPT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
+DOTFILE_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
+SCRIPTS_DIR=$DOTFILE_DIR/../scripts
 
 trailing_whitespaces () {
   find . -type f -exec egrep -l " +$" {} \;
@@ -19,36 +20,12 @@ gl () {
 
   total=`git rev-list HEAD --count`
   since=`git log --date=short --reverse --pretty=format:'%cd, %cr' | head -1`
-  remote=`git config --get-regexp remote.*.url`
+  remote=`git config --get-regexp remote.*.url | cut -d " " -f 2`
   branch=`git symbolic-ref --short HEAD`
 
   # Collect additions and deletions stats.
-  stat=`git log --oneline --numstat --no-merges --date=short --pretty=format:'%cd %h' | python -c '
-import sys
-
-raw = sys.stdin.read()
-
-stat = {}
-max = 0
-
-for commit in raw.split("\n\n"):
-    commit = commit.split("\n")
-    head = commit[0]
-    body = filter(None, commit[1:])
-
-    date, sha1 = head.split(" ")
-
-    pos = 0
-    neg = 0
-    for change in body:
-        p, n, name = change.split("\t")
-        if p == "-":
-            continue
-        pos += int(p)
-        neg += int(n)
-
-    print sha1, pos, neg
-'`
+  stat=`git log --oneline --numstat --no-merges \
+       --date=short --pretty=format:'%cd %h' | python $SCRIPTS_DIR/git-lines-stat.py`
 
   # Collect start-of-the-day commits
   border=`git log --date=short --pretty=format:'%cd %h' |
@@ -83,6 +60,8 @@ for commit in raw.split("\n\n"):
       split(stat, sarr, "\n");
       first = 1;
       printf "      Total %d commits since %s\n", total, since;
+      printf "      Remote url %s\n", remote;
+      printf "      On branch %s\n", branch;
     }
     match($0, /[0-9a-f]{6,}/) {
       hash = substr($0, RSTART, RLENGTH);
@@ -124,6 +103,10 @@ for commit in raw.split("\n\n"):
 }
 
 memstat () {
-  vmstat -s | head -2 | python $SCRIPT_DIR/../scripts/memstat.py
+  vmstat -s | head -2 | python $SCRIPTS_DIR/memstat.py
+}
+
+gitdays () {
+  git log --date=short --pretty=format:'%cd %h' | python $SCRIPTS_DIR/git-days.py
 }
 

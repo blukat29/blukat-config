@@ -23,6 +23,7 @@ Plugin 'honza/vim-snippets'
 
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
@@ -86,14 +87,14 @@ set statusline+=\ %15{FileTime()}\     " Last modified time relative to now.
 " Vim-airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#branch#enabled = 1
 
 " GitGutter
 let g:gitgutter_sign_removed = "-"
 let g:gitgutter_map_keys = 0
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
-
 
 " Coloring
 if &term == "xterm" || &term == "screen"

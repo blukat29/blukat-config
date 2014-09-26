@@ -9,6 +9,10 @@ info() {
   echo "\033[1;36m$1\033[0;0m"
 }
 
+warn() {
+  echo "\033[1;31m$1\033[0;0m"
+}
+
 prompt() {
   while true; do
     read -p "  continue? [y/n] " yn
@@ -20,10 +24,59 @@ prompt() {
   done
 }
 
+all_exists() {
+  for name in $@
+  do
+    type $name >/dev/null
+    if [ $? -ne 0 ]; then
+      dpkg -l | grep $name >/dev/null
+      if [ $? -ne 0 ]; then
+        return "0"
+      fi
+    fi
+  done
+  return "1"
+}
+
+apt_repo() {
+  head "Change apt-get repository into kr.archive.ubuntu.com"
+  info "  files affected: /etc/apt/sources.list"
+
+  cat /etc/apt/sources.list | grep kr.archive.ubuntu.com >/dev/null
+  if [ $? -eq 0 ]; then
+    warn "  repo urls are already changed."
+    return
+  fi
+
+  prompt
+  if [ $? -eq 1 ]; then
+    cd /etc/apt
+    if [ ! -f sources.list.bak ]; then
+      sudo cp sources.list sources.list.bak
+    fi
+    sudo awk -v OLD=us.archive.ubuntu.com \
+        -v NEW=kr.archive.ubuntu.com \
+        'BEGIN {count=0;}
+         ($0 ~ OLD) {gsub(OLD, NEW); count++;}
+         {print $0}
+         END {print count " lines changed." > "/dev/stderr"}' \
+        sources.list > sources.list.tmp
+    sudo mv sources.list.tmp sources.list
+    echo "done."
+  fi
+}
+
 core_pkgs() {
   head "Install basic packages for dev. and hack."
   info "  pkgs installed: ctags gcc gdb make curl"
   info "                  build-essential"
+
+  all_exists ctags gcc gdb make curl build-essential
+  if [ $? -eq 1 ]; then
+    warn "  all of these are already installed."
+    return
+  fi
+
   prompt
   if [ $? -eq 1 ]; then
     sudo apt-get install ctags gcc gdb make curl \
@@ -31,27 +84,16 @@ core_pkgs() {
   fi
 }
 
-apt_repo() {
-  head "Change apt-get repository into kr.archive.ubuntu.com"
-  info "  files affected: /etc/apt/sources.list"
-  prompt
-  if [ $? -eq 1 ]; then
-    cd /etc/apt
-    sudo cp sources.list sources.list.bak
-    awk -v OLD=us.archive.ubuntu.com \
-        -v NEW=kr.archive.ubuntu.com \
-        'BEGIN {count=0;}
-         ($0 ~ OLD) {gsub(OLD, NEW); count++;}
-         END {print count " lines changed." > "/dev/stderr"}' \
-        sources.list > sources.list.tmp
-    mv sources.list.tmp sources.list
-    echo "done."
-  fi
-}
-
 python_pip() {
   head "Install Python-pip and virtualenv"
   info "  dirs affected: /usr/lib/python2.7/*"
+
+  all_exists pip virtualenv
+  if [ $? -eq 1 ]; then
+    warn "  pip and virtualenv are already installed."
+    return
+  fi
+
   prompt
   if [ $? -eq 1 ]; then
     cd ~
@@ -65,7 +107,13 @@ python_pip() {
 setup_ntpd() {
   head "Setup NTP daemon to sync system time. (recommended in VM)."
   info "  packages installed: ntp"
-  info "  files affected: /etc/ntp.conf"
+
+  all_exists ntpd
+  if [ $? -eq 1 ]; then
+    warn "  ntpd already installed."
+    return
+  fi
+
   prompt
   if [ $? -eq 1 ]; then
     sudo apt-get -y install ntp
@@ -75,6 +123,12 @@ setup_ntpd() {
 secure_tmp() {
   head "Change permissions of /tmp directory."
   info "  dirs affected: /tmp/*"
+
+  if [ "`stat -c %a /tmp`" = "1777" ]; then
+    warn "  /tmp permission is already set."
+    return
+  fi
+
   prompt
   if [ $? -eq 1 ]; then
     sudo chmod 1777 /tmp
@@ -83,6 +137,7 @@ secure_tmp() {
 }
 
 apt_repo
+core_pkgs
 python_pip
 setup_ntpd
 secure_tmp

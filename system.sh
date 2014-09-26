@@ -37,14 +37,17 @@ apt_repo() {
   prompt
   if [ $? -eq 1 ]; then
     cd /etc/apt
-    sudo cp sources.list sources.list.bak
-    awk -v OLD=us.archive.ubuntu.com \
+    if [ ! -f sources.list.bak ]; then
+      sudo cp sources.list sources.list.bak
+    fi
+    sudo awk -v OLD=us.archive.ubuntu.com \
         -v NEW=kr.archive.ubuntu.com \
         'BEGIN {count=0;}
          ($0 ~ OLD) {gsub(OLD, NEW); count++;}
+         {print $0}
          END {print count " lines changed." > "/dev/stderr"}' \
         sources.list > sources.list.tmp
-    mv sources.list.tmp sources.list
+    sudo mv sources.list.tmp sources.list
     echo "done."
   fi
 }

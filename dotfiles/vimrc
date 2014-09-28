@@ -103,6 +103,7 @@ let g:tagbar_map_closeallfolds = "_"
 let g:tagbar_map_openfold = "="
 let g:tagbar_autofocus = 1
 let g:tagbar_iconchars = ['+', '-']
+let g:tagbar_width = 30
 
 " Coloring
 if &term == "xterm" || &term == "screen"

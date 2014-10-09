@@ -30,22 +30,24 @@ call vundle#end()
 filetype plugin indent on
 
 " General
-set tabstop=2
+set exrc        " enable per-directory vimrc
+
+set tabstop=2   " tabs and indents
 set shiftwidth=2
 set expandtab
 set autoindent
-syntax on
-set number
+
+syntax on       " highlight
 set hlsearch
-set tags=~/pintos/src/tags
-set nowrap
-set viminfo=""
+
+set number      " show line numbers
+set nowrap      " don't wrap long sentences
+set viminfo=""  " disable viminfo
 
 " Assign dotfiles filetype=sh
 autocmd BufNewFile,BufRead aliases,exports,functions,prompts set filetype=sh
 
 " Python specific tab settings.
-autocmd BufNewFile,BufRead *.wsgi set filetype=python
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " Assign .phps to php type

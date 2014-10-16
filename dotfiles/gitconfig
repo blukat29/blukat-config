@@ -11,6 +11,8 @@
     c = checkout
     co = commit
     b = branch
+    d = diff
+    rh = reset HEAD
 [filter "gitconfig_nouser"]
   clean = sed -e '/\\[user\\]/,/\\[/ { //!d }' -e '/\\[user\\]/d'
   smudge = cat

@@ -14,4 +14,5 @@ alias less='less -R'
 alias g='git'
 alias gdb='gdb -q -x gdbinit'
 alias ustrings='strings -e l'
+alias gl='git lg'
 

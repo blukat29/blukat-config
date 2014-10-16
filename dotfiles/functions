@@ -16,7 +16,7 @@ reif () {
   ping google.com
 }
 
-gl () {
+gdays () {
 
   total=`git rev-list HEAD --count`
   since=`git log --date=short --reverse --pretty=format:'%cd, %cr' | head -1`

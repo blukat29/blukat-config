@@ -137,6 +137,19 @@ secure_tmp() {
   fi
 }
 
+vbox_guest() {
+  head "Install VirtualBox Guest Additions"
+  info "  Click \"install guest addition\" before proceed"
+
+  prompt
+  if [ $? -eq 1 ]; then
+    sudo mkdir -p /mnt/vboxcdrom
+    sudo mount /dev/cdrom /mnt/vboxcdrom
+    cd /mnt/vboxcdrom
+    sudo ./VBoxLinuxAdditions.run
+  fi
+}
+
 apt_repo
 core_pkgs
 python_pip

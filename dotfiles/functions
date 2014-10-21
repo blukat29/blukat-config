@@ -110,3 +110,12 @@ gitdays () {
   git log --date=short --pretty=format:'%cd %h' | python $SCRIPTS_DIR/git-days.py
 }
 
+vbmount () {
+  mkdir -p ~/shared
+  sudo mount -t vboxsf shared ~/shared
+}
+
+vbumount () {
+  sudo umount ~/shared
+}
+

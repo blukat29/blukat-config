@@ -29,7 +29,7 @@ all_exists() {
   do
     type $name >/dev/null
     if [ $? -ne 0 ]; then
-      dpkg -l | grep $name >/dev/null
+      dpkg -l | grep "$name " >/dev/null
       if [ $? -ne 0 ]; then
         return "0"
       fi

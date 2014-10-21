@@ -62,6 +62,7 @@ apt_repo() {
          END {print count " lines changed." > "/dev/stderr"}' \
         sources.list > sources.list.tmp
     sudo mv sources.list.tmp sources.list
+    sudo apt-get update
     echo "done."
   fi
 }

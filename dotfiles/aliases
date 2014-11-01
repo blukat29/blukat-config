@@ -1,11 +1,11 @@
 # ~/alises: Part of .bashrc for alises.
 
-alias ll='ls -al'
+alias ll='ls -alh'
 alias ls='ls -F --color=auto'
 alias dir='ls'
 alias cls='clear'
-alias grepc='grep -2 -n --color=auto'
-alias grep='grep --color=auto'
+alias grepc='grep -2 -n --color=always'
+alias grep='grep --color=always'
 alias tma='tmux attach -t'
 alias tl='tmux ls'
 alias tmux='tmux -2'
@@ -15,4 +15,5 @@ alias g='git'
 alias gdb='gdb -q -x gdbinit'
 alias ustrings='strings -e l'
 alias gl='git lg'
+alias dus='du -h -d 1 | sort -h --reverse'
 

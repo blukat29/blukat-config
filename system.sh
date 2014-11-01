@@ -29,7 +29,7 @@ all_exists() {
   do
     type $name >/dev/null
     if [ $? -ne 0 ]; then
-      dpkg -l | grep $name >/dev/null
+      dpkg -l | grep "$name " >/dev/null
       if [ $? -ne 0 ]; then
         return "0"
       fi
@@ -62,6 +62,7 @@ apt_repo() {
          END {print count " lines changed." > "/dev/stderr"}' \
         sources.list > sources.list.tmp
     sudo mv sources.list.tmp sources.list
+    sudo apt-get update
     echo "done."
   fi
 }
@@ -124,15 +125,28 @@ secure_tmp() {
   head "Change permissions of /tmp directory."
   info "  dirs affected: /tmp/*"
 
-  if [ "`stat -c %a /tmp`" = "1777" ]; then
+  if [ "`stat -c %a /tmp`" = "0773" ]; then
     warn "  /tmp permission is already set."
     return
   fi
 
   prompt
   if [ $? -eq 1 ]; then
-    sudo chmod 1777 /tmp
+    sudo chmod 0773 /tmp
     ls -al --color=always / | grep --color=none tmp
+  fi
+}
+
+vbox_guest() {
+  head "Install VirtualBox Guest Additions"
+  info "  Click \"install guest addition\" before proceed"
+
+  prompt
+  if [ $? -eq 1 ]; then
+    sudo mkdir -p /mnt/vboxcdrom
+    sudo mount /dev/cdrom /mnt/vboxcdrom
+    cd /mnt/vboxcdrom
+    sudo ./VBoxLinuxAdditions.run
   fi
 }
 

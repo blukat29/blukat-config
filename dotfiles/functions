@@ -119,3 +119,7 @@ vbumount () {
   sudo umount ~/shared
 }
 
+sqlite3 () {
+  python $SCRIPTS_DIR/sqlite_runner.py $*
+}
+

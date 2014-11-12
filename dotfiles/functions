@@ -103,7 +103,7 @@ gdays () {
 }
 
 memstat () {
-  vmstat -s | head -2 | python $SCRIPTS_DIR/memstat.py
+  cat /proc/meminfo | grep Mem | python $SCRIPTS_DIR/memstat.py
 }
 
 gitdays () {

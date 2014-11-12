@@ -11,6 +11,8 @@ source $SCRIPT_DIR/aliases
 source $SCRIPT_DIR/prompts
 source $SCRIPT_DIR/functions
 
+export PATH=$PATH:$SCRIPT_DIR/../bin
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize

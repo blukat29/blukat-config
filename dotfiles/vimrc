@@ -26,6 +26,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 
+Plugin 'amdt/vim-niji'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -43,6 +45,8 @@ set hlsearch
 set number      " show line numbers
 set nowrap      " don't wrap long sentences
 set viminfo=""  " disable viminfo
+
+set scrolloff=3 " Keep 3 lines above and below cursor.
 
 " Assign dotfiles filetype=sh
 autocmd BufNewFile,BufRead aliases,exports,functions,prompts set filetype=sh

@@ -79,6 +79,7 @@ let g:easytags_suppress_report = 1
 
 " Jedi-Vim - no documentation window during completion.
 autocmd FileType python setlocal completeopt-=preview
+let g:jedi#show_call_signatures = 0
 
 " Statusline
 set laststatus=2   " Always on

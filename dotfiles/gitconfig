@@ -8,8 +8,10 @@
     lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr)%Creset'
     lb = log --oneline --graph --decorate --simplify-by-decoration --all
     s = status
+    sv = status -v
     c = checkout
     co = commit
+    ca = commit --amend
     b = branch
     d = diff
     rh = reset HEAD

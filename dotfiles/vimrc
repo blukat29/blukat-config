@@ -131,8 +131,8 @@ if &term == "xterm" || &term == "screen"
   hi Search cterm=bold ctermfg=White ctermbg=DarkBlue
   hi StatusLine cterm=bold,underline ctermfg=White ctermbg=234
   hi StatusLineNC cterm=bold,underline ctermfg=247 ctermbg=234
-  hi Pmenu ctermfg=Grey
-  hi PmenuSel ctermfg=Black
+  hi Pmenu ctermfg=Black ctermbg=Grey
+  hi PmenuSel cterm=bold ctermfg=Black ctermbg=Cyan
   hi VertSplit cterm=none ctermfg=248 ctermbg=236
   hi FoldColumn ctermfg=119 ctermbg=236
   hi SignColumn ctermbg=Black

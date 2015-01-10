@@ -73,6 +73,7 @@ command! Q q
 nnoremap <Tab> <C-w>w
 
 " Easytags
+let g:easytags_file = '~/.vim/tags'
 let g:easytags_dynamic_files = 1
 let g:easytags_events = ['BufWritePost','VimEnter','BufEnter','Winenter']
 let g:easytags_suppress_report = 1

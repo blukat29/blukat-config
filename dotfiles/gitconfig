@@ -2,6 +2,7 @@
     default = simple
 [core]
     editor = vim
+    excludesfile = ~/.gitignore
 [pager]
     status = true
 [alias]

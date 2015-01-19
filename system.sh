@@ -161,14 +161,14 @@ secure_tmp() {
   head "Change permissions of /tmp directory."
   info "  dirs affected: /tmp/*"
 
-  if [ "`stat -c %a /tmp`" = "0773" ]; then
+  if [ "`stat -c %a /tmp`" = "1773" ]; then
     warn "  /tmp permission is already set."
     return
   fi
 
   prompt
   if [ $? -eq 1 ]; then
-    sudo chmod 0773 /tmp
+    sudo chmod 1773 /tmp
     ls -al --color=always / | grep --color=none tmp
   fi
 }

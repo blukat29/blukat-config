@@ -38,6 +38,17 @@ all_exists() {
   return "1"
 }
 
+python_exists() {
+  for name in $@
+  do
+    python -c "import $name" 2>/dev/null
+    if [ $? -ne 0 ]; then
+      return "0"
+    fi
+  done
+  return "1"
+}
+
 apt_repo() {
   head "Change apt-get repository into kr.archive.ubuntu.com"
   info "  files affected: /etc/apt/sources.list"
@@ -105,6 +116,31 @@ python_pip() {
   fi
 }
 
+pip_pkgs() {
+  head "Install useful python packages"
+  info "  dirs affected: ~/.local/"
+  info "  pkgs installed: requests pexpect"
+
+  all_exists pip
+  if [ $? -ne 1 ]; then
+    warn "  pip not installed. cannot install python packages."
+    return
+  fi
+
+  python_exists requests pexpect
+  if [ $? -eq 1 ]; then
+    warn "  all packages are already installed."
+    return
+  fi
+
+  prompt
+  if [ $? -eq 1 ]; then
+    cd ~
+    pip install --user requests
+    pip install --user pexpect
+  fi
+}
+
 setup_ntpd() {
   head "Setup NTP daemon to sync system time. (recommended in VM)."
   info "  packages installed: ntp"
@@ -153,6 +189,7 @@ vbox_guest() {
 apt_repo
 core_pkgs
 python_pip
+pip_pkgs
 setup_ntpd
 secure_tmp
 

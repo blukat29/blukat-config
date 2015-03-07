@@ -81,7 +81,8 @@ apt_repo() {
 core_pkgs() {
   head "Install basic packages for dev. and hack."
   info "  pkgs installed: ctags gcc gdb make curl"
-  info "                  build-essential"
+  info "                  build-essential autoconf"
+  info "                  file zip unzip strace python-dev"
 
   all_exists ctags gcc gdb make curl build-essential
   if [ $? -eq 1 ]; then
@@ -92,7 +93,8 @@ core_pkgs() {
   prompt
   if [ $? -eq 1 ]; then
     sudo apt-get install ctags gcc gdb make curl \
-                         build-essential
+                         build-essential autoconf \
+                         file zip unzip strace python-dev
   fi
 }
 
@@ -119,7 +121,7 @@ python_pip() {
 pip_pkgs() {
   head "Install useful python packages"
   info "  dirs affected: ~/.local/"
-  info "  pkgs installed: requests pexpect"
+  info "  pkgs installed: requests Pillow"
 
   all_exists pip
   if [ $? -ne 1 ]; then
@@ -127,7 +129,7 @@ pip_pkgs() {
     return
   fi
 
-  python_exists requests pexpect
+  python_exists requests PIL
   if [ $? -eq 1 ]; then
     warn "  all packages are already installed."
     return
@@ -135,9 +137,8 @@ pip_pkgs() {
 
   prompt
   if [ $? -eq 1 ]; then
-    cd ~
-    pip install --user requests
-    pip install --user pexpect
+    pip install requests
+    pip install Pillow
   fi
 }
 

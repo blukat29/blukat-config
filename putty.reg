@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Custom%20Settings]
+"Beep"=dword:00000000
+"NoApplicationKeys"=dword:00000001
+"Font"="Consolas"
+"UseFontUnicode"=dword:00000001
+"FontUnicode"="나눔고딕코딩"
+"Colour14"="50,50,255"
+"LineCodePage"="UTF-8"
+

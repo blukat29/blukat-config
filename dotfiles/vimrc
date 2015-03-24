@@ -47,6 +47,7 @@ set nowrap      " don't wrap long sentences
 set viminfo=""  " disable viminfo
 
 set scrolloff=3 " Keep 3 lines above and below cursor.
+set tags=tags;
 
 " Assign dotfiles filetype=sh
 autocmd BufNewFile,BufRead aliases,exports,functions,prompts set filetype=sh

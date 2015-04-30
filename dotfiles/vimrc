@@ -23,10 +23,7 @@ Plugin 'honza/vim-snippets'
 
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
-
-Plugin 'amdt/vim-niji'
 
 call vundle#end()
 filetype plugin indent on
@@ -57,6 +54,8 @@ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " Assign .phps to php type
 autocmd BufNewFile,BufRead *.phps set filetype=php
+autocmd BufNewFile,BufRead *.cup set filetype=java
+autocmd BufNewFile,BufRead *.flex set filetype=java
 
 " Close Omni-Completion tip window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -85,14 +84,6 @@ let g:jedi#show_call_signatures = 0
 
 " Statusline
 set laststatus=2   " Always on
-set statusline=\ %{FileName()}         " Filename with links resolved
-set statusline+=\ %<(%{FileSize()})    " File size in human readable format
-set statusline+=\ %3(%m%)%4(%r%)%y     " Modified? Readonly? Filetype
-set statusline+=\[%{FileEncoding()}\]  " File encoding.
-set statusline+=%=                     " End leftalign. Start rightalign.
-set statusline+=%l/%L\ (%P)            " currentLine/totalLines (percentage)
-set statusline+=\ :%2(%c%)             " column
-set statusline+=\ %15{FileTime()}\     " Last modified time relative to now.
 
 " Vim-airline
 let g:airline_left_sep=''
@@ -149,54 +140,4 @@ endif
 " Trailing Whitespace
 hi TrailingWhitespace ctermbg=red
 match TrailingWhitespace /\s\+$/
-
-" Functions
-function! FileName()
-  let fn = expand('%')
-  if fn == ""
-    return "[nonamed]"
-  else
-    return split(resolve(fn), '/')[-1]
-  endif
-endfunction
-
-function! FileSize()
-  let bytes = getfsize(expand("%:p"))
-  if bytes <= 0
-    return "0B"
-  endif
-  if bytes<1024
-    return bytes."B"
-  else
-    return (bytes/1024)."KB"
-  endif
-endfunction
-
-function! FileEncoding()
-  if &fenc == ''
-    return &fenc
-  else
-    return &enc
-  endif
-endfunction
-
-function! FileTime()
-  if getftime(expand('%')) < 0
-    return "new file"
-  endif
-  let tm = localtime() - getftime(expand('%'))
-  if tm < 60
-    return tm." seconds ago"
-  elseif tm < 60*60
-    return (tm/60)." minutes ago"
-  elseif tm < 60*60*24
-    return (tm/60/60)." hours ago"
-  elseif tm < 60*60*24*14
-    return (tm/60/60/24)." days ago"
-  elseif tm < 60*60*24*60
-    return (tm/60/60/24/7)." weeks ago"
-  else
-    return " 2 months or older"
-  endif
-endfunction
 

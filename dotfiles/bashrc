@@ -1,5 +1,14 @@
 # ~/.bashrc
 
+# Before doing anything, replace OSX terminal tools
+# with gnu tools
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+test -f ~/blukat-config/scripts/git-completion.bash && . $_
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -24,3 +33,5 @@ set completion-ignore-case on
 bind '"\t": menu-complete'
 bind '"\e[Z": complete'
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

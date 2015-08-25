@@ -1,5 +1,6 @@
 # ~/exports: environment variables part in .bashrc.
 export PATH=$PATH:$HOME/local/bin
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export GIT_SSL_NO_VERIFY=1
 export LESSHISTFILE=/dev/null
 

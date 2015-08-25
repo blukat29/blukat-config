@@ -1,3 +1,6 @@
+print ".headers on: displays the column names"
+print ".mode column: displays tab-separated columns"
+print ".tables: list tables"
 try:
     import apsw
     apsw.main()

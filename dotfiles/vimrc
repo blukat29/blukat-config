@@ -49,22 +49,34 @@ set tags=tags;
 " Add tags from local include directories
 set tags+=~/.vim/local
 
-" Turn on omnicomplete
-set omnifunc=syntaxcomplete#Complete
-
 " Assign dotfiles filetype=sh
 autocmd BufNewFile,BufRead aliases,exports,functions,prompts set filetype=sh
-
-" Python specific tab settings.
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " Assign .phps to php type
 autocmd BufNewFile,BufRead *.phps set filetype=php
 autocmd BufNewFile,BufRead *.cup set filetype=java
 autocmd BufNewFile,BufRead *.flex set filetype=java
 
+" Turn on omnicomplete
+set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
+au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+
+" Omnicomplete settings
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+
 " Close Omni-Completion tip window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" Supertab does Omni-Completion by default
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
@@ -87,6 +99,9 @@ let g:easytags_suppress_report = 1
 " Jedi-Vim - no documentation window during completion.
 autocmd FileType python setlocal completeopt-=preview
 let g:jedi#show_call_signatures = 0
+
+" Python specific tab settings.
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " Statusline
 set laststatus=2   " Always on

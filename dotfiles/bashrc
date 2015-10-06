@@ -29,5 +29,7 @@ set completion-ignore-case on
 bind '"\t": menu-complete'
 bind '"\e[Z": complete'
 
+# autojump setting
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

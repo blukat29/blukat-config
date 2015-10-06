@@ -76,7 +76,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Supertab does Omni-Completion by default
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
@@ -129,7 +129,7 @@ let g:tagbar_width = 50
 let g:tagbar_sort = 0
 
 " Coloring
-if (&term == "xterm" || &term == "screen") || (&term == "screen-256color")
+if (&term == "screen-256color") || (&term == "xterm-256color")
 
   hi clear
   set t_Co=256

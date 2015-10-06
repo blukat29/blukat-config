@@ -49,6 +49,9 @@ set tags=tags;
 " Add tags from local include directories
 set tags+=~/.vim/local
 
+" Make backspace work as other
+set backspace=indent,eol,start
+
 " Assign dotfiles filetype=sh
 autocmd BufNewFile,BufRead aliases,exports,functions,prompts set filetype=sh
 

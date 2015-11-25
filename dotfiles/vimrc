@@ -106,6 +106,9 @@ let g:jedi#show_call_signatures = 0
 " Python specific tab settings.
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
+" Dockerfile syntax
+autocmd BufRead,BufNewFile Dockerfile setlocal filetype=config
+
 " Statusline
 set laststatus=2   " Always on
 

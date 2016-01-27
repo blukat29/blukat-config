@@ -20,4 +20,5 @@ alias cd..='cd ..'
 alias cd...='cd ../../'
 alias cd....='cd ../../../'
 alias cd.....='cd ../../../../'
+alias vi='vim'
 

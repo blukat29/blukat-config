@@ -59,6 +59,7 @@ autocmd BufNewFile,BufRead aliases,exports,functions,prompts set filetype=sh
 autocmd BufNewFile,BufRead *.phps set filetype=php
 autocmd BufNewFile,BufRead *.cup set filetype=java
 autocmd BufNewFile,BufRead *.flex set filetype=java
+autocmd BufNewFile,BufRead *.json set filetype=javascript
 
 " Turn on omnicomplete
 set omnifunc=syntaxcomplete#Complete

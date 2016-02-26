@@ -2,6 +2,8 @@
 export PATH=$PATH:$HOME/local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib/:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH"
 export GIT_SSL_NO_VERIFY=1
 export LESSHISTFILE=/dev/null
 

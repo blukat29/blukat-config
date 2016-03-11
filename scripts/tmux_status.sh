@@ -1,5 +1,5 @@
 #!/bin/sh
-SCRIPTS_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
+SCRIPTS_DIR=$(dirname $(readlink -e $0))
 SYSTEM=`uname -s`
 
 case "$SYSTEM" in

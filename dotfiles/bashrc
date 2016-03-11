@@ -13,6 +13,7 @@
     # PATHs
     export PATH="$PATH:$HOME/local/bin"
     export PATH="$PATH:$HOME/.local/bin"
+    export PATH="$PATH:$DOTFILES_DIR/../scripts"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/"
 
@@ -24,7 +25,7 @@
 ### Bash prompt
 
     # Enable git-prompt
-    source $DOTFILES_DIR/git-prompt.sh
+    source $DOTFILES_DIR/../scripts/git-prompt.sh
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWSTASHSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1

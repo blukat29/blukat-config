@@ -7,6 +7,7 @@ BACKUP_DIR=$HOME/.config.bak.d
 if [ ! -d "$BACKUP_DIR" ]; then
   mkdir "$BACKUP_DIR"
 fi
+
 relpath() {
   python -c "import os.path; print os.path.relpath('$1','${2:-$PWD}')"
 }
@@ -33,6 +34,4 @@ setup gitignore
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
-
-ctags -R --sort=yes --fields=iaSl --c++-kinds=+p --extra=+q -f ~/.vim/local /usr/include/
 

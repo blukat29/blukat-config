@@ -37,7 +37,7 @@
     __droppath () {
         if [[ ${#1} -gt 50 ]]; then
             p=$1
-            while [ ${#p} -gt $2 ]; do
+            while [ ${#p} -gt 50 ]; do
                 p="/"$(echo "$p"|cut -d"/" -f3-)
             done
             echo "..."$p

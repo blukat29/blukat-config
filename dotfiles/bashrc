@@ -14,6 +14,9 @@
     export PATH="$PATH:$HOME/local/bin"
     export PATH="$PATH:$HOME/.local/bin"
     export PATH="$PATH:$DOTFILES_DIR/../scripts"
+    export PATH="$PATH:$HOME/local/android-sdk-linux/tools/"
+    export PATH="$PATH:$HOME/local/android-sdk-linux/platform-tools/"
+    export PATH="$PATH:$HOME/local/android-ndk-r11b/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/"
 

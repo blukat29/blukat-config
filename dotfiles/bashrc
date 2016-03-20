@@ -75,6 +75,9 @@
     alias cd.....='cd ../../../../'
     alias ls..='ls ..'
     alias vi='vim'
+    alias bobjdump='objdump -b binary -m i386 -M intel -D'
+    alias bobjdump64='objdump -b binary -m i386:x86_64 -M intel -D'
+    alias simplehttp='python -m SimpleHTTPServer'
 
 
 ### Utility functions

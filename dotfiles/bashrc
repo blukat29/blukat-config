@@ -89,6 +89,10 @@
       python $DOTFILES_DIR/../scripts/sqlite_runner.py $*
     }
 
+    git-stats() {
+      python $DOTFILES_DIR/../scripts/git-calendar.py
+    }
+
 
 ### Bash settings
 

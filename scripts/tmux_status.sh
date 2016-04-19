@@ -3,10 +3,11 @@ SCRIPTS_DIR=$(dirname $(readlink -e $0))
 SYSTEM=`uname -s`
 
 case "$SYSTEM" in
-    "Darwin") top -l 1 -s 0 | grep PhysMem | python $SCRIPTS_DIR/memstat.py Darwin
+    "Darwin")
+        uptime | python $SCRIPTS_DIR/uptime.py
         ;;
     "Linux")
-        echo -n "[$(cat /proc/loadavg | cut -c -14)]"
-        echo -n "[$(cat /proc/meminfo | grep Mem | python $SCRIPTS_DIR/memstat.py Linux)]"
+        echo -n "$(uptime | python $SCRIPTS_DIR/uptime.py)"
+        echo -n "$(cat /proc/meminfo | grep Mem | python $SCRIPTS_DIR/memstat.py)"
         ;;
 esac

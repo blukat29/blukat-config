@@ -33,5 +33,5 @@ def summary(log):
         print (key, "%3d" % value, bar)
 
 if __name__ == '__main__':
-    log = subprocess.check_output(["git","log","--pretty=format:'%cI'"])
+    log = subprocess.check_output(["git","log","--pretty=format:'%ci'"])
     summary(log)

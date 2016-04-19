@@ -8,6 +8,7 @@
     # Before doing anything, replace OSX terminal tools with gnu version tools
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    export PATH="/usr/local/bin:$PATH"
     DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
 
     # PATHs
@@ -81,6 +82,9 @@
     alias bobjdump='objdump -b binary -m i386 -M intel -D'
     alias bobjdump64='objdump -b binary -m i386:x86_64 -M intel -D'
     alias simplehttp='python -m SimpleHTTPServer'
+    alias tree='tree -C'
+    alias md='mkdir'
+    alias mdkri='mkdir'
 
 
 ### Utility functions

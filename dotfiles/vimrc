@@ -1,6 +1,14 @@
 
-" Vundle
-set nocompatible
+"   File structure
+" Vundle plugins
+" General settings
+" Keyboard shortcuts
+" File type specific settings
+" Omnicomplete settings
+" Plugin settings
+
+" #### Vundle Plugins ############################
+set nocompatible  " it must be the first line to enable Vim features.
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -31,38 +39,54 @@ Plugin 'derekwyatt/vim-scala'
 call vundle#end()
 filetype plugin indent on
 
-" General
+" #### General ###################################
 set exrc        " enable per-directory vimrc
 
-set tabstop=4   " tabs and indents
+set tabstop=4   " default tabs and indents
 set shiftwidth=4
 set expandtab
 set autoindent
 
-syntax on       " highlight
-set hlsearch
-
-set number      " show line numbers
+syntax on       " syntax highlight
+set hlsearch    " highlight search result
+set number      " line numbers
 set nowrap      " don't wrap long sentences
 set viminfo=""  " disable viminfo
 
-set scrolloff=3 " Keep 3 lines above and below cursor.
-set tags=tags;
+set scrolloff=3   " Keep 3 lines above and below cursor.
+set laststatus=2  " Always turn on status line
+set backspace=indent,eol,start  " Make backspace work as other editors
+set tags=tags;    " Read local tags file
 
-" Add tags from local include directories
-set tags+=~/.vim/local
+" #### Keyboard shortcut #########################
 
-" Make backspace work as other
-set backspace=indent,eol,start
+" <Ctrl-l> redraws the screen and removes any search highlights
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-" Assign dotfiles filetype=sh
-autocmd BufNewFile,BufRead aliases,exports,functions,prompts set filetype=sh
+" Map common mistakes.
+command! WQ wq
+command! Wq wq
+command! W w
+command! Q q
 
-" Assign .phps to php type
+" Move between splits
+nnoremap <Tab> <C-w>w
+
+" #### File type specific ########################
+
+" File type specific tabs
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+" File type mappings
+autocmd BufRead,BufNewFile Dockerfile setlocal filetype=config
 autocmd BufNewFile,BufRead *.phps set filetype=php
 autocmd BufNewFile,BufRead *.cup set filetype=java
 autocmd BufNewFile,BufRead *.flex set filetype=java
 autocmd BufNewFile,BufRead *.json set filetype=javascript
+
+" #### Omnicomplete ##############################
 
 " Turn on omnicomplete
 set omnifunc=syntaxcomplete#Complete
@@ -85,17 +109,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " Supertab does Omni-Completion by default
 " let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
-
-" Map common mistakes.
-command! WQ wq
-command! Wq wq
-command! W w
-command! Q q
-
-" Vertical split
-nnoremap <Tab> <C-w>w
+" #### Plugins ###################################
 
 " Easytags
 let g:easytags_file = '~/.vim/tags'
@@ -106,16 +120,6 @@ let g:easytags_suppress_report = 1
 " Jedi-Vim - no documentation window during completion.
 autocmd FileType python setlocal completeopt-=preview
 let g:jedi#show_call_signatures = 0
-
-" Python specific tab settings.
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-
-" Dockerfile syntax
-autocmd BufRead,BufNewFile Dockerfile setlocal filetype=config
-
-" Statusline
-set laststatus=2   " Always on
 
 " Vim-airline
 let g:airline_left_sep=''
@@ -139,12 +143,12 @@ let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_width = 50
 let g:tagbar_sort = 0
 
-" Coloring
+" #### Coloring ##################################
+
 if (&term == "screen-256color") || (&term == "xterm-256color")
 
   hi clear
   set t_Co=256
-
   colorscheme default
 
   hi Question cterm=bold,underline ctermfg=Cyan
@@ -172,4 +176,5 @@ endif
 " Trailing Whitespace
 hi TrailingWhitespace ctermbg=red
 match TrailingWhitespace /\s\+$/
+command! RemoveTrailingWhitespace :%s/\s\+$//
 

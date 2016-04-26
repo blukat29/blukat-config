@@ -25,6 +25,7 @@ Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 
+Plugin 'fatih/vim-go'
 Plugin 'derekwyatt/vim-scala'
 
 call vundle#end()

@@ -8,6 +8,7 @@
     # Before doing anything, replace OSX terminal tools with gnu version tools
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    export PATH="/usr/local/bin:$PATH"
     DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
 
     # PATHs
@@ -86,6 +87,8 @@
     alias py='python'
     alias py3='python3'
     alias dockr='docker'
+    alias md='mkdir'
+    alias mdkri='mkdir'
 
 
 ### Utility functions

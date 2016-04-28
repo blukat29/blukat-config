@@ -40,8 +40,6 @@ call vundle#end()
 filetype plugin indent on
 
 " #### General ###################################
-set exrc        " enable per-directory vimrc
-
 set tabstop=4   " default tabs and indents
 set shiftwidth=4
 set expandtab

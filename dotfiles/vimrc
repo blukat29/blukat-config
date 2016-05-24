@@ -78,11 +78,14 @@ autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " File type mappings
-autocmd BufRead,BufNewFile Dockerfile setlocal filetype=config
+autocmd BufNewFile,BufRead Dockerfile set filetype=config
 autocmd BufNewFile,BufRead *.phps set filetype=php
 autocmd BufNewFile,BufRead *.cup set filetype=java
 autocmd BufNewFile,BufRead *.flex set filetype=java
 autocmd BufNewFile,BufRead *.json set filetype=javascript
+autocmd BufNewFile,BufRead bashrc set filetype=sh
+autocmd BufNewFile,BufRead gitconfig set filetype=gitconfig
+autocmd BufNewFile,BufRead vimrc set filetype=vim
 
 " #### Omnicomplete ##############################
 

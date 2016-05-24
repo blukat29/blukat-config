@@ -101,6 +101,10 @@
       python $DOTFILES_DIR/../scripts/git-calendar.py
     }
 
+    cgc2elf() {
+      python $DOTFILES_DIR/../scripts/cgc2elf.py $*
+    }
+
 
 ### Bash settings
 

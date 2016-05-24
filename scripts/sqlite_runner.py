@@ -1,11 +1,15 @@
-print ".headers on: displays the column names"
-print ".mode column: displays tab-separated columns"
-print ".tables: list tables"
+import sys
+print(\
+"""Cheatsheet:
+  .tables: list tables
+  .schema TABLE: show table schema
+  .dump TABLE: dump table as SQL""")
+options=["-interactive","-header","-list","-separator", "\t"]
 try:
     import apsw
-    apsw.main()
+    args = options + sys.argv[1:]
+    apsw.Shell(args=args).cmdloop()
 except ImportError:
     import subprocess
-    import sys
-    argv = ["sqlite3","-interactive"] + sys.argv[1:]
+    argv = ["sqlite3"] + options + sys.argv[1:]
     subprocess.call(argv)

@@ -112,6 +112,9 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " #### Plugins ###################################
 
+" Remove trailing whitespaces
+command RemoveTrailingWhitespaces %s/\s\+$//
+
 " Easytags
 let g:easytags_file = '~/.vim/tags'
 let g:easytags_dynamic_files = 1

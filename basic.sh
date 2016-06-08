@@ -30,8 +30,12 @@ setup vimrc
 setup tmux.conf
 setup gitconfig
 setup gitignore
+setup gdbinit
 
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+if [ ! -d ~/.local/peda ]; then
+  git clone https://github.com/longld/peda ~/.local/peda
 fi
 

@@ -127,4 +127,11 @@
     # make less more friendly for non-text input files, see lesspipe(1)
     [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+### External tools
+
+    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+    if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+        source /usr/local/bin/virtualenvwrapper.sh
+    fi

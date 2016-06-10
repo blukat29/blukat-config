@@ -115,6 +115,10 @@
       pgrep $* | tail -1
     }
 
+    vbox () {
+      python $DOTFILES_DIR/../scripts/vbox.py $*
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,

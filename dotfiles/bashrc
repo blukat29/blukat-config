@@ -111,6 +111,10 @@
       bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
     }
 
+    psgrep () {
+      ps ax | grep $1 | awk '{print $1}'
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,

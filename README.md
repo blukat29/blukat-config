@@ -12,11 +12,10 @@ cd blukat-config
 sh basic.sh
 ```
 
-This requires following programs:
-- ctags (exuberant-ctags)
+Uninstall
+---------
 
-If you are too lazy to install them, just run
 ```sh
-sudo sh full.sh
+sh restore.sh
 ```
 

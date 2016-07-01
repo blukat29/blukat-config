@@ -72,7 +72,6 @@
     alias gdb='gdb -q -x gdbinit'
     alias ustrings='strings -e l'
     alias gl='git lg'
-    alias dus='du -h -d 1 | sort -h --reverse'
     alias cd..='cd ..'
     alias cd...='cd ../../'
     alias cd....='cd ../../../'
@@ -117,6 +116,10 @@
 
     vbox () {
       python $DOTFILES_DIR/../scripts/vbox.py $*
+    }
+
+    dus () {
+        du -h -d 1 $* | sort -h --reverse
     }
 
 ### Bash settings

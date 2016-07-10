@@ -122,6 +122,14 @@
         du -h -d 1 $* | sort -h --reverse
     }
 
+    docker-remove-dangling-images () {
+      sudo docker rmi $(sudo docker images -q -f dangling=true)
+    }
+
+    cache-flush () {
+      echo 1 | sudo tee /proc/sys/vm/drop_caches
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,

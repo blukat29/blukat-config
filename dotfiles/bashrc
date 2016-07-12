@@ -130,6 +130,10 @@
       echo 1 | sudo tee /proc/sys/vm/drop_caches
     }
 
+    markd () {
+      python $DOTFILES_DIR/../scripts/markd.py $*
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,

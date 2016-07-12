@@ -86,6 +86,7 @@ autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufNewFile,BufRead bashrc set filetype=sh
 autocmd BufNewFile,BufRead gitconfig set filetype=gitconfig
 autocmd BufNewFile,BufRead vimrc set filetype=vim
+autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 
 " #### Omnicomplete ##############################
 

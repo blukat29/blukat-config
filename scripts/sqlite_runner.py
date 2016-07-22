@@ -9,6 +9,7 @@ try:
     import apsw
     args = options + sys.argv[1:]
     apsw.Shell(args=args).cmdloop()
+    print("")
 except ImportError:
     import subprocess
     argv = ["sqlite3"] + options + sys.argv[1:]

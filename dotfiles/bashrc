@@ -9,15 +9,14 @@
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
     export PATH="/usr/local/bin:$PATH"
-    DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
 
     # PATHs
+    DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
+    SCRIPTS_DIR="$DOTFILES_DIR/../scripts"
     export PATH="$PATH:$HOME/local/bin"
     export PATH="$PATH:$HOME/.local/bin"
-    export PATH="$PATH:$DOTFILES_DIR/../scripts"
-    export PATH="$PATH:$HOME/local/android-sdk-linux/tools/"
-    export PATH="$PATH:$HOME/local/android-sdk-linux/platform-tools/"
-    export PATH="$PATH:$HOME/local/android-ndk-r11b/"
+    export PATH="$PATH:$SCRIPTS_DIR"
+    export PATH="$PATH:/usr/local/sbin"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/"
 
@@ -29,7 +28,7 @@
 ### Bash prompt
 
     # Enable git-prompt
-    source $DOTFILES_DIR/../scripts/git-prompt.sh
+    source $SCRIPTS_DIR/git-prompt.sh
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWSTASHSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -95,27 +94,23 @@
 ### Utility functions
 
     sqlite3() {
-      python $DOTFILES_DIR/../scripts/sqlite_runner.py $*
+      python $SCRIPTS_DIR/sqlite_runner.py $*
     }
 
     git-stats() {
-      python $DOTFILES_DIR/../scripts/git-calendar.py
+      python $SCRIPTS_DIR/git-calendar.py
     }
 
     cgc2elf() {
-      python $DOTFILES_DIR/../scripts/cgc2elf.py $*
+      python $SCRIPTS_DIR/cgc2elf.py $*
     }
 
     docker-enable () {
       bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
     }
 
-    lastpgrep () {
-      pgrep $* | tail -1
-    }
-
     vbox () {
-      python $DOTFILES_DIR/../scripts/vbox.py $*
+      python $SCRIPTS_DIR/vbox.py $*
     }
 
     dus () {
@@ -131,7 +126,7 @@
     }
 
     markd () {
-      python $DOTFILES_DIR/../scripts/markd.py $*
+      python $SCRIPTS_DIR/markd.py $*
     }
 
 ### Bash settings

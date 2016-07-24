@@ -59,7 +59,7 @@ if __name__ == '__main__':
     handler = MarkdownHandler
     http_server.allow_reuse_address = True
     server = http_server(('', port), handler)
-    print "Serving at port %d.." % port
+    print "Serving at port http://localhost:%d/.." % port
     try:
         server.serve_forever()
     except KeyboardInterrupt:

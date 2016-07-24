@@ -20,6 +20,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'ervandew/supertab.git'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'fisadev/vim-isort'
 
 Plugin 'closetag.vim'
 Plugin 'gregsexton/MatchTag'
@@ -150,7 +151,7 @@ let g:tagbar_sort = 0
 
 " #### Coloring ##################################
 
-if (&term == "screen-256color") || (&term == "xterm-256color")
+if (&term == "screen-256color") || (&term =~ "term")
 
   hi clear
   set t_Co=256

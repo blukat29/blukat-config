@@ -14,11 +14,13 @@
     DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
     SCRIPTS_DIR="$DOTFILES_DIR/../scripts"
     export PATH="$PATH:$HOME/local/bin"
+    export PATH="$PATH:/usr/local/sbin"
     export PATH="$PATH:$HOME/.local/bin"
     export PATH="$PATH:$SCRIPTS_DIR"
     export PATH="$PATH:/usr/local/sbin"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/"
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/python2.7/site-packages/PySide/"
 
     # Other options
     export LESSHISTFILE=/dev/null

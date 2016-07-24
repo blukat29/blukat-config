@@ -131,6 +131,10 @@
       python $SCRIPTS_DIR/markd.py $*
     }
 
+    myip() {
+      python $SCRIPTS_DIR/myip.py
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,

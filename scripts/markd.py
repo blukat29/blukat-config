@@ -44,11 +44,11 @@ class MarkdownHandler(http_handler):
         self.end_headers()
         with open(g_fname, 'r') as f:
             html = template % (g_style, json.dumps(f.read()))
-            self.wfile.write(bytes(html))
+            self.wfile.write(bytes(html.encode('utf-8')))
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print "markd <fname> <port>"
+        print("markd <fname> <port>")
         exit(1)
 
     g_fname = sys.argv[1]
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     handler = MarkdownHandler
     http_server.allow_reuse_address = True
     server = http_server(('', port), handler)
-    print "Serving at port http://localhost:%d/.." % port
+    print("Serving at port http://localhost:%d/.." % port)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

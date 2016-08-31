@@ -123,6 +123,10 @@
       sudo docker rmi $(sudo docker images -q -f dangling=true)
     }
 
+    docker-remove-stopped-instances () {
+      sudo docker rm $(sudo docker ps -aq)
+    }
+
     cache-flush () {
       echo 1 | sudo tee /proc/sys/vm/drop_caches
     }

@@ -51,7 +51,10 @@
     # Define prompt
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
       PS1="\[\033[1;32m\]\u\[\033[0m\]:" # username
-      PS1+="\[\033[1;35m\]"'$(__git_ps1 "(%s)")' # git -prompt
+      declare -f __git_ps1 > /dev/null; # check for git prompt
+      if [ 0 -eq $? ]; then
+        PS1+="\[\033[1;35m\]"'$(__git_ps1 "(%s)")' # git prompt
+      fi
       PS1+="\[\033[1;34m\]"'$(__droppath "\w")' # current working directory
       PS1+="\[\033[0m\]\$ " # dollar sign
     else

@@ -64,6 +64,9 @@
 
 ### Command aliases
 
+    # Allows using aliases after 'sudo' command.
+    alias sudo='sudo '
+
     alias ll='ls -alh'
     alias ls='ls -F --color=auto'
     alias dir='ls'
@@ -94,6 +97,8 @@
     alias md='mkdir'
     alias mdkri='mkdir'
     alias euckr='iconv -f EUC-KR -t UTF8'
+    alias dpa='docker ps -a'
+    alias dim='docker images'
 
 
 ### Utility functions

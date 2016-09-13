@@ -6,7 +6,7 @@
 CURRENT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
 source $CURRENT_DIR/common.bash
 
-doit sudo apt install -y libffi-dev libssl-dev libpng-dev
+doit sudo apt install -y libffi-dev libssl-dev libpng-dev libgmp-dev
 doit sudo apt install -y binwalk
 doit sudo apt install -y default-jdk
 
@@ -14,22 +14,33 @@ doit sudo apt install -y default-jdk
 debconf-set-selections <<< 'wireshark-common wireshark-common/install-setuid boolean false'
 doit sudo apt install -y tcpdump tshark
 
+# Update dynamic library status
+doit sudo ldconfig
+
 # install libcapstone
 if ! ldconfig -p | grep libcapstone; then
-    CAPSTONE_VERSION=3.0.4
-    doit curl -L https://github.com/aquynh/capstone/archive/$CAPSTONE_VERSION.tar.gz -o /tmp/capstone-$CAPSTONE_VERSION.tar.gz
-    doit cd /tmp && tar xf capstone-$CAPSTONE_VERSION.tar.gz
-    doit cd /tmp/capstone-$CAPSTONE_VERSION && ./make.sh
-    doit cd /tmp/capstone-$CAPSTONE_VERSION && sudo make install
+    get_github_release aquynh capstone 3.0.4 out
+    doit cd $out \
+        && ./make.sh \
+        && sudo make install
+fi
+
+# install libkeystone
+if ! ldconfig -p | grep libkeystone; then
+    get_github_release keystone-engine keystone 0.9.1 out
+    cd $out \
+        && mkdir -p build \
+        && cd build \
+        && ../make-share.sh \
+        && sudo make install
 fi
 
 # install volatility
 if ! type "vol.py" &> /dev/null; then
-    VOLATILITY_VERSION=2.5
-    doit curl -L https://github.com/volatilityfoundation/volatility/archive/$VOLATILITY_VERSION.tar.gz -o /tmp/volatility-$VOLATILITY_VERSION.tar.gz
-    doit cd /tmp && tar xf volatility-$VOLATILITY_VERSION.tar.gz
-    doit cd /tmp/volatility-$VOLATILITY_VERSION && sudo python2 setup.py install
+    get_github_release volatilityfoundation volatility 2.5 out
+    cd $out \
+        && sudo python setup.py install
 fi
 
-py23 capstone pycrypto distorm3 Pillow ply pwntools angr-only-z3-custom
+py23 capstone pycrypto distorm3 Pillow ply pwntools gmpy angr-only-z3-custom
 

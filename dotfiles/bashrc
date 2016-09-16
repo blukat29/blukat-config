@@ -79,6 +79,7 @@
     alias gdb='gdb -q -x gdbinit'
     alias ustrings='strings -e l'
     alias gl='git lg'
+    alias gla='git lg --all'
     alias cd..='cd ..'
     alias cd...='cd ../../'
     alias cd....='cd ../../../'

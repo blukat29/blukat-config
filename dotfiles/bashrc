@@ -144,11 +144,19 @@
     }
 
     docker-remove-dangling-images () {
-      sudo docker rmi $(sudo docker images -q -f dangling=true)
+      if [[ "$OSTYPE" == "darwin"* ]]; then
+        docker rmi $(docker images -q -f dangling=true)
+      else
+        sudo docker rmi $(sudo docker images -q -f dangling=true)
+      fi
     }
 
     docker-remove-stopped-instances () {
-      sudo docker rm $(sudo docker ps -aq)
+      if [[ "$OSTYPE" == "darwin"* ]]; then
+        docker rm $(docker ps -aq)
+      else
+        sudo docker rm $(sudo docker ps -aq)
+      fi
     }
 
     # Others

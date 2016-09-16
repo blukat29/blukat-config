@@ -19,5 +19,6 @@ reset bashrc
 reset vimrc
 reset tmux.conf
 reset gitconfig
+reset gitconfig.common
 reset gitignore
-
+reset gdbinit

@@ -12,6 +12,13 @@ cd blukat-config
 sh basic.sh
 ```
 
+Setup git user before using.
+
+```sh
+git config --global user.email "your@email.com"
+git config --global user.name "your name"
+```
+
 Uninstall
 ---------
 

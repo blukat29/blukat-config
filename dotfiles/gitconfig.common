@@ -1,0 +1,26 @@
+[push]
+    default = simple
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+[pager]
+    status = true
+[alias]
+    lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an> %Creset'
+    lb = log --oneline --graph --decorate --simplify-by-decoration --all
+    s = status
+    sv = status -v
+    c = checkout
+    co = commit
+    ca = commit --amend
+    b = branch
+    d = diff
+    rh = reset HEAD
+    cloen = clone
+[filter "gitconfig_nouser"]
+  clean = sed -e '/\\[user\\]/,/\\[/ { //!d }' -e '/\\[user\\]/d'
+  smudge = cat
+[credential]
+	helper = cache --timeout=3600
+[color]
+	ui = auto

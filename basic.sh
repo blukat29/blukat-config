@@ -29,6 +29,7 @@ setup bashrc
 setup vimrc
 setup tmux.conf
 setup gitconfig
+setup gitconfig.common
 setup gitignore
 setup gdbinit
 

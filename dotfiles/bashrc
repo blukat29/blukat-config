@@ -67,65 +67,80 @@
     # Allows using aliases after 'sudo' command.
     alias sudo='sudo '
 
+    # Basic shell commands.
     alias ll='ls -alh'
     alias ls='ls -F --color=auto'
+    alias ls..='ls ..'
     alias dir='ls'
-    alias cls='clear'
-    alias grep='grep --color=auto'
-    alias tma='tmux attach -t'
-    alias tl='tmux ls'
-    alias tmux='tmux -2'
-    alias less='less -R'
-    alias gdb='gdb -q -x gdbinit'
-    alias ustrings='strings -e l'
-    alias gl='git lg'
-    alias gla='git lg --all'
     alias cd..='cd ..'
     alias cd...='cd ../../'
     alias cd....='cd ../../../'
     alias cd.....='cd ../../../../'
-    alias ls..='ls ..'
     alias vi='vim'
+    alias md='mkdir'
+    alias mdkri='mkdir'
+    alias cls='clear'
+    alias tree='tree -C'
+    alias grep='grep --color=auto'
+    alias less='less -R'
+    alias euckr='iconv -f EUC-KR -t UTF8'
+
+    # Tmux.
+    alias tma='tmux attach -t'
+    alias tmux='tmux -2'
+
+    # binary analysis.
+    alias gdb='gdb -q -x gdbinit'
+    alias ustrings='strings -e l'
     alias bobjdump='objdump -b binary -m i386 -M intel -D'
     alias bobjdump64='objdump -b binary -m i386:x86_64 -M intel -D'
     alias bobjdump16='objdump -b binary -m i8086 -M intel -D'
-    alias simplehttp='python -m SimpleHTTPServer'
-    alias tree='tree -C'
+
+    # Even shorter git aliases.
+    alias gl='git lg'
+    alias gla='git lg --all'
+
+    # Python.
     alias py='python'
     alias py3='python3'
+    alias simplehttp='python -m SimpleHTTPServer'
+
+    # Docker
     alias dockr='docker'
     alias doker='docker'
-    alias md='mkdir'
-    alias mdkri='mkdir'
-    alias euckr='iconv -f EUC-KR -t UTF8'
     alias dpa='docker ps -a'
     alias dim='docker images'
 
-
 ### Utility functions
 
-    sqlite3() {
-      python $SCRIPTS_DIR/sqlite_runner.py $*
+    # Wrappers to scripts
+    cgc2elf() {
+      python $SCRIPTS_DIR/cgc2elf.py $*
     }
 
     git-stats() {
       python $SCRIPTS_DIR/git-calendar.py
     }
 
-    cgc2elf() {
-      python $SCRIPTS_DIR/cgc2elf.py $*
+    markd () {
+      python $SCRIPTS_DIR/markd.py $*
     }
 
-    docker-enable () {
-      bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
+    myip() {
+      python $SCRIPTS_DIR/myip.py
+    }
+
+    sqlite3() {
+      python $SCRIPTS_DIR/sqlite_runner.py $*
     }
 
     vbox () {
       python $SCRIPTS_DIR/vbox.py $*
     }
 
-    dus () {
-        du -h -d 1 $* | sort -h --reverse
+    # Docker related
+    docker-enable () {
+      bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
     }
 
     docker-remove-dangling-images () {
@@ -136,16 +151,13 @@
       sudo docker rm $(sudo docker ps -aq)
     }
 
+    # Others
+    dus () {
+        du -h -d 1 $* | sort -h --reverse
+    }
+
     cache-flush () {
       echo 1 | sudo tee /proc/sys/vm/drop_caches
-    }
-
-    markd () {
-      python $SCRIPTS_DIR/markd.py $*
-    }
-
-    myip() {
-      python $SCRIPTS_DIR/myip.py
     }
 
 ### Bash settings

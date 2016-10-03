@@ -18,6 +18,9 @@
     export PATH="$PATH:$HOME/.local/bin"
     export PATH="$PATH:$SCRIPTS_DIR"
     export PATH="$PATH:/usr/local/sbin"
+    export PATH="$PATH:$HOME/local/android-sdk-linux/tools"
+    export PATH="$PATH:$HOME/local/android-sdk-linux/platform-tools"
+    export PATH="$PATH:$HOME/local/android-ndk-r12b"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/python2.7/site-packages/PySide/"
@@ -84,13 +87,15 @@
     alias grep='grep --color=auto'
     alias less='less -R'
     alias euckr='iconv -f EUC-KR -t UTF8'
+    alias amke='make'
 
     # Tmux.
+    alias tl='tmux ls'
     alias tma='tmux attach -t'
     alias tmux='tmux -2'
 
     # binary analysis.
-    alias gdb='gdb -q -x gdbinit'
+    alias gdb='gdb -q'
     alias ustrings='strings -e l'
     alias bobjdump='objdump -b binary -m i386 -M intel -D'
     alias bobjdump64='objdump -b binary -m i386:x86_64 -M intel -D'

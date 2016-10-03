@@ -45,6 +45,7 @@ set tabstop=4   " default tabs and indents
 set shiftwidth=4
 set expandtab
 set autoindent
+autocmd BufNewFile,BufRead */pintos/* set tabstop=2 shiftwidth=2
 
 syntax on       " syntax highlight
 set hlsearch    " highlight search result

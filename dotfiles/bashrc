@@ -28,6 +28,7 @@
     # Other options
     export LESSHISTFILE=/dev/null
     export HISTCONTROL=ignoreboth # don't put duplicate items in bash_history
+    export PYTHONSTARTUP="$DOTFILES_DIR/pythonrc.py"
 
 
 ### Bash prompt

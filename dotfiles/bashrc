@@ -88,6 +88,7 @@
     alias less='less -R'
     alias euckr='iconv -f EUC-KR -t UTF8'
     alias amke='make'
+    alias wget='wget --hsts-file=$HOME/.config/.wget-hsts'
 
     # Tmux.
     alias tl='tmux ls'
@@ -191,6 +192,9 @@
 
 
 ### External tools
+
+    # Create .config directory to (try) to shove in all dotfiles
+    mkdir -p "$HOME/.config"
 
     export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 

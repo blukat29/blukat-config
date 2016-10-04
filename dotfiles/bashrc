@@ -29,6 +29,8 @@
     export LESSHISTFILE=/dev/null
     export HISTCONTROL=ignoreboth # don't put duplicate items in bash_history
     export PYTHONSTARTUP="$DOTFILES_DIR/pythonrc.py"
+    export MYSQL_HISTFILE="$HOME/.config/.mysql_history"
+    export NODE_REPL_HISTORY="$HOME/.config/.node_repl_history"
 
 
 ### Bash prompt
@@ -90,6 +92,7 @@
     alias euckr='iconv -f EUC-KR -t UTF8'
     alias amke='make'
     alias wget='wget --hsts-file=$HOME/.config/.wget-hsts'
+    alias svn='svn --config-dir $HOME/.config/.subversion'
 
     # Tmux.
     alias tl='tmux ls'

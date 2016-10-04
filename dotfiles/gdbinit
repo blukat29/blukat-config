@@ -1,1 +1,2 @@
 source ~/.local/peda/peda.py
+set history filename ~/.config/.gdb_history

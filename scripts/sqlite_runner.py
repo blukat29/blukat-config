@@ -8,7 +8,9 @@ options=["-interactive","-header","-list","-separator", "\t"]
 try:
     import apsw
     args = options + sys.argv[1:]
-    apsw.Shell(args=args).cmdloop()
+    shell = apsw.Shell(args=args)
+    shell.history_file = '~/.config/.sqlite_history'
+    shell.cmdloop()
     print("")
 except ImportError:
     import subprocess

@@ -31,6 +31,7 @@
     export PYTHONSTARTUP="$DOTFILES_DIR/pythonrc.py"
     export MYSQL_HISTFILE="$HOME/.config/.mysql_history"
     export NODE_REPL_HISTORY="$HOME/.config/.node_repl_history"
+    export LS_COLORS="di=1;94"
 
 
 ### Bash prompt
@@ -61,7 +62,7 @@
       if [ 0 -eq $? ]; then
         PS1+="\[\033[1;35m\]"'$(__git_ps1 "(%s)")' # git prompt
       fi
-      PS1+="\[\033[1;34m\]"'$(__droppath "\w")' # current working directory
+      PS1+="\[\033[1;94m\]"'$(__droppath "\w")' # current working directory
       PS1+="\[\033[0m\]\$ " # dollar sign
     else
       PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -91,7 +92,6 @@
     alias less='less -R'
     alias euckr='iconv -f EUC-KR -t UTF8'
     alias amke='make'
-    alias wget='wget --hsts-file=$HOME/.config/.wget-hsts'
     alias svn='svn --config-dir $HOME/.config/.subversion'
 
     # Tmux.

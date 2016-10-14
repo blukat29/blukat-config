@@ -93,6 +93,7 @@
     alias euckr='iconv -f EUC-KR -t UTF8'
     alias amke='make'
     alias svn='svn --config-dir $HOME/.config/.subversion'
+    alias lynx='lynx -accept_all_cookies'
 
     # Tmux.
     alias tl='tmux ls'

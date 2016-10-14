@@ -20,10 +20,6 @@ readline.set_history_length(1000)
 atexit.register(save_hist)
 del save_hist
 
-## Tab complete
-import rlcompleter
-readline.parse_and_bind('tab: complete')
-
 ## Color prompt
 def ascii_escape(body):
     return '\001\033[%sm\002' % body

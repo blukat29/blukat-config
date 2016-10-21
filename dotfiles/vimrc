@@ -18,6 +18,8 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'xolox/vim-misc'
 "Plugin 'xolox/vim-easytags'
 
+Plugin 'crusoexia/vim-monokai'
+
 Plugin 'ervandew/supertab.git'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'fisadev/vim-isort'
@@ -111,9 +113,6 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " Close Omni-Completion tip window when leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" Supertab does Omni-Completion by default
-" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
 " #### Plugins ###################################
 
 " Remove trailing whitespaces
@@ -154,31 +153,12 @@ let g:tagbar_sort = 0
 " #### Coloring ##################################
 
 if (&term == "screen-256color") || (&term =~ "term")
-
-  hi clear
   set t_Co=256
-  colorscheme default
-
-  hi Question cterm=bold,underline ctermfg=Cyan
-  hi Comment ctermfg=blue
-  hi LineNr ctermfg=248
-  hi ErrorMsg cterm=bold,underline ctermfg=Red ctermbg=none
-  hi WarningMsg cterm=bold,underline ctermfg=Red ctermbg=none
-  hi Visual cterm=bold ctermbg=236
-  hi Search cterm=bold ctermfg=White ctermbg=DarkBlue
-  hi Pmenu ctermfg=Black ctermbg=Grey
-  hi PmenuSel cterm=bold ctermfg=Black ctermbg=Cyan
-  hi VertSplit cterm=none ctermfg=248 ctermbg=236
-  hi FoldColumn ctermfg=119 ctermbg=236
-  hi SignColumn ctermbg=Black
-  hi ColorColumn ctermbg=232
-  hi clear SignColumn
-
+  colorscheme monokai
+  hi Normal ctermbg=none
+  hi LineNr ctermbg=none
 else
-
-  hi clear
   colorscheme default
-
 endif
 
 " Trailing Whitespace

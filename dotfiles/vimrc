@@ -89,6 +89,7 @@ autocmd BufNewFile,BufRead bashrc set filetype=sh
 autocmd BufNewFile,BufRead gitconfig set filetype=gitconfig
 autocmd BufNewFile,BufRead vimrc set filetype=vim
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 " #### Omnicomplete ##############################
 

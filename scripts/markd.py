@@ -1,8 +1,10 @@
 #!/usr/bin/env python
-import os
-import sys
-import random
 import json
+import os
+import random
+import subprocess
+import sys
+
 try:
     from http.server import HTTPServer as http_server
 except ImportError:
@@ -31,7 +33,8 @@ document.getElementById("result").innerHTML = result;
 
 g_style = ""
 p = os.path
-css_name = p.join(p.dirname(p.realpath(__file__)), 'github-markdown.css')
+curr_dir = p.dirname(p.realpath(__file__))
+css_name = p.join(curr_dir, 'github-markdown.css')
 with open(css_name, 'r') as f:
     g_style = f.read()
 
@@ -59,7 +62,8 @@ if __name__ == '__main__':
     handler = MarkdownHandler
     http_server.allow_reuse_address = True
     server = http_server(('', port), handler)
-    print("Serving at port http://localhost:%d/.." % port)
+    myip = subprocess.check_output(['python', os.path.join(curr_dir, 'myip.py')]).rstrip('\n')
+    print("Serving at port http://%s:%d/.." % (myip, port))
     try:
         server.serve_forever()
     except KeyboardInterrupt:

@@ -36,6 +36,7 @@ Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 
+Plugin 'agatan/vim-sort-include'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'fatih/vim-go'
 Plugin 'derekwyatt/vim-scala'

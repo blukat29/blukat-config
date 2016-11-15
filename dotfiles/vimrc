@@ -156,7 +156,7 @@ let g:tagbar_sort = 0
 
 if (&term == "screen-256color") || (&term =~ "term")
   set t_Co=256
-  colorscheme monokai
+  silent! colorscheme monokai
   hi Normal ctermbg=none ctermfg=253
   hi Comment ctermfg=245
   hi LineNr ctermbg=none

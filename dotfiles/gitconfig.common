@@ -19,9 +19,9 @@
     rh = reset HEAD
     cloen = clone
 [filter "gitconfig_nouser"]
-  clean = sed -e '/\\[user\\]/,/\\[/ { //!d }' -e '/\\[user\\]/d'
-  smudge = cat
+    clean = sed -e '/\\[user\\]/,/\\[/ { //!d }' -e '/\\[user\\]/d'
+    smudge = cat
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
 [color]
-	ui = auto
+    ui = auto

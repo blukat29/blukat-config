@@ -12,44 +12,43 @@ set nocompatible  " it must be the first line to enable Vim features.
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'gmarik/Vundle.vim'
 
-"Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
-
+" Colorscheme
 Plugin 'crusoexia/vim-monokai'
 
+" Autocomplete with tab key
 Plugin 'ervandew/supertab.git'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'fisadev/vim-isort'
 
-Plugin 'closetag.vim'
-Plugin 'gregsexton/MatchTag'
+" Snippet autocomplete
+Plugin 'MarcWeber/vim-addon-mw-utils' " dependency
+Plugin 'tomtom/tlib_vim' " dependency
+Plugin 'garbas/vim-snipmate' " driver
+Plugin 'honza/vim-snippets' " snippet database
 
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-
+" Head-up display (HUD)
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 
-Plugin 'agatan/vim-sort-include'
+" Language specific
+Plugin 'davidhalter/jedi-vim' " Python autocomplete
+Plugin 'fisadev/vim-isort' " Python import sort
+Plugin 'agatan/vim-sort-include' " C/C++ #include sort
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'fatih/vim-go'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'closetag.vim' " html/xml auto close
+Plugin 'gregsexton/MatchTag' " highlight matching tags
 
 call vundle#end()
 filetype plugin indent on
 
 " #### General ###################################
-set tabstop=4   " default tabs and indents
+set tabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
-autocmd BufNewFile,BufRead */pintos/* set tabstop=2 shiftwidth=2
 
 syntax on       " syntax highlight
 set hlsearch    " highlight search result
@@ -78,10 +77,10 @@ nnoremap <Tab> <C-w>w
 
 " #### File type specific ########################
 
-" File type specific tabs
-autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+" Tab setting exceptions
 autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufNewFile,BufRead */pintos/* set tabstop=2 shiftwidth=2
 
 " File type mappings
 autocmd BufNewFile,BufRead Dockerfile set filetype=config
@@ -91,6 +90,7 @@ autocmd BufNewFile,BufRead *.flex set filetype=java
 autocmd BufNewFile,BufRead *.json set filetype=javascript
 autocmd BufNewFile,BufRead bashrc set filetype=sh
 autocmd BufNewFile,BufRead gitconfig set filetype=gitconfig
+autocmd BufNewFile,BufRead gitconfig.common set filetype=gitconfig
 autocmd BufNewFile,BufRead vimrc set filetype=vim
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead *.md set filetype=markdown
@@ -100,7 +100,8 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 " Turn on omnicomplete
 set omnifunc=syntaxcomplete#Complete
 set completeopt=longest,menuone
-au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+autocmd BufNewFile,BufRead,BufEnter *.c,*.cc,*.cpp,*.h,*.hh,*.hpp \
+    set omnifunc=omni#cpp#complete#Main
 
 " Omnicomplete settings
 let OmniCpp_NamespaceSearch = 1
@@ -112,19 +113,10 @@ let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
-" Close Omni-Completion tip window when leaving insert mode
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
 " #### Plugins ###################################
 
 " Remove trailing whitespaces
 command RemoveTrailingWhitespaces %s/\s\+$//
-
-" Easytags
-let g:easytags_file = '~/.vim/tags'
-let g:easytags_dynamic_files = 1
-let g:easytags_events = ['BufWritePost','VimEnter','BufEnter','Winenter']
-let g:easytags_suppress_report = 1
 
 " Jedi-Vim - no documentation window during completion.
 autocmd FileType python setlocal completeopt-=preview

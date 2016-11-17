@@ -17,7 +17,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/bundle')
 
 " Colorscheme
 Plug 'crusoexia/vim-monokai'

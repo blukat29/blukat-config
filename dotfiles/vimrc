@@ -7,42 +7,46 @@
 " Omnicomplete settings
 " Plugin settings
 
-" #### Vundle Plugins ############################
+" #### Vim Plugins ############################
 set nocompatible  " it must be the first line to enable Vim features.
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+
+" Auto-install vim-plug.
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
 
 " Colorscheme
-Plugin 'crusoexia/vim-monokai'
+Plug 'crusoexia/vim-monokai'
 
 " Autocomplete with tab key
-Plugin 'ervandew/supertab.git'
+Plug 'ervandew/supertab'
 
 " Snippet autocomplete
-Plugin 'MarcWeber/vim-addon-mw-utils' " dependency
-Plugin 'tomtom/tlib_vim' " dependency
-Plugin 'garbas/vim-snipmate' " driver
-Plugin 'honza/vim-snippets' " snippet database
+Plug 'MarcWeber/vim-addon-mw-utils' " dependency
+Plug 'tomtom/tlib_vim' " dependency
+Plug 'garbas/vim-snipmate' " driver
+Plug 'honza/vim-snippets' " snippet database
 
 " Head-up display (HUD)
-Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'majutsushi/tagbar'
+Plug 'bling/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'majutsushi/tagbar'
 
 " Language specific
-Plugin 'davidhalter/jedi-vim' " Python autocomplete
-Plugin 'fisadev/vim-isort' " Python import sort
-Plugin 'agatan/vim-sort-include' " C/C++ #include sort
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'fatih/vim-go'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'closetag.vim' " html/xml auto close
-Plugin 'gregsexton/MatchTag' " highlight matching tags
+Plug 'davidhalter/jedi-vim' " Python autocomplete
+Plug 'fisadev/vim-isort' " Python import sort
+Plug 'agatan/vim-sort-include' " C/C++ #include sort
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'fatih/vim-go'
+Plug 'derekwyatt/vim-scala'
+Plug 'closetag.vim' " html/xml auto close
+Plug 'gregsexton/MatchTag' " highlight matching tags
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 " #### General ###################################
 set tabstop=4

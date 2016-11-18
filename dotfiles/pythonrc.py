@@ -43,3 +43,22 @@ def my_displayhook(value):
 sys.displayhook = my_displayhook
 del my_displayhook
 
+## cls command
+class ClsCmd(object):
+    def __repr__(self):
+        if os.name == 'nt':
+            os.system('cls')
+        else:
+            os.system('/usr/bin/clear')
+        return ''
+cls = ClsCmd()
+clear = ClsCmd()
+
+## exit command
+class ExitCmd(object):
+    orig_exit = exit
+    def __repr__(self):
+        self.orig_exit()
+        return ''
+exit = ExitCmd()
+quit = ExitCmd()

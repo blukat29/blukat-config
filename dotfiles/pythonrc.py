@@ -1,4 +1,5 @@
 import atexit
+import datetime
 import os
 import pprint
 import readline
@@ -23,11 +24,16 @@ del save_hist
 ## Color prompt
 def ascii_escape(body):
     return '\001\033[%sm\002' % body
-cCyan = ascii_escape('0;36')
-cReset = ascii_escape('0')
-sys.ps1 = cCyan + '>>> ' + cReset
-sys.ps2 = cCyan + '... ' + cReset
-del ascii_escape,cCyan,cReset
+class Prompt(object):
+    cCyan = ascii_escape('0;36')
+    cReset = ascii_escape('0')
+    def __str__(self):
+        now = datetime.datetime.now()
+        clock = '%02d:%02d:%02d' % (now.hour, now.minute, now.second)
+        return self.cCyan + clock + ' >>> ' + self.cReset
+sys.ps1 = Prompt()
+sys.ps2 = '         ... '
+del ascii_escape,Prompt
 
 ## pprint output
 def my_displayhook(value):

@@ -104,8 +104,7 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 " Turn on omnicomplete
 set omnifunc=syntaxcomplete#Complete
 set completeopt=longest,menuone
-autocmd BufNewFile,BufRead,BufEnter *.c,*.cc,*.cpp,*.h,*.hh,*.hpp \
-    set omnifunc=omni#cpp#complete#Main
+autocmd BufNewFile,BufRead,BufEnter *.c,*.cc,*.cpp,*.h,*.hh,*.hpp set omnifunc=omni#cpp#complete#Main
 
 " Omnicomplete settings
 let OmniCpp_NamespaceSearch = 1

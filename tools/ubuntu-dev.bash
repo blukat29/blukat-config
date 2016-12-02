@@ -24,4 +24,6 @@ else
 fi
 # Python packages
 py23 requests virtualenv virtualenvwrapper jedi isort apsw
-
+# productivity tools
+doit sudo apt install -y ack-grep silversearcher-ag
+doit sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep

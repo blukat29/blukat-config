@@ -34,11 +34,10 @@ setup gitignore
 setup gdbinit
 
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 vim +PlugInstall +qall
 if [ ! -d ~/.local/peda ]; then
   git clone https://github.com/longld/peda ~/.local/peda
 fi
-

@@ -45,6 +45,7 @@ Plug 'fatih/vim-go'
 Plug 'derekwyatt/vim-scala'
 Plug 'closetag.vim' " html/xml auto close
 Plug 'gregsexton/MatchTag' " highlight matching tags
+Plug 'junegunn/vim-easy-align' " Align assignment statements
 
 call plug#end()
 
@@ -146,6 +147,9 @@ let g:tagbar_autofocus = 1
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_width = 50
 let g:tagbar_sort = 0
+
+" Easy align
+xmap ga <Plug>(EasyAlign)
 
 " #### Coloring ##################################
 

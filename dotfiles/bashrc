@@ -150,6 +150,10 @@
       python $SCRIPTS_DIR/vbox.py $*
     }
 
+    git-change-url() {
+      python $SCRIPTS_DIR/git-change-url.py
+    }
+
     # Docker related
     docker-enable () {
       bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'

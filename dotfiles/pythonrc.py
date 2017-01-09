@@ -80,6 +80,6 @@ class ConsoleWithHelp(code.InteractiveConsole):
             return 'help(_)'
         return line
 c = ConsoleWithHelp(locals=locals())
-c.interact(banner='Type "?" for help about last result')
+c.interact(banner='Type "?" for help about last result.')
 # Exit when console exits.
 sys.exit()

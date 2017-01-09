@@ -13,14 +13,13 @@
     # PATHs
     DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
     SCRIPTS_DIR="$DOTFILES_DIR/../scripts"
-    export PATH="$PATH:$HOME/local/bin"
     export PATH="$PATH:/usr/local/sbin"
     export PATH="$PATH:$HOME/.local/bin"
     export PATH="$PATH:$SCRIPTS_DIR"
     export PATH="$PATH:/usr/local/sbin"
-    export PATH="$PATH:$HOME/local/android-sdk-linux/tools"
-    export PATH="$PATH:$HOME/local/android-sdk-linux/platform-tools"
-    export PATH="$PATH:$HOME/local/android-ndk-r12b"
+    export PATH="$PATH:$HOME/.local/android-sdk-linux/tools"
+    export PATH="$PATH:$HOME/.local/android-sdk-linux/platform-tools"
+    export PATH="$PATH:$HOME/.local/android-ndk"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/python2.7/site-packages/PySide/"
@@ -87,14 +86,11 @@
     alias md='mkdir'
     alias mdkri='mkdir'
     alias cls='clear'
-    alias tree='tree -C'
-    alias grep='grep --color=auto'
-    alias less='less -R'
-    alias euckr='iconv -f EUC-KR -t UTF8'
+
+    # Typo fixes
     alias amke='make'
-    alias svn='svn --config-dir $HOME/.config/.subversion'
-    alias lynx='lynx -accept_all_cookies'
-    alias ctags-all='ctags -R --c++-kinds=+p --fields=iaS --extra=+q'
+    alias mkae='make'
+    alias suod='sudo'
     alias gti='git'
 
     # Tmux.
@@ -106,6 +102,7 @@
     alias gdb='gdb -q'
     alias ustrings='strings -e l'
     alias bobjdump='objdump -b binary -m i386 -M intel -D'
+    alias bobjdump32='objdump -b binary -m i386 -M intel -D'
     alias bobjdump64='objdump -b binary -m i386:x86_64 -M intel -D'
     alias bobjdump16='objdump -b binary -m i8086 -M intel -D'
 
@@ -115,14 +112,27 @@
 
     # Python.
     alias py='python'
+    alias py2='python2'
     alias py3='python3'
     alias simplehttp='python -m SimpleHTTPServer'
+    alias wokron='workon'
 
     # Docker
     alias dockr='docker'
     alias doker='docker'
     alias dpa='docker ps -a'
     alias dim='docker images'
+
+    # Other tool options
+    alias tree='tree -C'
+    alias tree2='tree -L 2'
+    alias tree3='tree -L 3'
+    alias grep='grep --color=auto'
+    alias less='less -R'
+    alias svn='svn --config-dir $HOME/.config/.subversion'
+    alias lynx='lynx -accept_all_cookies'
+    alias ctags-all='ctags -R --c++-kinds=+p --fields=iaS --extra=+q'
+    alias euckr='iconv -f EUC-KR -t UTF8'
 
 ### Utility functions
 

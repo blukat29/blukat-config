@@ -1,4 +1,5 @@
 import atexit
+import code
 import datetime
 import os
 import pprint
@@ -68,3 +69,17 @@ class ExitCmd(object):
         return ''
 exit = ExitCmd()
 quit = ExitCmd()
+
+## Special command '?' for help
+class ConsoleWithHelp(code.InteractiveConsole):
+    def __init__(self, *args, **kwargs):
+        code.InteractiveConsole.__init__(self, *args, **kwargs)
+    def raw_input(self, *args):
+        line = code.InteractiveConsole.raw_input(self, *args)
+        if line.strip() == '?':
+            return 'help(_)'
+        return line
+c = ConsoleWithHelp(locals=locals())
+c.interact(banner='Type "?" for help about last result')
+# Exit when console exits.
+sys.exit()

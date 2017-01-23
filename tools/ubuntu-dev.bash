@@ -11,7 +11,7 @@ doit sudo apt install -y build-essential gcc-multilib gdb
 # Advanced build tools
 doit sudo apt install -y cmake autoconf automake libtool
 doit sudo apt install -y curl wget git zip p7zip
-doit sudo apt install -y vim tmux exuberant-ctags
+doit sudo apt install -y vim tmux exuberant-ctags silversearcher-ag
 doit sudo apt install -y sqlite3 libsqlite3-dev
 # Python development
 doit sudo apt install -y python-minimal python2.7 python3 python-dev python3-dev
@@ -24,6 +24,3 @@ else
 fi
 # Python packages
 py23 requests virtualenv virtualenvwrapper jedi isort apsw
-# productivity tools
-doit sudo apt install -y ack-grep silversearcher-ag
-doit sudo dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep

@@ -47,3 +47,12 @@ vim +PlugInstall +qall
 if [ ! -d ~/.local/peda ]; then
   git clone https://github.com/longld/peda ~/.local/peda
 fi
+
+# Prompt git user if not set
+if [ "$(git config --global --get user.email)" = "" ]; then
+    echo "Git user is not set. Please answer these."
+    read -p "git config --global user.email " email
+    git config --global user.email "$email"
+    read -p "git config --global user.name " name
+    git config --global user.name "$name"
+fi

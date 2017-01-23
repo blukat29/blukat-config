@@ -9,7 +9,13 @@ if [ ! -d "$BACKUP_DIR" ]; then
 fi
 
 relpath() {
-  python -c "import os.path; print os.path.relpath('$1','${2:-$PWD}')"
+  # In case python is not installed (e.g. Ubuntu 16.04)
+  type "python" 1>/dev/null 2>/dev/null
+  if [ "$?" = "0" ]; then
+    python -c "import os.path; print os.path.relpath('$1','${2:-$PWD}')"
+  else
+    echo "$1"
+  fi
 }
 setup () {
   OLD="$HOME/.$1"

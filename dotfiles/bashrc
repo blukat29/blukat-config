@@ -95,6 +95,7 @@
     alias svn='svn --config-dir $HOME/.config/.subversion'
     alias lynx='lynx -accept_all_cookies'
     alias ctags-all='ctags -R --c++-kinds=+p --fields=iaS --extra=+q'
+    alias gti='git'
 
     # Tmux.
     alias tl='tmux ls'
@@ -184,6 +185,11 @@
       echo 1 | sudo tee /proc/sys/vm/drop_caches
     }
 
+    pyclean () {
+      find . -name "*.pyc" -delete -print
+      find . -name "__pycache__" -delete -print
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,
@@ -213,3 +219,5 @@
     if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
         source /usr/local/bin/virtualenvwrapper.sh
     fi
+
+    [ -f ~/.config/.fzf.bash ] && source ~/.config/.fzf.bash

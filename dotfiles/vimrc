@@ -82,11 +82,6 @@ nnoremap <Tab> <C-w>w
 
 " #### File type specific ########################
 
-" Tab setting exceptions
-autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd BufNewFile,BufRead */pintos/* set tabstop=2 shiftwidth=2
-
 " File type mappings
 autocmd BufNewFile,BufRead Dockerfile set filetype=config
 autocmd BufNewFile,BufRead *.phps set filetype=php
@@ -99,6 +94,11 @@ autocmd BufNewFile,BufRead gitconfig.common set filetype=gitconfig
 autocmd BufNewFile,BufRead vimrc set filetype=vim
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.ts set filetype=javascript " TypeScript
+
+" Tab setting exceptions
+autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " #### Omnicomplete ##############################
 

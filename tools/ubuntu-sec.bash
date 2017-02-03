@@ -42,6 +42,21 @@ if ! type "vol.py" &> /dev/null; then
         && sudo python setup.py install
 fi
 
+# install z3 for python3
+python3 -c 'import z3' >/dev/null 2>/dev/null
+if [ "$?" != "0" ]; then
+    tmp_down=/tmp/z3.tar.gz
+    doit curl -L https://github.com/Z3Prover/Z3/archive/z3-4.5.0.tar.gz -o $tmp_down \
+        && cd /tmp && tar xf $tmp_down \
+        && rm -f $tmp_down
+    cd /tmp/z3-z3-4.5.0/ \
+        && python3 scripts/mk_make.py --python \
+        && cd build \
+        && make -j2 \
+        && sudo make install
+fi
+
 py23 capstone pycrypto distorm3 Pillow ply gmpy
-py23 pwntools angr-only-z3-custom
-sudo -H pip2 install angr
+py23 pwntools
+doit sudo -H pip2 install angr-only-z3-custom
+doit sudo -H pip2 install angr

@@ -31,7 +31,6 @@ get_github_release () {
     out=$4
     tmp_down=/tmp/blukat_config_tools.tar.gz
 
-    mkdir -p $dest
     doit curl -L https://github.com/$user/$repo/archive/$ver.tar.gz -o $tmp_down
     cd /tmp && tar xf $tmp_down
     rm -f $tmp_down

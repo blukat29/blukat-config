@@ -221,3 +221,8 @@
     fi
 
     [ -f ~/.config/.fzf.bash ] && source ~/.config/.fzf.bash
+
+    type brew >/dev/null 2>/dev/null
+    if [ "$?" = "0" ]; then
+        source $(brew --prefix)/etc/bash_completion
+    fi

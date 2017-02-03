@@ -8,5 +8,8 @@ doit brew install vim --with-python3
 py23 requests virtualenv virtualenvwrapper jedi isort apsw
 
 doit brew install qemu binwalk
-py23 capstone pycrypto Pillow ply pwntools gmpy angr-only-z3-custom
+py23 capstone pycrypto Pillow ply gmpy
+py23 pwntools angr-only-z3-custom
 
+doit brew install bash-completion
+doit brew tap homebrew/completions

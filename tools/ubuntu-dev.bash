@@ -10,9 +10,11 @@ doit sudo apt update
 doit sudo apt install -y build-essential gcc-multilib gdb
 # Advanced build tools
 doit sudo apt install -y cmake autoconf automake libtool
+# Utilities
 doit sudo apt install -y curl wget git zip p7zip
 doit sudo apt install -y vim tmux exuberant-ctags silversearcher-ag
 doit sudo apt install -y sqlite3 libsqlite3-dev
+doit sudo apt install -y silversearcher-ag
 # Python development
 doit sudo apt install -y python-minimal python2.7 python3 python-dev python3-dev
 if type "pip" &> /dev/null; then
@@ -23,4 +25,4 @@ else
     doit sudo -H python3 /tmp/get-pip.py
 fi
 # Python packages
-py23 requests virtualenv virtualenvwrapper jedi isort apsw
+py23 requests virtualenv virtualenvwrapper jedi isort

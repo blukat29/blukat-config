@@ -42,5 +42,6 @@ if ! type "vol.py" &> /dev/null; then
         && sudo python setup.py install
 fi
 
-py23 capstone pycrypto distorm3 Pillow ply pwntools gmpy angr-only-z3-custom
-
+py23 capstone pycrypto distorm3 Pillow ply gmpy
+py23 pwntools angr-only-z3-custom
+sudo -H pip2 install angr

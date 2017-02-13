@@ -46,6 +46,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'closetag.vim' " html/xml auto close
 Plug 'gregsexton/MatchTag' " highlight matching tags
 Plug 'junegunn/vim-easy-align' " Align assignment statements
+Plug 'tmux-plugins/vim-tmux'
 
 call plug#end()
 

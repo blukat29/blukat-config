@@ -86,6 +86,7 @@
     alias md='mkdir'
     alias mdkri='mkdir'
     alias cls='clear'
+    alias vim2='vim.nox-py2'
 
     # Typo fixes
     alias amke='make'

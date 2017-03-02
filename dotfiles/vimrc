@@ -47,6 +47,7 @@ Plug 'closetag.vim' " html/xml auto close
 Plug 'gregsexton/MatchTag' " highlight matching tags
 Plug 'junegunn/vim-easy-align' " Align assignment statements
 Plug 'tmux-plugins/vim-tmux'
+Plug 'nvie/vim-flake8'
 
 call plug#end()
 
@@ -151,6 +152,8 @@ let g:tagbar_sort = 0
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
+
+let g:flake8_show_in_gutter = 1
 
 " #### Coloring ##################################
 

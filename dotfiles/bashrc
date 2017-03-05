@@ -151,7 +151,7 @@
     }
 
     myip() {
-      python $SCRIPTS_DIR/myip.py
+      python $SCRIPTS_DIR/myip.py $*
     }
 
     sqlite3() {

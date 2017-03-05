@@ -19,7 +19,7 @@ doit sudo ldconfig
 
 # install libcapstone
 if ! ldconfig -p | grep libcapstone; then
-    get_github_release aquynh capstone 3.0.4 out
+    get_github_release aquynh capstone 3.0.5-rc2 out
     doit cd $out \
         && ./make.sh \
         && sudo make install

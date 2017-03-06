@@ -4,6 +4,8 @@ import datetime
 import os
 import pprint
 import readline
+import signal
+import subprocess
 import sys
 
 
@@ -42,47 +44,60 @@ del ascii_escape,Prompt
 
 ## ===== Pretty print output ============================ ##
 
-def pprint_list(iterable, width=None):
 
-    if not width:
-        width = 80
+class MyDisplayHook(object):
 
-    if len(iterable) == 0:
-        print('[]')
-        return
+    def __init__(self):
+        self.rows = 25
+        self.cols = 80
+        self.update_terminal_size()
+        signal.signal(signal.SIGWINCH, self.on_sigwinch)
 
-    # Columnify the iterable.
-    strings = [repr(x) for x in iterable]
-    widest = max(len(x) for x in strings)
-    padded = [x.ljust(widest) for x in strings]
+    def update_terminal_size(self):
+        rows, cols = subprocess.check_output('stty size', shell=True).strip().split()
+        self.rows = int(rows)
+        self.cols = int(cols)
 
-    # List items in a python list format.
-    items_per_line = int((width-4) / (widest + 2))
-    out = '['
-    for i, item in enumerate(padded):
-        out += item + ', '
-        if i % items_per_line == (items_per_line - 1):
-            out += '\n '
-    out += ']'
+    def on_sigwinch(self, signum, frame):
+        self.update_terminal_size()
 
-    # Print it out.
-    print(out)
+    def print_iterable(self, iterable, encloser):
 
-def my_displayhook(value):
-    # Set _ variable to last result
-    if value is not None:
-        try:
-            import __builtin__
-            __builtin__._ = value
-        except ImportError:
-            __builtins__._ = value
-    # pretty print result
-    if isinstance(value, list):
-        pprint_list(value)
-    else:
-        pprint.pprint(value)
-sys.displayhook = my_displayhook
-del my_displayhook
+        # Columnify the iterable.
+        strings = [repr(x) for x in iterable]
+        widest = max([0] + [len(x) for x in strings])
+        padded = [x.ljust(widest) for x in strings]
+        items_per_line = int((self.cols - 4) / (widest + 2))
+
+        # List items in a python list or tuple format.
+        out = encloser[0]
+        for i, item in enumerate(padded):
+            out += item + ', '
+            if i % items_per_line == (items_per_line - 1):
+                out += '\n '
+        out += encloser[1]
+
+        # Print it out.
+        print(out)
+
+    def __call__(self, value):
+        # Set _ variable to last result
+        if value is not None:
+            try:
+                import __builtin__
+                __builtin__._ = value
+            except ImportError:
+                __builtins__._ = value
+        # pretty print result
+        if isinstance(value, list):
+            self.print_iterable(value, '[]')
+        elif isinstance(value, tuple):
+            self.print_iterable(value, '()')
+        else:
+            pprint.pprint(value)
+
+sys.displayhook = MyDisplayHook()
+del MyDisplayHook
 
 
 ## ===== screen clear command aliases =================== ##

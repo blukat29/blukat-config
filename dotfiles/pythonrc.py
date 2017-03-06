@@ -61,12 +61,17 @@ class MyDisplayHook(object):
     def on_sigwinch(self, signum, frame):
         self.update_terminal_size()
 
-    def print_iterable(self, iterable, encloser):
-
-        # Columnify the iterable.
+    @staticmethod
+    def columnify(iterable):
         strings = [repr(x) for x in iterable]
         widest = max([0] + [len(x) for x in strings])
         padded = [x.ljust(widest) for x in strings]
+        return widest, padded
+
+    def print_iterable(self, iterable, encloser):
+
+        # Columnify the iterable.
+        widest, padded = self.columnify(iterable)
         items_per_line = int((self.cols - 4) / (widest + 2))
 
         # List items in a python list or tuple format.
@@ -78,6 +83,24 @@ class MyDisplayHook(object):
         out += encloser[1]
 
         # Print it out.
+        print(out)
+
+    def print_dict(self, dict_):
+
+        widest_key, padded_key = self.columnify(dict_.keys())
+        widest_val, padded_val = self.columnify(dict_.values())
+        # 3 = (':' between key and value) + (', ' between items)
+        widest = widest_key + widest_val + 3
+        items_per_line = int((self.cols - 4) / widest)
+
+        out = '{'
+        for i in xrange(len(padded_key)):
+            key = padded_key[i]
+            val = padded_val[i]
+            out += key + ':' + val + ', '
+            if i % items_per_line == (items_per_line - 1):
+                out += '\n '
+        out += '}'
         print(out)
 
     def __call__(self, value):
@@ -93,6 +116,8 @@ class MyDisplayHook(object):
             self.print_iterable(value, '[]')
         elif isinstance(value, tuple):
             self.print_iterable(value, '()')
+        elif isinstance(value, dict):
+            self.print_dict(value)
         else:
             pprint.pprint(value)
 

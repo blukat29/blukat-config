@@ -32,6 +32,8 @@ if ! ldconfig -p | grep libkeystone; then
         && mkdir -p build \
         && cd build \
         && ../make-share.sh \
+        && sudo make install \
+        && cd ../binding/python \
         && sudo make install
 fi
 

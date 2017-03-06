@@ -6,7 +6,8 @@ import pprint
 import readline
 import sys
 
-## Interactive shell history
+
+## ===== Interactive shell history ====================== ##
 
 # History file located in ~/.config dir
 _HISTFILE = os.path.join(os.getenv('HOME'), '.config/.python_history')
@@ -22,7 +23,9 @@ readline.set_history_length(1000)
 atexit.register(save_hist)
 del save_hist
 
-## Color prompt
+
+## ===== Prompt ========================================= ##
+
 def ascii_escape(body):
     return '\001\033[%sm\002' % body
 class Prompt(object):
@@ -36,7 +39,9 @@ sys.ps1 = Prompt()
 sys.ps2 = '         ... '
 del ascii_escape,Prompt
 
-## pprint list value
+
+## ===== Pretty print output ============================ ##
+
 def pprint_list(iterable, width=None):
 
     if not width:
@@ -63,7 +68,6 @@ def pprint_list(iterable, width=None):
     # Print it out.
     print(out)
 
-## pprint output
 def my_displayhook(value):
     # Set _ variable to last result
     if value is not None:
@@ -80,7 +84,9 @@ def my_displayhook(value):
 sys.displayhook = my_displayhook
 del my_displayhook
 
-## cls command
+
+## ===== screen clear command aliases =================== ##
+
 class ClsCmd(object):
     def __repr__(self):
         if os.name == 'nt':
@@ -100,7 +106,9 @@ class ExitCmd(object):
 exit = ExitCmd()
 quit = ExitCmd()
 
-## Special command '?' for help
+
+## ===== special commands about last result ============= ##
+
 class ConsoleWithHelp(code.InteractiveConsole):
     def __init__(self, *args, **kwargs):
         code.InteractiveConsole.__init__(self, *args, **kwargs)
@@ -111,11 +119,16 @@ class ConsoleWithHelp(code.InteractiveConsole):
         elif line.strip() == '.':
             return 'dir(_)'
         return line
-c = ConsoleWithHelp(locals=locals())
+
+
+## ===== Launches the shell ============================= ##
+
 banner = '''
 Type "?" for help about last result.
 Type "." for list of attributes and methods of last result.
 '''.strip()
+c = ConsoleWithHelp(locals=locals())
 c.interact(banner=banner)
+
 # Exit when console exits.
 sys.exit()

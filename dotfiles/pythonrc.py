@@ -78,8 +78,14 @@ class ConsoleWithHelp(code.InteractiveConsole):
         line = code.InteractiveConsole.raw_input(self, *args)
         if line.strip() == '?':
             return 'help(_)'
+        elif line.strip() == '.':
+            return 'dir(_)'
         return line
 c = ConsoleWithHelp(locals=locals())
-c.interact(banner='Type "?" for help about last result.')
+banner = '''
+Type "?" for help about last result.
+Type "." for list of attributes and methods of last result.
+'''.strip()
+c.interact(banner=banner)
 # Exit when console exits.
 sys.exit()

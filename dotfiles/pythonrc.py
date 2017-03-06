@@ -36,6 +36,33 @@ sys.ps1 = Prompt()
 sys.ps2 = '         ... '
 del ascii_escape,Prompt
 
+## pprint list value
+def pprint_list(iterable, width=None):
+
+    if not width:
+        width = 80
+
+    if len(iterable) == 0:
+        print('[]')
+        return
+
+    # Columnify the iterable.
+    strings = [repr(x) for x in iterable]
+    widest = max(len(x) for x in strings)
+    padded = [x.ljust(widest) for x in strings]
+
+    # List items in a python list format.
+    items_per_line = int((width-4) / (widest + 2))
+    out = '['
+    for i, item in enumerate(padded):
+        out += item + ', '
+        if i % items_per_line == (items_per_line - 1):
+            out += '\n '
+    out += ']'
+
+    # Print it out.
+    print(out)
+
 ## pprint output
 def my_displayhook(value):
     # Set _ variable to last result
@@ -46,7 +73,10 @@ def my_displayhook(value):
         except ImportError:
             __builtins__._ = value
     # pretty print result
-    pprint.pprint(value)
+    if isinstance(value, list):
+        pprint_list(value)
+    else:
+        pprint.pprint(value)
 sys.displayhook = my_displayhook
 del my_displayhook
 

@@ -3,7 +3,7 @@
 CURRENT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
 source $CURRENT_DIR/common.bash
 
-doit brew install tmux python python3 wget tree htop p7zip
+doit brew install tmux python python3 wget tree htop p7zip the_silver_searcher
 doit brew install vim --with-python3
 py23 requests virtualenv virtualenvwrapper jedi isort apsw
 

@@ -32,6 +32,7 @@
     export MYSQL_HISTFILE="$HOME/.config/.mysql_history"
     export NODE_REPL_HISTORY="$HOME/.config/.node_repl_history"
     export LS_COLORS="di=1;94"
+    export GPG_TTY=$(tty)
 
 
 ### Bash prompt

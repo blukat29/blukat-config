@@ -170,6 +170,10 @@
       python $SCRIPTS_DIR/git-change-url.py
     }
 
+    maketex () {
+      $SCRIPTS_DIR/maketex.sh $*
+    }
+
     # Docker related
     docker-enable () {
       bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'

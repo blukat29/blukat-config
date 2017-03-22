@@ -242,6 +242,14 @@
 
     [ -f ~/.config/.fzf.bash ] && source ~/.config/.fzf.bash
 
+    if ! shopt -oq posix; then
+      if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+      elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+      fi
+    fi
+
     type brew >/dev/null 2>/dev/null
     if [ "$?" = "0" ]; then
         [ -f "$(brew --prefix)/etc/bash_completion" ] && source "$(brew --prefix)/etc/bash_completion"

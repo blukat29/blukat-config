@@ -3,3 +3,5 @@
 .DS_Store
 .gdb_history
 peda-session-*.txt
+;
+:

@@ -210,6 +210,17 @@
       find . -name "__pycache__" -delete -print
     }
 
+    sloc() {
+      sum=0
+      for file in $@
+      do
+        num=$(grep . $file | wc -l)
+        sum=$((sum + num))
+        printf "%5s %s\n" $num $file
+      done
+      printf "%5s %s\n" $sum "total"
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,

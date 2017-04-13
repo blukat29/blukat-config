@@ -139,6 +139,7 @@
     alias ctags-all='ctags -R --c++-kinds=+p --fields=iaS --extra=+q'
     alias euckr='iconv -f EUC-KR -t UTF8'
     alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+    alias skim='open -a Skim'
 
 ### Utility functions
 

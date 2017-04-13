@@ -243,25 +243,19 @@
     # Create .config directory to (try) to shove in all dotfiles
     mkdir -p "$HOME/.config"
 
-    if [ -f $HOME/.rvm/scripts/rvm ]; then
-        source /Users/blukat/.rvm/scripts/rvm
-    fi
-
-    if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-        source /usr/local/bin/virtualenvwrapper.sh
-    fi
-
-    [ -f ~/.config/.fzf.bash ] && source ~/.config/.fzf.bash
+    source_if_exists() {
+      [ -f "$1" ] && source "$1"
+    }
+    source_if_exists "$HOME/.rvm/scripts/rvm"
+    source_if_exists /usr/local/bin/virtualenvwrapper.sh
+    source_if_exists "$HOME/.config/.fzf.bash"
 
     if ! shopt -oq posix; then
-      if [ -f /usr/share/bash-completion/bash_completion ]; then
-        . /usr/share/bash-completion/bash_completion
-      elif [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
-      fi
+      source_if_exists /usr/share/bash-completion/bash_completion
+      source_if_exists /etc/bash_completion
     fi
 
     type brew >/dev/null 2>/dev/null
     if [ "$?" = "0" ]; then
-        [ -f "$(brew --prefix)/etc/bash_completion" ] && source "$(brew --prefix)/etc/bash_completion"
+        source_if_exists "$(brew --prefix)/etc/bash_completion"
     fi

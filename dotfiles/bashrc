@@ -28,6 +28,7 @@
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/python2.7/site-packages/PySide/"
 
     # Other options
+    export XDG_CONFIG_HOME="$HOME/.config"
     export LESSHISTFILE=/dev/null
     export HISTCONTROL=ignoreboth # don't put duplicate items in bash_history
     export PYTHONSTARTUP="$DOTFILES_DIR/pythonrc.py"
@@ -260,3 +261,5 @@
     if [ "$?" = "0" ]; then
         source_if_exists "$(brew --prefix)/etc/bash_completion"
     fi
+
+    unset -f source_if_exists

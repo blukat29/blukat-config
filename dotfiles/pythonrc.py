@@ -168,7 +168,10 @@ Type "?" for help about last result.
 Type "." for list of attributes and methods of last result.
 '''.strip()
 c = ConsoleWithHelp(locals=locals())
-c.interact(banner=banner)
+if sys.version_info >= (3,):
+    c.interact(banner=banner, exitmsg='')
+else:
+    c.interact(banner=banner)
 
 # Exit when console exits.
 sys.exit()

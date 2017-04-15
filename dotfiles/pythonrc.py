@@ -161,6 +161,39 @@ class ConsoleWithHelp(code.InteractiveConsole):
         return line
 
 
+## ===== fzf bindings =================================== ##
+
+def setup_fzf():
+    # Press Ctrl-F to search an item within iterable previous result.
+    # Uses fzf for fast interactive search.
+
+    from pyfzf import FzfPrompt
+    _fzf = FzfPrompt()
+
+    def my_completer(text, state):
+        # Because the result does not start with `text`,
+        # readline thinks the completion has failed and calls
+        # my_complete again with increased `state` value.
+        # Returning None signals that the completion is done.
+        if state > 0:
+            return None
+
+        match = _fzf.prompt(map(repr, _))
+        if len(match) > 0:
+            return text + match[0]
+        else:
+            return None
+
+    readline.parse_and_bind('"\C-f": complete')
+    readline.set_completer(my_completer)
+
+try:
+    setup_fzf()
+except ImportError:
+    pass
+del setup_fzf
+
+
 ## ===== Launches the shell ============================= ##
 
 banner = '''

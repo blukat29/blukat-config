@@ -144,6 +144,7 @@
     alias euckr='iconv -f EUC-KR -t UTF8'
     alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
     alias skim='open -a Skim'
+    alias memcheck='valgrind --leak-check=full --tool=memcheck'
 
 ### Utility functions
 

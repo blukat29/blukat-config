@@ -43,7 +43,7 @@ Plug 'agatan/vim-sort-include' " C/C++ #include sort
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'fatih/vim-go'
 Plug 'derekwyatt/vim-scala'
-Plug 'closetag.vim' " html/xml auto close
+Plug 'vim-scripts/closetag.vim' " html/xml auto close
 Plug 'gregsexton/MatchTag' " highlight matching tags
 Plug 'junegunn/vim-easy-align' " Align assignment statements
 Plug 'tmux-plugins/vim-tmux'

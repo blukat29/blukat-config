@@ -13,6 +13,7 @@ doit sudo apt install -y cmake autoconf automake libtool
 # Utilities
 doit sudo apt install -y curl wget git zip p7zip
 doit sudo apt install -y vim vim-nox-py2 tmux exuberant-ctags silversearcher-ag bc
+doit sudo apt install -y tree htop
 doit sudo apt install -y sqlite3 libsqlite3-dev
 # Python development
 doit sudo apt install -y python-minimal python2.7 python3 python-dev python3-dev

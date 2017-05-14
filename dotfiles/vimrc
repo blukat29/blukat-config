@@ -167,6 +167,17 @@ else
   colorscheme default
 endif
 
+" Color 80th column
+function! s:toggle_color_column()
+    if &colorcolumn > 0
+        set colorcolumn=
+    else
+        set colorcolumn=80
+    endif
+endfunction
+command! -nargs=0 ColorColumnToggle  call s:toggle_color_column()
+nmap <F9> :ColorColumnToggle<CR>
+
 " Trailing Whitespace
 hi TrailingWhitespace ctermbg=red
 match TrailingWhitespace /\s\+$/

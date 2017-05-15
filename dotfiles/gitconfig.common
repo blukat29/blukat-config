@@ -12,8 +12,8 @@
     s = status
     sv = diff --cached
     c = checkout
-    co = commit
-    ca = commit --amend
+    co = commit -v
+    ca = commit -v --amend
     b = branch
     d = diff
     rh = reset HEAD

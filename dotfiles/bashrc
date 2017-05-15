@@ -135,6 +135,7 @@
     alias tree='tree -C'
     alias tree2='tree -L 2'
     alias tree3='tree -L 3'
+    alias itree="tree -I '*.pyc|__pycache__|*.o|*.out'"
     alias grep='grep --color=auto'
     alias less='less -R'
     alias svn='svn --config-dir $HOME/.config/.subversion'

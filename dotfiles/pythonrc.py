@@ -61,10 +61,11 @@ class MyDisplayHook(object):
     def on_sigwinch(self, signum, frame):
         self.update_terminal_size()
 
-    @staticmethod
-    def columnify(iterable):
+    def columnify(self, iterable):
         strings = [repr(x) for x in iterable]
         widest = max([0] + [len(x) for x in strings])
+        # Padding does not exceed screen width.
+        widest = min(self.cols - 10, widest)
         padded = [x.ljust(widest) for x in strings]
         return widest, padded
 
@@ -73,6 +74,7 @@ class MyDisplayHook(object):
         # Columnify the iterable.
         widest, padded = self.columnify(iterable)
         items_per_line = int((self.cols - 4) / (widest + 2))
+        items_per_line = max(1, items_per_line)
 
         # List items in a python list or tuple format.
         out = encloser[0]
@@ -92,6 +94,7 @@ class MyDisplayHook(object):
         # 3 = (':' between key and value) + (', ' between items)
         widest = widest_key + widest_val + 3
         items_per_line = int((self.cols - 4) / widest)
+        items_per_line = max(1, items_per_line)
 
         out = '{'
         for i in xrange(len(padded_key)):
@@ -112,13 +115,16 @@ class MyDisplayHook(object):
             except ImportError:
                 __builtins__._ = value
         # pretty print result
-        if isinstance(value, list):
-            self.print_iterable(value, '[]')
-        elif isinstance(value, tuple):
-            self.print_iterable(value, '()')
-        elif isinstance(value, dict):
-            self.print_dict(value)
-        else:
+        try:
+            if isinstance(value, list):
+                self.print_iterable(value, '[]')
+            elif isinstance(value, tuple):
+                self.print_iterable(value, '()')
+            elif isinstance(value, dict):
+                self.print_dict(value)
+            else:
+                pprint.pprint(value)
+        except:
             pprint.pprint(value)
 
 sys.displayhook = MyDisplayHook()

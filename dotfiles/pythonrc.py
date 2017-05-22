@@ -113,7 +113,11 @@ class MyDisplayHook(object):
                 import __builtin__
                 __builtin__._ = value
             except ImportError:
-                __builtins__._ = value
+                # The type of __builtins__ depends on the implementation.
+                if isinstance(__builtins__, dict):
+                    __builtins__['_'] = value
+                else:
+                    __builtins__._ = value
         # pretty print result
         try:
             if isinstance(value, list):

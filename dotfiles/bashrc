@@ -23,6 +23,8 @@
     export PATH="$PATH:$HOME/.local/android-sdk/platform-tools"
     export PATH="$PATH:$HOME/.local/android-ndk"
     export PATH="$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin"
+    export GOPATH="$HOME/.local/go"
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/python2.7/site-packages/PySide/"

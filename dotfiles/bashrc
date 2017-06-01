@@ -113,7 +113,7 @@
     alias ustrings='strings -e l'
     alias bobjdump='objdump -b binary -m i386 -M intel -D'
     alias bobjdump32='objdump -b binary -m i386 -M intel -D'
-    alias bobjdump64='objdump -b binary -m i386:x86_64 -M intel -D'
+    alias bobjdump64='objdump -b binary -m i386:x86-64 -M intel -D'
     alias bobjdump16='objdump -b binary -m i8086 -M intel -D'
 
     # Even shorter git aliases.

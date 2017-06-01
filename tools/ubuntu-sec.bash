@@ -7,7 +7,7 @@ CURRENT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
 source $CURRENT_DIR/common.bash
 
 doit sudo apt install -y libffi-dev libssl-dev libpng-dev libgmp-dev
-doit sudo apt install -y binwalk
+doit sudo apt install -y binwalk ninja-build
 doit sudo apt install -y default-jdk
 
 # Disallow non-root user to capture packets.
@@ -52,10 +52,15 @@ if [ "$?" != "0" ]; then
         && cd /tmp && tar xf $tmp_down \
         && rm -f $tmp_down
     cd /tmp/z3-z3-4.5.0/ \
-        && python3 scripts/mk_make.py --python \
+        && python3 contrib/cmake/bootstrap.py create \
+        && mkdir -p build \
         && cd build \
-        && make -j2 \
-        && sudo make install
+        && cmake -G "Ninja" \
+            -DPYTHON_EXECUTABLE=`which python3` \
+            -DBUILD_PYTHON_BINDINGS=ON \
+            -DINSTALL_PYTHON_BINDINGS=ON .. \
+        && ninja -j `getconf _NPROCESSORS_ONLN` \
+        && sudo ninja install
 fi
 
 py23 capstone pycrypto distorm3 Pillow ply gmpy

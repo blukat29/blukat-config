@@ -3,6 +3,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+LITE=false
+[ -f "$HOME/.bashrc.lite" ] && LITE=true
+
 ### Environment variables
 
     # Before doing anything, replace OSX terminal tools with gnu version tools
@@ -44,6 +47,9 @@
 
 ### Bash prompt
 
+    if $LITE; then
+        PS1="\[\033[1;32m\]\u.\h\033[0m\]:\[\033[1;94m\]\w\033[0m\]$ "
+    else
     # Enable git-prompt
     source $SCRIPTS_DIR/git-prompt.sh
     export GIT_PS1_SHOWDIRTYSTATE=1
@@ -86,6 +92,7 @@
     else
       PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     fi
+    fi  # LITE
 
 
 ### Command aliases

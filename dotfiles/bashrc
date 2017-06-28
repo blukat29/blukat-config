@@ -117,7 +117,10 @@ LITE=false
 
     # Typo fixes
     alias amke='make'
+    alias amek='make'
     alias mkae='make'
+    alias maek='make'
+    alias aemk='make'
     alias suod='sudo'
     alias gti='git'
 

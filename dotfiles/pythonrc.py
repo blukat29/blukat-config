@@ -211,7 +211,7 @@ Type "?" for help about last result.
 Type "." for list of attributes and methods of last result.
 '''.strip()
 c = ConsoleWithHelp(locals=locals())
-if sys.version_info >= (3,):
+if sys.version_info >= (3, 6):
     c.interact(banner=banner, exitmsg='')
 else:
     c.interact(banner=banner)

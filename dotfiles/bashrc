@@ -72,7 +72,7 @@ LITE=false
 
     # Define prompt
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-      PS1="\[\033[1;32m\]\u.\h\033[0m\]:" # username.hostname
+      PS1="\[\033[1;32m\]\u.\h\[\033[0m\]:" # username.hostname
       declare -f __git_ps1 > /dev/null; # check for git prompt
       if [ 0 -eq $? ]; then
         PS1+="\[\033[1;35m\]"'$(__git_ps1 "(%s)")' # git prompt

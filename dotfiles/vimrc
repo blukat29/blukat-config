@@ -2,10 +2,10 @@
 "   File structure
 " Vundle plugins
 " General settings
-" Keyboard shortcuts
 " File type specific settings
 " Omnicomplete settings
 " Plugin settings
+" Keyboard shortcuts
 
 " #### Vim Plugins ############################
 set nocompatible  " it must be the first line to enable Vim features.
@@ -68,36 +68,6 @@ set laststatus=2  " Always turn on status line
 set backspace=indent,eol,start  " Make backspace work as other editors
 set tags=~/.vim/tags,tags;    " Read local tags file
 
-" #### Keyboard shortcut #########################
-
-" <Ctrl-l> redraws the screen and removes any search highlights
-nnoremap <silent> <C-l> :nohl<CR><C-l>
-
-" Map common mistakes.
-command! WQ wq
-command! Wq wq
-command! W w
-command! Q q
-
-" Move between splits
-nnoremap <Tab> <C-w>w
-
-" Quickly compile C/C++
-autocmd FileType c,cpp nnoremap <buffer> <F5> :w<CR>:make %<CR>
-autocmd FileType c,cpp inoremap <buffer> <F5> <Esc>:w<CR>:make %<CR>
-autocmd FileType c
-  \ if !filereadable('Makefile') && !filereadable('makefile') |
-  \   setlocal makeprg=gcc\ -o\ %< |
-  \ endif
-autocmd FileType cpp
-  \ if !filereadable('Makefile') && !filereadable('makefile') |
-  \   setlocal makeprg=g++\ -o\ %< |
-  \ endif
-
-" Quickly run python
-autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!python %<CR>
-autocmd FileType python inoremap <buffer> <F5> <Esc>:w<CR>:!python %<CR>
-
 " #### File type specific ########################
 
 " File type mappings
@@ -158,16 +128,12 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
 " TagBar
-nmap <F8> :TagbarToggle<CR>
 let g:tagbar_map_closeallfolds = "_"
 let g:tagbar_map_openfold = "="
 let g:tagbar_autofocus = 1
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_width = 50
 let g:tagbar_sort = 0
-
-" Easy align
-xmap ga <Plug>(EasyAlign)
 
 let g:flake8_show_in_gutter = 1
 
@@ -192,10 +158,47 @@ function! s:toggle_color_column()
     endif
 endfunction
 command! -nargs=0 ColorColumnToggle  call s:toggle_color_column()
-nmap <F9> :ColorColumnToggle<CR>
 
 " Trailing Whitespace
 hi TrailingWhitespace ctermbg=red
 match TrailingWhitespace /\s\+$/
 command! RemoveTrailingWhitespace :%s/\s\+$//
 
+" #### Keyboard shortcuts #########################
+
+" <Ctrl-l> redraws the screen and removes any search highlights
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" Map common mistakes.
+command! WQ wq
+command! Wq wq
+command! W w
+command! Q q
+
+" Move between splits
+nnoremap <Tab> <C-w>w
+
+" Quickly compile C/C++
+autocmd FileType c,cpp nnoremap <buffer> <F5> :w<CR>:make %<CR>
+autocmd FileType c,cpp inoremap <buffer> <F5> <Esc>:w<CR>:make %<CR>
+autocmd FileType c
+  \ if !filereadable('Makefile') && !filereadable('makefile') |
+  \   setlocal makeprg=gcc\ -o\ %< |
+  \ endif
+autocmd FileType cpp
+  \ if !filereadable('Makefile') && !filereadable('makefile') |
+  \   setlocal makeprg=g++\ -o\ %< |
+  \ endif
+
+" Quickly run python
+autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!python %<CR>
+autocmd FileType python inoremap <buffer> <F5> <Esc>:w<CR>:!python %<CR>
+
+" TagBar plugin
+nmap <F8> :TagbarToggle<CR>
+
+" Toggle color columns
+nmap <F9> :ColorColumnToggle<CR>
+
+" Easy align
+xmap ga <Plug>(EasyAlign)

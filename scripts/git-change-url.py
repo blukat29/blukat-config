@@ -15,8 +15,8 @@ def get_remotes():
 
 def set_url(name, old, new):
     print("changing remote url for '{}'".format(name))
-    print("from '{}'".format(old))
-    print("to '{}'".format(new))
+    print("  from: '{}'".format(old))
+    print("  to:   '{}'".format(new))
     cmdline = 'git remote set-url {0} {1}'.format(name, new)
     print(cmdline)
     subprocess.check_call(shlex.split(cmdline))

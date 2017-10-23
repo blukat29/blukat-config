@@ -202,3 +202,6 @@ nmap <F9> :ColorColumnToggle<CR>
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
+
+" Toggle paste mode with Control-P
+set pastetoggle=<C-p>

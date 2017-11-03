@@ -137,6 +137,7 @@ LITE=false
     alias py3='python3'
     alias simplehttp='python -m SimpleHTTPServer'
     alias wokron='workon'
+    alias workno='workon'
 
     # Docker
     alias dockr='docker'

@@ -277,6 +277,7 @@ LITE=false
     if ! shopt -oq posix; then
       source_if_exists /usr/share/bash-completion/bash_completion
       source_if_exists /etc/bash_completion
+      source_if_exists /usr/share/bash-completion/completions/git
     fi
 
     type brew >/dev/null 2>/dev/null

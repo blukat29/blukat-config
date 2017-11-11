@@ -3,11 +3,14 @@ import code
 import datetime
 import os
 import pprint
-import readline
 import signal
 import subprocess
 import sys
 
+try:
+    import gnureadline as readline
+except ImportError:
+    import readline
 
 ## ===== Interactive shell history ====================== ##
 

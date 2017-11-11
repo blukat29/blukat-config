@@ -24,7 +24,7 @@ fi
 # Python
 doit brew install python
 brew_check_and_install python3
-py23 requests virtualenv virtualenvwrapper jedi isort apsw
+py23 requests virtualenv virtualenvwrapper jedi isort apsw gnureadline
 
 # Command line tools
 doit brew install tmux wget tree htop p7zip

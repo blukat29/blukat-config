@@ -113,6 +113,9 @@ LITE=false
     alias aemk='make'
     alias suod='sudo'
     alias gti='git'
+    alias elss='less'
+    alias Less='less'
+    alias Grep='grep'
 
     # Tmux.
     alias tl='tmux ls'

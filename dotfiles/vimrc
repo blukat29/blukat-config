@@ -170,10 +170,13 @@ command! RemoveTrailingWhitespace :%s/\s\+$//
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Map common mistakes.
-command! WQ wq
-command! Wq wq
-command! W w
-command! Q q
+cnoreabbrev WQ wq
+cnoreabbrev Wq wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Set set
+" Prevent writing to a file named ';'.
+cnoreabbrev w; w
 
 " Move between splits
 nnoremap <Tab> <C-w>w

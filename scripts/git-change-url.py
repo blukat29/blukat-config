@@ -23,23 +23,27 @@ def set_url(name, old, new):
 
 def get_new_url(name, url):
     if url.startswith('http://') or url.startswith('https://'):
-        exp = 'https?://' + '([^/@]+@)?([^/]+)/' + '([^/.]+)/' + '([^/.]+)(/|\.git)?'
+        exp = 'https?://' + '([^/@]+@)?([^/]+)/' + '([^/.]+)/' + '(.+)(/|\.git)?'
         match = re.match(exp, url)
         if not match:
             return
         domain = match.group(2)
         user = match.group(3)
         repo = match.group(4)
-        new_url = 'git@{0}:{1}/{2}.git'.format(domain, user, repo)
+        if not repo.endswith('.git'):
+            repo += '.git'
+        new_url = 'git@{0}:{1}/{2}'.format(domain, user, repo)
         return new_url
     elif url.startswith('git@'):
-        match = re.match('git@([^:]+):([^/]+)/([^.]*)(\.git)?', url)
+        match = re.match('git@([^:]+):([^/]+)/(.*(\.git)?)', url)
         if not match:
             return
         domain = match.group(1)
         user = match.group(2)
         repo = match.group(3)
-        new_url = 'https://{0}/{1}/{2}.git'.format(domain, user, repo)
+        if not repo.endswith('.git'):
+            repo += '.git'
+        new_url = 'https://{0}/{1}/{2}'.format(domain, user, repo)
         return new_url
 
 def test():

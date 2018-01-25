@@ -199,6 +199,10 @@ LITE=false
       $SCRIPTS_DIR/maketex.sh $*
     }
 
+    remake () {
+      make clean && make $*
+    }
+
     # Docker related
     docker-enable () {
       bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'

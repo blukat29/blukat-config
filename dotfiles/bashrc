@@ -248,6 +248,14 @@ LITE=false
           | xargs wc -l | sort -n
     }
 
+    fkill () {
+        local pids
+        pids=$(ps uf | sed 1d | fzf -m | awk '{print $2}')
+        if [ "x$pids" != "x" ]; then
+            echo $pids | xargs kill -${1:-9}
+        fi
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,

@@ -48,6 +48,7 @@ Plug 'gregsexton/MatchTag' " highlight matching tags
 Plug 'junegunn/vim-easy-align' " Align assignment statements
 Plug 'tmux-plugins/vim-tmux'
 Plug 'nvie/vim-flake8'
+Plug 'blukat29/vim-llvm-lite' " LLVM IR and TableGen
 
 call plug#end()
 

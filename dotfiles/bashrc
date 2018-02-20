@@ -9,13 +9,16 @@ LITE=false
 ### Environment variables
 
     # Before doing anything, replace OSX terminal tools with gnu version tools
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-    export PATH="/usr/local/bin:$PATH"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+      export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+      export PATH="/usr/local/bin:$PATH"
+    fi
 
     # PATHs
     DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
     SCRIPTS_DIR="$DOTFILES_DIR/../scripts"
+    export PATH="$PATH:/usr/local/bin"
     export PATH="$PATH:/usr/local/sbin"
     export PATH="$PATH:$HOME/.local/bin"
     export PATH="$PATH:$SCRIPTS_DIR"

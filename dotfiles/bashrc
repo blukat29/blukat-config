@@ -14,6 +14,7 @@ LITE=false
       export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
       export PATH="/usr/local/bin:$PATH"
     fi
+    export PATH="/usr/bin:$PATH"
 
     # PATHs
     DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
@@ -28,6 +29,7 @@ LITE=false
     export PATH="$PATH:$HOME/.local/android-sdk/tools"
     export PATH="$PATH:$HOME/.local/android-sdk/platform-tools"
     export PATH="$PATH:$HOME/.local/android-ndk"
+    export PATH="$PATH:$HOME/.local/depot_tools"
     export PATH="$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin"
     export GOPATH="$HOME/.local/go"
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

@@ -39,13 +39,16 @@ setup gitconfig.common
 setup gitignore
 setup gdbinit
 
+# Install Vim-Plug
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 vim +PlugInstall +qall
-if [ ! -d ~/.local/peda ]; then
-  git clone https://github.com/longld/peda ~/.local/peda
+
+# Install GEF gdb wrapper
+if [ ! -f ~/.local/gef.py ]; then
+  wget -O ~/.local/gef.py https://github.com/hugsy/gef/raw/master/gef.py
 fi
 
 # Prompt git user if not set

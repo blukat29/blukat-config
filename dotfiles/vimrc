@@ -21,6 +21,8 @@ call plug#begin('~/.vim/bundle')
 
 " Colorscheme
 Plug 'crusoexia/vim-monokai'
+Plug 'junegunn/seoul256.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Autocomplete with tab key
 Plug 'ervandew/supertab'
@@ -49,6 +51,10 @@ Plug 'junegunn/vim-easy-align' " Align assignment statements
 Plug 'tmux-plugins/vim-tmux'
 Plug 'nvie/vim-flake8'
 Plug 'blukat29/vim-llvm-lite' " LLVM IR and TableGen
+Plug 'kchmck/vim-coffee-script'
+
+" Javascript ctags
+Plug 'ternjs/tern_for_vim'
 
 call plug#end()
 
@@ -84,11 +90,21 @@ autocmd BufNewFile,BufRead vimrc set filetype=vim
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.ts set filetype=javascript " TypeScript
+autocmd BufNewFile,BufRead *.ejs set filetype=html " EJS template
 
 " Tab setting exceptions
+autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype css setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
+" Override syntax highlighting
+function! SetJsHi()
+    hi link javaScriptArrow Conditional
+    match javaScriptArrow /=>/
+endfunction
+autocmd Filetype javascript call SetJsHi()
 
 " #### Omnicomplete ##############################
 
@@ -110,7 +126,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " #### Plugins ###################################
 
 " Remove trailing whitespaces
-command RemoveTrailingWhitespaces %s/\s\+$//
+command! RemoveTrailingWhitespaces %s/\s\+$//
 
 " Jedi-Vim - no documentation window during completion.
 autocmd FileType python setlocal completeopt-=preview
@@ -143,10 +159,15 @@ let g:flake8_show_in_gutter = 1
 
 if (&term == "screen-256color") || (&term =~ "term")
   set t_Co=256
-  silent! colorscheme monokai
-  hi Normal ctermbg=none ctermfg=253
+  set bg=dark
+  silent! colorscheme seoul256
+  hi Normal ctermbg=none ctermfg=254
   hi Comment ctermfg=245
   hi LineNr ctermbg=none
+  hi GitGutterAdd ctermbg=none
+  hi GitGutterChange ctermbg=none
+  hi GitGutterDelete ctermbg=none
+  hi GitGutterChangeDelete ctermbg=none
 else
   colorscheme default
 endif

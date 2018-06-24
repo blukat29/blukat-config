@@ -36,6 +36,7 @@ LITE=false
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/python2.7/site-packages/PySide/"
+    export NVM_DIR="$HOME/.nvm"
 
     # Other options
     export XDG_CONFIG_HOME="$HOME/.config"
@@ -292,6 +293,7 @@ LITE=false
     source_if_exists "$HOME/.rvm/scripts/rvm"
     source_if_exists /usr/local/bin/virtualenvwrapper.sh
     source_if_exists "$HOME/.config/.fzf.bash"
+    source_if_exists "$NVM_DIR/nvm.sh"
 
     if ! shopt -oq posix; then
       source_if_exists /usr/share/bash-completion/bash_completion

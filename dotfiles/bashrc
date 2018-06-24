@@ -13,8 +13,9 @@ LITE=false
       export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
       export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
       export PATH="/usr/local/bin:$PATH"
+    else
+      export PATH="/usr/bin:$PATH"
     fi
-    export PATH="/usr/bin:$PATH"
 
     # PATHs
     DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"

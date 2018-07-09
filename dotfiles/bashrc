@@ -13,8 +13,6 @@ LITE=false
       export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
       export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
       export PATH="/usr/local/bin:$PATH"
-    else
-      export PATH="/usr/bin:$PATH"
     fi
 
     # PATHs
@@ -295,6 +293,7 @@ LITE=false
     source_if_exists /usr/local/bin/virtualenvwrapper.sh
     source_if_exists "$HOME/.config/.fzf.bash"
     source_if_exists "$NVM_DIR/nvm.sh"
+    source_if_exists "$NVM_DIR/bash_completion"
 
     if ! shopt -oq posix; then
       source_if_exists /usr/share/bash-completion/bash_completion

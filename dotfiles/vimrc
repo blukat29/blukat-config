@@ -91,6 +91,8 @@ autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.ts set filetype=javascript " TypeScript
 autocmd BufNewFile,BufRead *.ejs set filetype=html " EJS template
+autocmd BufNewFile,BufRead *.edl set filetype=cpp " Enclave EDL
+autocmd BufNewFile,BufRead *.gyp set filetype=javascript " GYP build system
 
 " Tab setting exceptions
 autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2

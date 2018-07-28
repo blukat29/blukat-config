@@ -53,9 +53,6 @@ Plug 'nvie/vim-flake8'
 Plug 'blukat29/vim-llvm-lite' " LLVM IR and TableGen
 Plug 'kchmck/vim-coffee-script'
 
-" Javascript ctags
-Plug 'ternjs/tern_for_vim'
-
 call plug#end()
 
 " #### General ###################################
@@ -102,9 +99,13 @@ autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " Override syntax highlighting
+" Highlights arrow function (=>), underscore.js (lodash), jquery APIs.
+" Also highlights member variables.
 function! SetJsHi()
-    hi link javaScriptArrow Conditional
-    match javaScriptArrow /=>/
+    hi link javaScriptMy Conditional
+    match javaScriptMy /\(=>\)\|\(\(_\|\$\)\.\w\+\)/
+    hi link javaScriptMemberVar Function
+    2match javaScriptMemberVar /this\.\w\+/
 endfunction
 autocmd Filetype javascript call SetJsHi()
 
@@ -154,6 +155,7 @@ let g:tagbar_autofocus = 1
 let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_width = 50
 let g:tagbar_sort = 0
+let g:tagbar_foldlevel = 2
 
 let g:flake8_show_in_gutter = 1
 

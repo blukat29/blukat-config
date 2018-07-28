@@ -121,6 +121,11 @@ LITE=false
     alias elss='less'
     alias Less='less'
     alias Grep='grep'
+    alias wokron='workon'
+    alias workno='workon'
+    alias dockr='docker'
+    alias doker='docker'
+    alias electorn='electron'
 
     # Tmux.
     alias tl='tmux ls'
@@ -144,12 +149,8 @@ LITE=false
     alias py2='python2'
     alias py3='python3'
     alias simplehttp='python -m SimpleHTTPServer'
-    alias wokron='workon'
-    alias workno='workon'
 
     # Docker
-    alias dockr='docker'
-    alias doker='docker'
     alias dpa='docker ps -a'
     alias dim='docker images'
 

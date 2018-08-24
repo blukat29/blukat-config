@@ -43,7 +43,6 @@ Plug 'davidhalter/jedi-vim' " Python autocomplete
 Plug 'fisadev/vim-isort' " Python import sort
 Plug 'agatan/vim-sort-include' " C/C++ #include sort
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'fatih/vim-go'
 Plug 'derekwyatt/vim-scala'
 Plug 'vim-scripts/closetag.vim' " html/xml auto close
 Plug 'gregsexton/MatchTag' " highlight matching tags

@@ -23,15 +23,17 @@ LITE=false
     export PATH="$PATH:$HOME/.local/bin"
     export PATH="$PATH:$SCRIPTS_DIR"
     export PATH="$PATH:/usr/local/sbin"
-    export PATH="$PATH:$HOME/.local/android-sdk-linux/tools"
-    export PATH="$PATH:$HOME/.local/android-sdk-linux/platform-tools"
     export PATH="$PATH:$HOME/.local/android-sdk/tools"
+    export PATH="$PATH:$HOME/.local/android-sdk/tools/bin"
     export PATH="$PATH:$HOME/.local/android-sdk/platform-tools"
     export PATH="$PATH:$HOME/.local/android-ndk"
     export PATH="$PATH:$HOME/.local/depot_tools"
     export PATH="$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin"
+    export PATH="/usr/lib/go-1.7/bin/:$PATH"
     export GOPATH="$HOME/.local/go"
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib/"
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/python2.7/site-packages/PySide/"
@@ -43,6 +45,7 @@ LITE=false
     export HISTCONTROL=ignoreboth # don't put duplicate items in bash_history
     export PYTHONSTARTUP="$DOTFILES_DIR/pythonrc.py"
     export MYSQL_HISTFILE="$HOME/.config/.mysql_history"
+    export REDISCLI_HISTFILE="$HOME/.config/.rediscli_history"
     export NODE_REPL_HISTORY="$HOME/.config/.node_repl_history"
     export LS_COLORS="di=1;94"
     export GPG_TTY=$(tty)
@@ -96,9 +99,11 @@ LITE=false
     alias sudo='sudo '
 
     # Basic shell commands.
-    alias ll='ls -alh'
+    alias ll='ls -lh'
+    alias la='ls -alh'
     alias ls='ls -F --color=auto'
     alias ls..='ls ..'
+    alias sl='ls'
     alias dir='ls'
     alias cd..='cd ..'
     alias cd...='cd ../../'
@@ -126,6 +131,7 @@ LITE=false
     alias dockr='docker'
     alias doker='docker'
     alias electorn='electron'
+    alias ndoe='node'
 
     # Tmux.
     alias tl='tmux ls'
@@ -153,6 +159,7 @@ LITE=false
     # Docker
     alias dpa='docker ps -a'
     alias dim='docker images'
+    alias doco='docker-compose'
 
     # Other tool options
     alias tree='tree -C'
@@ -230,6 +237,10 @@ LITE=false
       fi
     }
 
+    docker-ip () {
+      sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$@"
+    }
+
     # Others
     dus () {
         du -h -d 1 $* | sort -h --reverse
@@ -281,6 +292,13 @@ LITE=false
     # Share bash history across tmux panes and windows.
     shopt -s histappend
     PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+### X11 settings
+
+    # Disable caps lock key
+    if type "setxkbmap" &> /dev/null; then
+        setxkbmap -option caps:none
+    fi
 
 ### External tools
 

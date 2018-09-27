@@ -91,11 +91,12 @@ autocmd BufNewFile,BufRead *.edl set filetype=cpp " Enclave EDL
 autocmd BufNewFile,BufRead *.gyp set filetype=javascript " GYP build system
 
 " Tab setting exceptions
-autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype css setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype xml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+autocmd Filetype javascript setlocal expandtab ts=2 sw=2 sts=2
+autocmd Filetype css setlocal expandtab ts=2 sw=2 sts=2
+autocmd Filetype html setlocal expandtab ts=2 sw=2 sts=2
+autocmd Filetype htmldjango setlocal expandtab ts=2 sw=2 sts=2
+autocmd Filetype xml setlocal expandtab ts=2 sw=2 sts=2
+autocmd Filetype yaml setlocal expandtab ts=2 sw=2 sts=2
 
 " Override syntax highlighting
 " Highlights arrow function (=>), underscore.js (lodash), jquery APIs.

@@ -107,7 +107,7 @@ function! SetJsHi()
     hi link javaScriptMemberVar Function
     2match javaScriptMemberVar /this\.\w\+/
 endfunction
-autocmd Filetype javascript call SetJsHi()
+autocmd BufNewFile,BufRead *.js call SetJsHi()
 
 " #### Omnicomplete ##############################
 

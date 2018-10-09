@@ -32,13 +32,14 @@ setup () {
 }
 
 setup bashrc
-setup bashrc.conf
 setup vimrc
 setup tmux.conf
 setup gitconfig
 setup gitconfig.common
 setup gitignore
 setup gdbinit
+
+cp "$SCRIPT_DIR/dotfiles/bashrc.conf" "$HOME/.bashrc.conf"
 
 # Install Vim-Plug
 if [ ! -f ~/.vim/autoload/plug.vim ]; then

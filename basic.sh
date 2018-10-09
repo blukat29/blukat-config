@@ -32,6 +32,7 @@ setup () {
 }
 
 setup bashrc
+setup bashrc.conf
 setup vimrc
 setup tmux.conf
 setup gitconfig

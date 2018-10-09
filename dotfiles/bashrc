@@ -308,21 +308,29 @@ LITE=false
     source_if_exists() {
       [ -f "$1" ] && source "$1"
     }
-    source_if_exists "$HOME/.rvm/scripts/rvm"
-    source_if_exists /usr/local/bin/virtualenvwrapper.sh
-    source_if_exists "$HOME/.config/.fzf.bash"
-    source_if_exists "$NVM_DIR/nvm.sh"
-    source_if_exists "$NVM_DIR/bash_completion"
+    source_if_exists "$HOME/.bashrc.conf"
+
+    source_if_enabled() {
+      [ "$1" = "1" ] && source_if_exists "$2"
+    }
+
+    source_if_enabled $BASHRC_USE_rvm "$HOME/.rvm/scripts/rvm"
+    source_if_enabled $BASHRC_USE_venv /usr/local/bin/virtualenvwrapper.sh
+    source_if_enabled $BASHRC_USE_fzf "$HOME/.config/.fzf.bash"
+    source_if_enabled $BASHRC_USE_nvm "$NVM_DIR/nvm.sh"
+    source_if_enabled $BASHRC_USE_nvm "$NVM_DIR/bash_completion"
+
+    [ "$AA" = "0" ] && echo xx
 
     if ! shopt -oq posix; then
       source_if_exists /usr/share/bash-completion/bash_completion
-      source_if_exists /etc/bash_completion
       source_if_exists /usr/share/bash-completion/completions/git
     fi
 
     type brew >/dev/null 2>/dev/null
     if [ "$?" = "0" ]; then
-        source_if_exists "$(brew --prefix)/etc/bash_completion"
+        source_if_enabled $BASHRC_USE_completion "$(brew --prefix)/etc/bash_completion"
     fi
 
     unset -f source_if_exists
+    unset -f source_if_enabled

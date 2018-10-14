@@ -293,13 +293,6 @@ LITE=false
     shopt -s histappend
     PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-### X11 settings
-
-    # Disable caps lock key
-    if type "setxkbmap" &> /dev/null; then
-        setxkbmap -option caps:none
-    fi
-
 ### External tools
 
     # Create .config directory to (try) to shove in all dotfiles

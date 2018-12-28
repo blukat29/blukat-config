@@ -147,6 +147,7 @@ let g:gitgutter_sign_removed_first_line = "^"
 let g:gitgutter_map_keys = 0
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+autocmd BufWritePost * GitGutter
 
 " TagBar
 let g:tagbar_map_closeallfolds = "_"

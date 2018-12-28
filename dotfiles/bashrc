@@ -53,6 +53,8 @@ LITE=false
     export MYSQL_HISTFILE="$HOME/.config/.mysql_history"
     export REDISCLI_HISTFILE="$HOME/.config/.rediscli_history"
     export NODE_REPL_HISTORY="$HOME/.config/.node_repl_history"
+    export MPLCONFIGDIR="$HOME/.config/matplotlib"
+    export npm_config_devdir="$HOME/.config/node-gyp"
     export LS_COLORS="di=1;94"
     export GPG_TTY=$(tty)
     export LANG="en_US.UTF-8"

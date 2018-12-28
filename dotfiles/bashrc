@@ -141,6 +141,7 @@ LITE=false
     alias electorn='electron'
     alias ndoe='node'
     alias fiel='file'
+    alias iv='vi'
 
     # Tmux.
     alias tl='tmux ls'

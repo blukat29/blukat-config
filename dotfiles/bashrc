@@ -138,6 +138,7 @@ LITE=false
     alias doker='docker'
     alias electorn='electron'
     alias ndoe='node'
+    alias fiel='file'
 
     # Tmux.
     alias tl='tmux ls'

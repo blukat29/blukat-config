@@ -283,6 +283,10 @@ LITE=false
         fi
     }
 
+    usbserial () {
+        screen $(ls /dev/tty.usbserial*) 9600
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,

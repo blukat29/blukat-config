@@ -2,7 +2,8 @@
 set -e
 
 name=$(echo "$1" | rev | cut -d. -f 2- | rev)
-pdflatex "$name.tex"
+opts="--shell-escape"
+pdflatex $opts "$name.tex"
 bibtex "$name"
-pdflatex "$name.tex"
-pdflatex "$name.tex"
+pdflatex $opts "$name.tex"
+pdflatex $opts "$name.tex"

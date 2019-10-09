@@ -48,6 +48,14 @@ if [ ! -f ~/.vim/autoload/plug.vim ]; then
 fi
 vim +PlugInstall +qall
 
+# fzf auto completion
+type "fzf" &> /dev/null
+if [ -n "$?" ]; then
+    git clone https://github.com/junegunn/fzf "$HOME/.config/fzf"
+    "$HOME/.config/fzf/install" --no-update-rc --completion --key-bindings
+    mv "$HOME/.fzf.bash" "$HOME/.config/.fzf.bash"
+fi
+
 # Prompt git user if not set
 if [ "$(git config --global --get user.email)" = "" ]; then
     echo "Git user is not set. Please answer these."

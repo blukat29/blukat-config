@@ -30,11 +30,3 @@ fi
 # Python packages
 py23 requests virtualenv virtualenvwrapper jedi isort flake8
 
-# fzf auto completion
-if type "fzf" &> /dev/null; then
-    msg "fzf is already installed"
-else
-    doit git clone https://github.com/junegunn/fzf "$HOME/.config/fzf"
-    doit "$HOME/.config/fzf/install" --no-update-rc --completion --key-bindings
-    doit mv "$HOME/.fzf.bash" "$HOME/.config/.fzf.bash"
-fi

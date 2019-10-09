@@ -48,11 +48,6 @@ if [ ! -f ~/.vim/autoload/plug.vim ]; then
 fi
 vim +PlugInstall +qall
 
-# Install GEF gdb wrapper
-if [ ! -f ~/.local/gef.py ]; then
-  wget -O ~/.local/gef.py https://github.com/hugsy/gef/raw/master/gef.py
-fi
-
 # Prompt git user if not set
 if [ "$(git config --global --get user.email)" = "" ]; then
     echo "Git user is not set. Please answer these."

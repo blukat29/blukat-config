@@ -324,7 +324,9 @@ LITE=false
     source_if_enabled $BASHRC_USE_rvm "$HOME/.rvm/scripts/rvm"
     source_if_enabled $BASHRC_USE_venv /usr/local/bin/virtualenvwrapper.sh
     source_if_enabled $BASHRC_USE_fzf "$HOME/.config/.fzf.bash"
-    source_if_enabled $BASHRC_USE_nvm "/usr/local/opt/nvm/nvm.sh"
+    [ "$BASHRC_USE_nvm" = "1" ] && mkdir -p "$NVM_DIR"
+    source_if_enabled $BASHRC_USE_nvm "$NVM_DIR/nvm.sh"
+    source_if_enabled $BASHRC_USE_nvm "$NVM_DIR/bash_completion"
 
     [ "$AA" = "0" ] && echo xx
 

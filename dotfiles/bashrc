@@ -186,6 +186,7 @@ LITE=false
     alias skim='open -a Skim'
     alias memcheck='valgrind --leak-check=full --tool=memcheck'
     alias ptdumpex='ptdump --raw --lastip'
+    alias ns='netstat -nltp'
 
 ### Utility functions
 
@@ -276,7 +277,8 @@ LITE=false
     }
 
     usbserial () {
-        screen $(ls /dev/tty.usbserial*) 9600
+        # Silicon Labs USB-to-UART driver
+        screen $(ls /dev/tty.SLAB*) 115200
     }
 
 ### Bash settings

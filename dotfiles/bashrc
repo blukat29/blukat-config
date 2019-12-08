@@ -232,19 +232,11 @@ LITE=false
     }
 
     docker-remove-dangling-images () {
-      if [[ "$OSTYPE" == "darwin"* ]]; then
-        docker rmi $(docker images -q -f dangling=true)
-      else
-        sudo docker rmi $(sudo docker images -q -f dangling=true)
-      fi
+      docker rmi $(docker images -q -f dangling=true)
     }
 
     docker-remove-stopped-instances () {
-      if [[ "$OSTYPE" == "darwin"* ]]; then
-        docker rm $(docker ps -aq)
-      else
-        sudo docker rm $(sudo docker ps -aq)
-      fi
+      sudo docker rm $(sudo docker ps -aq)
     }
 
     docker-ip () {

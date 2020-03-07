@@ -294,8 +294,8 @@ LITE=false
     [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
     # Share bash history across tmux panes and windows.
-    shopt -s histappend
-    PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+    #shopt -s histappend
+    #PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 ### External tools
 

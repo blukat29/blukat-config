@@ -285,10 +285,8 @@ LITE=false
     # update the values of LINES and COLUMNS.
     shopt -s checkwinsize
 
-    # Press Tab to get one of possible matches. Press again to get next match.
-    bind '"\t": menu-complete'
-    # Press Shift-Tab to use the traditional match method.
-    bind '"\e[Z": complete'
+    # Press Tab to use the traditional match method.
+    bind '"\t": complete'
     # Match case insensitive
     bind 'set completion-ignore-case on'
 

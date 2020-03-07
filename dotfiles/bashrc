@@ -321,7 +321,7 @@ LITE=false
     [ "$AA" = "0" ] && echo xx
 
     if ! shopt -oq posix; then
-      source_if_exists /usr/share/bash-completion/bash_completion
+      source_if_exists /etc/profile.d/bash_completion.sh
       source_if_exists /usr/share/bash-completion/completions/git
     fi
 

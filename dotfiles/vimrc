@@ -51,6 +51,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'nvie/vim-flake8'
 Plug 'blukat29/vim-llvm-lite' " LLVM IR and TableGen
 Plug 'kchmck/vim-coffee-script'
+Plug 'fatih/vim-go' " Golang
 
 call plug#end()
 
@@ -159,6 +160,9 @@ let g:tagbar_sort = 0
 let g:tagbar_foldlevel = 2
 
 let g:flake8_show_in_gutter = 1
+
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
 
 " #### Coloring ##################################
 

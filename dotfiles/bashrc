@@ -281,6 +281,14 @@ LITE=false
         screen $(ls /dev/tty.SLAB*) 115200
     }
 
+    ida () {
+        ~/Applications/IDA/ida.app/Contents/MacOS/ida "$@" &
+    }
+
+    ida64 () {
+        ~/Applications/IDA/ida64.app/Contents/MacOS/ida64 "$@" &
+    }
+
 ### Bash settings
 
     # check the window size after each command and, if necessary,

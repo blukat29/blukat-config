@@ -208,10 +208,6 @@ LITE=false
       python $SCRIPTS_DIR/myip.py $*
     }
 
-    sqlite3() {
-      python $SCRIPTS_DIR/sqlite_runner.py $*
-    }
-
     vbox () {
       python $SCRIPTS_DIR/vbox.py $*
     }

@@ -183,12 +183,12 @@ else
   colorscheme default
 endif
 
-" Color 80th column
+" Color 100th column
 function! s:toggle_color_column()
     if &colorcolumn > 0
         set colorcolumn=
     else
-        set colorcolumn=80
+        set colorcolumn=100
     endif
 endfunction
 command! -nargs=0 ColorColumnToggle  call s:toggle_color_column()

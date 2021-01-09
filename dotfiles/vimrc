@@ -91,6 +91,7 @@ autocmd BufNewFile,BufRead *.ejs set filetype=html " EJS template
 autocmd BufNewFile,BufRead *.edl set filetype=cpp " Enclave EDL
 autocmd BufNewFile,BufRead *.gyp set filetype=javascript " GYP build system
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy "Jenkins CI configuration
+autocmd BufNewFile,BufRead *.tmpl set filetype=gohtmltmpl " Go template
 
 " Tab setting exceptions
 autocmd Filetype javascript setlocal expandtab ts=2 sw=2 sts=2

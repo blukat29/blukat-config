@@ -192,18 +192,6 @@ LITE=false
 ### Utility functions
 
     # Wrappers to scripts
-    cgc2elf() {
-      python $SCRIPTS_DIR/cgc2elf.py $*
-    }
-
-    git-stats() {
-      python $SCRIPTS_DIR/git-calendar.py
-    }
-
-    markd () {
-      python $SCRIPTS_DIR/markd.py $*
-    }
-
     myip() {
       python $SCRIPTS_DIR/myip.py $*
     }
@@ -218,10 +206,6 @@ LITE=false
 
     maketex () {
       $SCRIPTS_DIR/maketex.sh $*
-    }
-
-    remake () {
-      make clean && make $*
     }
 
     # Docker related
@@ -324,8 +308,6 @@ LITE=false
     [ "$BASHRC_USE_nvm" = "1" ] && mkdir -p "$NVM_DIR"
     source_if_enabled $BASHRC_USE_nvm "$NVM_DIR/nvm.sh"
     source_if_enabled $BASHRC_USE_nvm "$NVM_DIR/bash_completion"
-
-    [ "$AA" = "0" ] && echo xx
 
     if ! shopt -oq posix; then
       source_if_exists /etc/profile.d/bash_completion.sh

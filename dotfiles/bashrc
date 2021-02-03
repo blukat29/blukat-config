@@ -319,6 +319,8 @@ LITE=false
         source_if_enabled $BASHRC_USE_completion "$(brew --prefix)/etc/bash_completion"
     fi
 
+    source_if_exists /opt/openenclave/share/openenclave/openenclaverc
+
     unset -f source_if_exists
     unset -f source_if_enabled
 

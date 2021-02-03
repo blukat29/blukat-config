@@ -245,13 +245,13 @@ LITE=false
       else
         dir="$1"
       fi
-      find "$dir" | egrep "*.(c|h|cpp|hpp|py|go|java)$" \
+      find "$dir" | egrep "*.(c|h|cc|cpp|hpp|py|go|java|sh|bash|yaml|yml)$" \
           | xargs wc -l | sort -n
     }
 
     fkill () {
         local pids
-        pids=$(ps uf | sed 1d | fzf -m | awk '{print $2}')
+        pids=$(ps auf | sed 1d | fzf -m | awk '{print $2}')
         if [ "x$pids" != "x" ]; then
             echo $pids | xargs kill -${1:-9}
         fi

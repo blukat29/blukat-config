@@ -73,6 +73,14 @@ LITE=false
     export GIT_PS1_SHOWSTASHSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
 
+    # Enable kube-prompt
+    source $SCRIPTS_DIR/kube-ps1.sh
+    export KUBE_PS1_SYMBOL_ENABLE=false
+    export KUBE_PS1_NS_ENABLE=false
+    export KUBE_PS1_SYMBOL_COLOR=''
+    export KUBE_PS1_CTX_COLOR=''
+    export KUBE_PS1_NS_COLOR=''
+
     # Omit prefix of path longer than 50 characters
     __droppath () {
         if [[ ${#1} -gt 50 ]]; then
@@ -90,6 +98,11 @@ LITE=false
     # Define prompt
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
       PS1="\[\033[1;32m\]\u.\h\[\033[0m\]:" # username.hostname
+      declare -f kube_ps1 > /dev/null; # check for kube prompt
+      if [ 0 -eq $? ]; then
+        PS1+='$(kube_ps1)' # kube prompt
+        kubeoff # off by default
+      fi
       declare -f __git_ps1 > /dev/null; # check for git prompt
       if [ 0 -eq $? ]; then
         PS1+="\[\033[1;35m\]"'$(__git_ps1 "(%s)")' # git prompt

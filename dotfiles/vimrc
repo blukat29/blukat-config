@@ -37,6 +37,7 @@ Plug 'honza/vim-snippets' " snippet database
 Plug 'bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
+Plug 'ronakg/quickr-cscope.vim'
 
 " Language specific
 Plug 'davidhalter/jedi-vim' " Python autocomplete
@@ -66,6 +67,7 @@ set hlsearch    " highlight search result
 set number      " line numbers
 set nowrap      " don't wrap long sentences
 set viminfo=""  " disable viminfo
+set nomodeline
 
 set scrolloff=3   " Keep 3 lines above and below cursor.
 set laststatus=2  " Always turn on status line

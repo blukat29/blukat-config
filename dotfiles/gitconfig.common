@@ -18,6 +18,7 @@
     d = diff
     rh = reset HEAD
     cloen = clone
+    pk = cherry-pick
 [filter "gitconfig_nouser"]
     clean = sed -e '/\\[user\\]/,/\\[/ { //!d }' -e '/\\[user\\]/d'
     smudge = cat

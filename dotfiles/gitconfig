@@ -9,5 +9,5 @@
     main-head = cyan default bold
     main-ref = green default bold
     main-remote = red default bold
-[url "git@github.com:"]
-	insteadOf = https://github.com
+[url "git@github.com:teeware-io"]
+	insteadOf = https://github.com/teeware-io

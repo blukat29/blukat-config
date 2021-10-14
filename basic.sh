@@ -38,6 +38,7 @@ setup gitconfig
 setup gitconfig.common
 setup gitignore
 setup gdbinit
+setup inputrc
 
 cp "$SCRIPT_DIR/dotfiles/bashrc.conf" "$HOME/.bashrc.conf"
 

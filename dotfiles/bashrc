@@ -50,6 +50,7 @@ LITE=false
 
     # Other options
     export XDG_CONFIG_HOME="$HOME/.config"
+    export XDG_DATA_HOME="$HOME/.config"
     export LESSHISTFILE=/dev/null
     export HISTCONTROL=ignoreboth # don't put duplicate items in bash_history
     export PYTHONSTARTUP="$DOTFILES_DIR/pythonrc.py"
@@ -58,11 +59,14 @@ LITE=false
     export NODE_REPL_HISTORY="$HOME/.config/.node_repl_history"
     export MPLCONFIGDIR="$HOME/.config/matplotlib"
     export npm_config_devdir="$HOME/.config/node-gyp"
+    export WGET_HSTS_FILE="$HOME/.config/.wget-hsts"
+    mkdir -p "$XDG_DATA_HOME/tig/history"
+    mkdir -p "$HOME/.local/share/tig/history"
+
     export LS_COLORS="di=1;94"
     export GPG_TTY=$(tty)
     export LANG="en_US.UTF-8"
     export LC_ALL="en_US.UTF-8"
-
 
 ### Bash prompt
 
@@ -204,6 +208,8 @@ LITE=false
     alias memcheck='valgrind --leak-check=full --tool=memcheck'
     alias ptdumpex='ptdump --raw --lastip'
     alias ns='netstat -nltp'
+    alias nspublic='sudo ns | grep "0 0.0.0.0:" | sort -n'
+    alias wget='wget --hsts-file=$HOME/.config/.wget-hsts'
 
 ### Utility functions
 

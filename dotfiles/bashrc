@@ -36,6 +36,7 @@ LITE=false
     export GOPATH="$HOME/.local/go"
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
     export NVM_DIR="$HOME/.nvm"
+    export SDKMAN_DIR="$HOME/.sdkman"
 
     # Do not include empty string (interpreted as CWD) in LD_LIBRARY_PATH.
     if [ -z "$LD_LIBRARY_PATH" ]; then
@@ -348,6 +349,7 @@ LITE=false
     fi
 
     source_if_exists /opt/openenclave/share/openenclave/openenclaverc
+    source_if_exists "$SDKMAN_DIR/bin/sdkman-init.sh"
 
     unset -f source_if_exists
     unset -f source_if_enabled

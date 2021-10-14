@@ -339,6 +339,7 @@ LITE=false
     if ! shopt -oq posix; then
       source_if_exists /etc/profile.d/bash_completion.sh
       source_if_exists /usr/share/bash-completion/completions/git
+      source_if_exists "$HOME/.asdf/asdf.sh"
     fi
 
     type brew >/dev/null 2>/dev/null

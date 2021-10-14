@@ -1,2 +1,1 @@
 set history filename ~/.config/.gdb_history
-source /home/blukat/.local/pwndbg/gdbinit.py

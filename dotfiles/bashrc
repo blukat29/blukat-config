@@ -28,6 +28,7 @@ LITE=false
     export PATH="$PATH:$HOME/.local/android-sdk/platform-tools"
     export PATH="$PATH:$HOME/.local/android-ndk"
     export PATH="$PATH:$HOME/.local/depot_tools"
+    export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
     export PATH="$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin"
     export PATH="/usr/lib/go-1.7/bin/:$PATH"
 
@@ -197,6 +198,7 @@ LITE=false
     alias ctags-all='ctags -R --c++-kinds=+p --fields=iaS --extra=+q'
     alias euckr='iconv -f EUC-KR -t UTF8'
     alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+    alias vscode='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
     alias skim='open -a Skim'
     alias memcheck='valgrind --leak-check=full --tool=memcheck'
     alias ptdumpex='ptdump --raw --lastip'

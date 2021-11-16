@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import subprocess
 
@@ -47,7 +47,7 @@ def dedup_remote(id, flat_names):
             buckets[name_tag] = []
         buckets[name_tag].append(flat_name)
 
-    for name_tag, flat_names in buckets.iteritems():
+    for name_tag, flat_names in buckets.items():
         if len(flat_names) <= 1:
             continue
 
@@ -79,7 +79,7 @@ def dedup_tags(id, flat_names):
             buckets[remote_name] = []
         buckets[remote_name].append(flat_name)
 
-    for remote_name, flat_names in buckets.iteritems():
+    for remote_name, flat_names in buckets.items():
         if len(flat_names) <= 1:
             continue
 
@@ -89,6 +89,7 @@ def dedup_tags(id, flat_names):
                 remove_image(flat_name)
 
 raw_output = subprocess.check_output(['docker', 'images'])
+raw_output = raw_output.decode('utf-8')
 images = dict()
 
 for line in raw_output.splitlines():
@@ -102,7 +103,7 @@ for line in raw_output.splitlines():
     images[id].append(repo + ':' + tag)
 
 
-for id, flat_names in images.iteritems():
+for id, flat_names in images.items():
     if len(flat_names) == 1:
         continue
 

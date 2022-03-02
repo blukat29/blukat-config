@@ -14,19 +14,20 @@ except ImportError:
 
 ## ===== Interactive shell history ====================== ##
 
-# History file located in ~/.config dir
-_HISTFILE = os.path.join(os.getenv('HOME'), '.config/.python_history')
+if 1:
+    # History file located in ~/.config dir
+    _HISTFILE = os.path.join(os.getenv('HOME'), '.config/.python_history')
 
-# Read history file
-if os.path.exists(_HISTFILE):
-    readline.read_history_file(_HISTFILE)
+    # Read history file
+    if os.path.exists(_HISTFILE):
+        readline.read_history_file(_HISTFILE)
 
-# Set history file location
-def save_hist():
-    readline.write_history_file(_HISTFILE)
-readline.set_history_length(1000)
-atexit.register(save_hist)
-del save_hist
+    # Set history file location
+    def save_hist():
+        readline.write_history_file(_HISTFILE)
+    readline.set_history_length(1000)
+    atexit.register(save_hist)
+    del save_hist
 
 
 ## ===== Prompt ========================================= ##

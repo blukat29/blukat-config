@@ -45,14 +45,16 @@ Plug 'fisadev/vim-isort' " Python import sort
 Plug 'agatan/vim-sort-include' " C/C++ #include sort
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'derekwyatt/vim-scala'
-Plug 'vim-scripts/closetag.vim' " html/xml auto close
+Plug 'alvan/closetag.vim' " html/xml auto close
 Plug 'gregsexton/MatchTag' " highlight matching tags
+Plug 'leafOfTree/vim-vue-plugin' " Vue.js
 Plug 'junegunn/vim-easy-align' " Align assignment statements
 Plug 'tmux-plugins/vim-tmux'
 Plug 'nvie/vim-flake8'
 Plug 'blukat29/vim-llvm-lite' " LLVM IR and TableGen
 Plug 'kchmck/vim-coffee-script'
 Plug 'fatih/vim-go' " Golang
+Plug 'tomlion/vim-solidity'
 
 call plug#end()
 
@@ -173,6 +175,20 @@ let g:go_fmt_command = "goimports"
 let g:closetag_html_style=1
 
 let g:snipMate = { 'snippet_version' : 1 }
+
+let g:vim_vue_plugin_config = {
+      \'syntax': {
+      \   'template': ['html'],
+      \   'script': ['javascript'],
+      \   'style': ['css'],
+      \},
+      \'full_syntax': [],
+      \'initial_indent': [],
+      \'attribute': 0,
+      \'keyword': 0,
+      \'foldexpr': 0,
+      \'debug': 0,
+      \}
 
 " #### Coloring ##################################
 

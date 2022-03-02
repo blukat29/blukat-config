@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CURRENT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
+CURRENT_DIR="$( cd "$( dirname $(readlink "${BASH_SOURCE[0]}") )" && pwd )"
 source $CURRENT_DIR/common.bash
 
 # Install homebrew

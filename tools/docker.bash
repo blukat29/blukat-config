@@ -2,7 +2,7 @@
 
 # installs docker to Ubuntu 12.04 / 14.04 / 16.04 LTS systems.
 
-CURRENT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
+CURRENT_DIR="$( cd "$( dirname $(readlink "${BASH_SOURCE[0]}") )" && pwd )"
 source $CURRENT_DIR/common.bash
 
 doit sudo apt-get -y install apt-transport-https ca-certificates

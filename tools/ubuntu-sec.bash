@@ -3,7 +3,7 @@
 # Collection of tools related to security tasks such as
 # binary analysis, exploit writing and penetration testing.
 
-CURRENT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
+CURRENT_DIR="$( cd "$( dirname $(readlink "${BASH_SOURCE[0]}") )" && pwd )"
 source $CURRENT_DIR/common.bash
 
 doit sudo apt install -y libffi-dev libssl-dev libpng-dev libgmp-dev

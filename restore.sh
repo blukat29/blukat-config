@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SCRIPT_DIR=$(dirname $(readlink -e $0))
+SCRIPT_DIR=$(dirname $(readlink $0))
 BACKUP_DIR=$HOME/.config.bak.d
 
 # Restore original dotfiles from $BACKUP_DIR

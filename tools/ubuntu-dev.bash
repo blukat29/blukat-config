@@ -2,7 +2,7 @@
 
 # Collection of tools related to software development
 
-CURRENT_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
+CURRENT_DIR="$( cd "$( dirname $(readlink "${BASH_SOURCE[0]}") )" && pwd )"
 source $CURRENT_DIR/common.bash
 
 doit sudo apt update

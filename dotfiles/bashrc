@@ -13,10 +13,12 @@ LITE=false
       export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
       export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
       export PATH="/usr/local/bin:$PATH"
+      DOTFILES_DIR="$( cd "$( dirname $(readlink "${BASH_SOURCE[0]}") )" && pwd )"
+    else
+      DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
     fi
 
     # PATHs
-    DOTFILES_DIR="$( cd "$( dirname $(readlink "${BASH_SOURCE[0]}") )" && pwd )"
     SCRIPTS_DIR="$DOTFILES_DIR/../scripts"
     export PATH="$PATH:/usr/local/bin"
     export PATH="$PATH:/usr/local/sbin"

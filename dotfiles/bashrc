@@ -360,6 +360,7 @@ LITE=false
 
     source_if_exists /opt/openenclave/share/openenclave/openenclaverc
     source_if_exists "$SDKMAN_DIR/bin/sdkman-init.sh"
+    source_if_exists "$HOME/.gvm/scripts/gvm"
 
     unset -f source_if_exists
     unset -f source_if_enabled

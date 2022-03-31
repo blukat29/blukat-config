@@ -50,19 +50,19 @@ def benchmark():
 
 if __name__ == '__main__':
     usage='''\
-myip.py [-shtb]
+myip.py [-sntb]
   -s: connect to 8.8.8.8:53 and use getsockname(). Generally fastest.
-  -h: use gethostbyname(gethostname()). Usually don't work.
+  -n: use gethostbyname(gethostname()). Usually don't work.
   -t: get http://httpbin.ip. Fetches public IP, but slow.
   -b: Benchmark above methods.'''
     if len(sys.argv) > 1:
         opt = sys.argv[1]
-        if len(opt) != 2 or opt[0] != '-' or (opt[1] not in 'shtb'):
+        if len(opt) != 2 or opt[0] != '-' or (opt[1] not in 'sntb'):
             print(usage)
             exit(1)
         if opt[1] == 's':
             print(sock_ip())
-        elif opt[1] == 'h':
+        elif opt[1] == 'n':
             print(host_ip())
         elif opt[1] == 't':
             print(httpbin_ip())

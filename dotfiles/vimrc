@@ -108,13 +108,18 @@ autocmd Filetype yaml setlocal expandtab ts=2 sw=2 sts=2
 autocmd Filetype groovy setlocal expandtab ts=2 sw=2 sts=2
 
 " Override syntax highlighting
-" Highlights arrow function (=>), underscore.js (lodash), jquery APIs.
+" Highlights arrow function (=>), underscore.js (_), lodash (_), jquery ($) APIs.
 " Also highlights member variables.
 function! SetJsHi()
-    hi link javaScriptMy Conditional
-    match javaScriptMy /\(=>\)\|\(\(_\|\$\)\.\w\+\)/
-    hi link javaScriptMemberVar Function
-    2match javaScriptMemberVar /this\.\w\+/
+    syn match   javaScriptUtilLib /\(\(_\|\$\)\.\w\+\)/
+    syn match   javaScriptArrow   /=>/
+    syn keyword javaScriptAsync   async
+    syn keyword javaScriptAwait   await
+
+    hi  link    javaScriptUtilLib Repeat
+    hi  link    javaScriptArrow   Keyword
+    hi  link    javaScriptAsync   Keyword
+    hi  link    javaScriptAwait   Statement
 endfunction
 autocmd BufNewFile,BufRead *.js call SetJsHi()
 

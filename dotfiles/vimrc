@@ -174,8 +174,29 @@ let g:tagbar_foldlevel = 2
 
 let g:flake8_show_in_gutter = 1
 
-let g:go_fmt_autosave = 1
-let g:go_fmt_command = "goimports"
+if 1
+  " Loose formatter
+  let g:go_fmt_autosave  = 1
+  let g:go_fmt_command   = 'gofmt'
+  let g:go_imports_autosave = 1
+  let g:go_imports_mode  = 'goimports'
+else
+  " Stricter formatter
+  let g:go_fmt_command   = 'gopls'
+  let g:go_gopls_gofumpt = 1
+endif
+let g:go_auto_sameids                = 0
+let g:go_auto_type_info              = 0
+let g:go_highlight_types             = 1
+let g:go_highlight_fields            = 0
+let g:go_highlight_functions         = 1
+let g:go_highlight_function_calls    = 0
+let g:go_highlight_build_constraints = 1
+hi def link goTypeConstructor Type
+hi def link goReceiverType    Type
+hi def link goTypeName        Type
+hi def link goField           Function
+hi def link goFunctionCall    Function
 
 let g:closetag_html_style=1
 

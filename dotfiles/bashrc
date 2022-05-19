@@ -228,6 +228,10 @@ LITE=false
       python $SCRIPTS_DIR/git-change-url.py
     }
 
+    git-nopush() {
+      python $SCRIPTS_DIR/git-nopush.py
+    }
+
     maketex () {
       $SCRIPTS_DIR/maketex.sh $*
     }

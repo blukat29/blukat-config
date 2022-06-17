@@ -213,6 +213,7 @@ LITE=false
     alias ns='netstat -nltp'
     alias nspublic='sudo ns | grep "0 0.0.0.0:" | sort -n'
     alias wget='wget --hsts-file=$HOME/.config/.wget-hsts'
+    alias hh='npx hardhat'
 
 ### Utility functions
 

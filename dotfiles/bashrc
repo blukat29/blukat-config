@@ -12,8 +12,9 @@ LITE=false
     if [[ "$OSTYPE" == "darwin"* ]]; then
       export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
       export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+      export PATH="/opt/homebrew/bin:$PATH"
       export PATH="/usr/local/bin:$PATH"
-      DOTFILES_DIR="$( cd "$( dirname $(readlink "${BASH_SOURCE[0]}") )" && pwd )"
+      DOTFILES_DIR="$( cd "$( dirname $(greadlink -e "${BASH_SOURCE[0]}") )" && pwd )"
     else
       DOTFILES_DIR="$( cd "$( dirname $(readlink -e "${BASH_SOURCE[0]}") )" && pwd )"
     fi

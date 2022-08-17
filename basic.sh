@@ -55,6 +55,7 @@ setup gitconfig.common $XDG_CONFIG_HOME/git/gitconfig.common
 setup gitignore
 setup gdbinit
 setup inputrc
+setup ctags
 
 cp "$SCRIPT_DIR/dotfiles/bashrc.conf" "$HOME/.bashrc.conf"
 

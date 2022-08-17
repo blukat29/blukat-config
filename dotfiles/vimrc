@@ -171,6 +171,16 @@ let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_width = 50
 let g:tagbar_sort = 0
 let g:tagbar_foldlevel = 2
+let g:tagbar_type_solidity = {
+    \ 'ctagstype': 'solidity',
+    \ 'kinds' : [
+        \ 'c:contracts',
+        \ 'e:events',
+        \ 'f:functions',
+        \ 'm:mappings',
+        \ 'v:varialbes',
+    \ ]
+\ }
 
 let g:flake8_show_in_gutter = 1
 

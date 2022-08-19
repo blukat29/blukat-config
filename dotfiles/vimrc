@@ -34,10 +34,13 @@ Plug 'junegunn/vim-easy-align'      " Align assignment statements
 
 " Head-up display (HUD)
 Plug 'bling/vim-airline'      " Status line
-Plug 'airblade/vim-gitgutter' " Modify indicator
-Plug 'tpope/vim-fugitive'     " Detect branch, run git command
 Plug 'majutsushi/tagbar'      " Tags from ctags
 Plug 'ronakg/quickr-cscope.vim'
+
+" Git
+Plug 'airblade/vim-gitgutter' " Modified lines indicator
+Plug 'tpope/vim-fugitive'     " Run git command, show branch
+Plug 'tpope/vim-rhubarb'  " Open GitHub URL
 
 " Language specific
 Plug 'davidhalter/jedi-vim'      " Python autocomplete
@@ -309,6 +312,9 @@ cnoreabbrev Wq wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Set set
+cnoreabbrev git Git
+cnoreabbrev gbrowse GBrowse
+cnoreabbrev Gbrowse GBrowse
 " Prevent writing to a file named ';'.
 cnoreabbrev w; w
 
@@ -341,8 +347,11 @@ nmap <F8> :TagbarToggle<CR>
 " <F9> Toggle color columns
 nmap <F9> :ColorColumnToggle<CR>
 
-" <F10> Instant markdown
-nmap <F10> :InstantMarkdownToggle<CR>
+" <F10> Open file in GitHub
+nmap <F10> :GBrowse<CR>
+
+" <F11> Instant markdown
+nmap <F11> :InstantMarkdownToggle<CR>
 
 " <:ga> Easy align
 xmap ga <Plug>(EasyAlign)

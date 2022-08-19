@@ -145,10 +145,27 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 let g:snipMate = { 'snippet_version' : 1 }
 
 " airline
+" Do not use unicode chars
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#branch#enabled = 1
+let g:airline_symbols.branch=''      " [b] branch
+let g:airline_symbols.dirty='*'      " [b] branch
+let g:airline_symbols.notexists='%'  " [b] branch
+let g:airline_symbols.colnr=' C '    " [z] cursor position
+let g:airline_symbols.maxlinenr=''   " [z] cursor position
+let g:airline_symbols.linenr=' L '   " [z] cursor position
+let g:airline_symbols.whitespace='!' " [...] whitespace warning
+
+let g:airline#extensions#hunks#enabled = 0       " [b] diff hunks
+let g:airline#extensions#branch#enabled = 1      " [b] branch
+let g:airline#extensions#tagbar#enabled = 1      " [c] current tag
+let g:airline#extensions#tagbar#flags = 'f'      " [c] current tag
+let g:airline#extensions#searchcount#enabled = 1 " [y] search count
+let g:airline#extensions#whitespace#enabled = 1  " [...] whitespace warning
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " [y] file encoding
 
 " GitGutter
 let g:gitgutter_sign_removed = "-"

@@ -24,20 +24,19 @@ Plug 'crusoexia/vim-monokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
-" Autocomplete with tab key
-Plug 'ervandew/supertab'
-
-" Snippet autocomplete
+" Autocomplete
+Plug 'ervandew/supertab'            " Use <Tab>
 Plug 'MarcWeber/vim-addon-mw-utils' " dependency
-Plug 'tomtom/tlib_vim' " dependency
-Plug 'garbas/vim-snipmate' " driver
-Plug 'honza/vim-snippets' " snippet database
-Plug 'junegunn/vim-easy-align' " Align assignment statements
+Plug 'tomtom/tlib_vim'              " dependency
+Plug 'garbas/vim-snipmate'          " driver
+Plug 'honza/vim-snippets'           " snippet database
+Plug 'junegunn/vim-easy-align'      " Align assignment statements
 
 " Head-up display (HUD)
-Plug 'bling/vim-airline'
-Plug 'airblade/vim-gitgutter'
-Plug 'majutsushi/tagbar'
+Plug 'bling/vim-airline'      " Status line
+Plug 'airblade/vim-gitgutter' " Modify indicator
+Plug 'tpope/vim-fugitive'     " Detect branch, run git command
+Plug 'majutsushi/tagbar'      " Tags from ctags
 Plug 'ronakg/quickr-cscope.vim'
 
 " Language specific

@@ -32,6 +32,7 @@ Plug 'MarcWeber/vim-addon-mw-utils' " dependency
 Plug 'tomtom/tlib_vim' " dependency
 Plug 'garbas/vim-snipmate' " driver
 Plug 'honza/vim-snippets' " snippet database
+Plug 'junegunn/vim-easy-align' " Align assignment statements
 
 " Head-up display (HUD)
 Plug 'bling/vim-airline'
@@ -40,22 +41,21 @@ Plug 'majutsushi/tagbar'
 Plug 'ronakg/quickr-cscope.vim'
 
 " Language specific
-Plug 'davidhalter/jedi-vim' " Python autocomplete
-Plug 'fisadev/vim-isort' " Python import sort
-Plug 'agatan/vim-sort-include' " C/C++ #include sort
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'derekwyatt/vim-scala'
-Plug 'alvan/closetag.vim' " html/xml auto close
-Plug 'gregsexton/MatchTag' " highlight matching tags
+Plug 'davidhalter/jedi-vim'      " Python autocomplete
+Plug 'fisadev/vim-isort'         " Python import sort
+Plug 'nvie/vim-flake8'           " Python linter
+Plug 'agatan/vim-sort-include'   " C/C++ #include sort
+Plug 'octol/vim-cpp-enhanced-highlight' " C/C++ syntax highlight
+Plug 'blukat29/vim-llvm-lite'    " LLVM IR and TableGen
+Plug 'alvan/closetag.vim'        " html auto close
+Plug 'gregsexton/MatchTag'       " html highlight matching tags
+Plug 'tmux-plugins/vim-tmux'     " tmux.conf
+Plug 'fatih/vim-go'              " Golang
 Plug 'leafOfTree/vim-vue-plugin' " Vue.js
-Plug 'junegunn/vim-easy-align' " Align assignment statements
-Plug 'tmux-plugins/vim-tmux'
-Plug 'nvie/vim-flake8'
-Plug 'blukat29/vim-llvm-lite' " LLVM IR and TableGen
-Plug 'kchmck/vim-coffee-script'
-Plug 'fatih/vim-go' " Golang
-Plug 'tomlion/vim-solidity'
-Plug 'instant-markdown/vim-instant-markdown' " npm -g install instant-markdown-d
+Plug 'kchmck/vim-coffee-script'  " CoffeeScript
+Plug 'tomlion/vim-solidity'      " Solidity
+Plug 'derekwyatt/vim-scala'      " Scala
+Plug 'instant-markdown/vim-instant-markdown' " Markdown
 
 call plug#end()
 
@@ -143,14 +143,9 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 " #### Plugins ###################################
 
-" Remove trailing whitespaces
-command! RemoveTrailingWhitespaces %s/\s\+$//
+let g:snipMate = { 'snippet_version' : 1 }
 
-" Jedi-Vim - no documentation window during completion.
-autocmd FileType python setlocal completeopt-=preview
-let g:jedi#show_call_signatures = 0
-
-" Vim-airline
+" airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline#extensions#hunks#enabled = 1
@@ -183,8 +178,18 @@ let g:tagbar_type_solidity = {
     \ ]
 \ }
 
+" Jedi-Vim
+" no documentation window during completion.
+autocmd FileType python setlocal completeopt-=preview
+let g:jedi#show_call_signatures = 0
+
+" Flake8
 let g:flake8_show_in_gutter = 1
 
+" CloseTag
+let g:closetag_html_style=1
+
+" Go
 if 1
   " Loose formatter
   let g:go_fmt_autosave  = 1
@@ -209,10 +214,7 @@ hi def link goTypeName        Type
 hi def link goField           Function
 hi def link goFunctionCall    Function
 
-let g:closetag_html_style=1
-
-let g:snipMate = { 'snippet_version' : 1 }
-
+" Vue.js
 let g:vim_vue_plugin_config = {
       \'syntax': {
       \   'template': ['html'],
@@ -227,6 +229,7 @@ let g:vim_vue_plugin_config = {
       \'debug': 0,
       \}
 
+" InstantMarkdown
 let g:instant_markdown_slow = 1 " no realtime update; re-renders on save.
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_allow_external_content = 1
@@ -273,17 +276,18 @@ function! s:toggle_color_column()
 endfunction
 command! -nargs=0 ColorColumnToggle  call s:toggle_color_column()
 
-" Trailing Whitespace
-hi TrailingWhitespace ctermbg=red
-match TrailingWhitespace /\s\+$/
-command! RemoveTrailingWhitespace :%s/\s\+$//
-
 " #### Keyboard shortcuts #########################
 
-" <Ctrl-l> redraws the screen and removes any search highlights
+" <Tab> Move between splits
+nnoremap <Tab> <C-w>w
+
+" <Ctrl-L> redraws the screen and removes any search highlights
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-" Map common mistakes.
+" <Ctrl-P> Toggle paste mode
+set pastetoggle=<C-p>
+
+" <:wq> Map common mistakes
 cnoreabbrev WQ wq
 cnoreabbrev Wq wq
 cnoreabbrev W w
@@ -292,10 +296,7 @@ cnoreabbrev Set set
 " Prevent writing to a file named ';'.
 cnoreabbrev w; w
 
-" Move between splits
-nnoremap <Tab> <C-w>w
-
-" Quickly compile C/C++
+" <F5> Quickly compile C/C++
 autocmd FileType c,cpp nnoremap <buffer> <F5> :w<CR>:make %<CR>
 autocmd FileType c,cpp inoremap <buffer> <F5> <Esc>:w<CR>:make %<CR>
 autocmd FileType c
@@ -307,21 +308,25 @@ autocmd FileType cpp
   \   setlocal makeprg=g++\ -o\ %< |
   \ endif
 
-" Quickly run python
+" <F5> Quickly run python
 autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!python %<CR>
 autocmd FileType python inoremap <buffer> <F5> <Esc>:w<CR>:!python %<CR>
 
-" TagBar plugin
+" <F7> Remove trailing whitespaces
+" Trailing Whitespace
+hi TrailingWhitespace ctermbg=red
+match TrailingWhitespace /\s\+$/
+command! RemoveTrailingWhitespace :%s/\s\+$//
+nmap <F7> :RemoveTrailingWhitespace<CR>
+
+" <F8> TagBar plugin
 nmap <F8> :TagbarToggle<CR>
 
-" Toggle color columns
+" <F9> Toggle color columns
 nmap <F9> :ColorColumnToggle<CR>
 
-" Instant markdown
+" <F10> Instant markdown
 nmap <F10> :InstantMarkdownToggle<CR>
 
-" Easy align
+" <:ga> Easy align
 xmap ga <Plug>(EasyAlign)
-
-" Toggle paste mode with Control-P
-set pastetoggle=<C-p>

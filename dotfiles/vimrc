@@ -55,6 +55,7 @@ Plug 'blukat29/vim-llvm-lite' " LLVM IR and TableGen
 Plug 'kchmck/vim-coffee-script'
 Plug 'fatih/vim-go' " Golang
 Plug 'tomlion/vim-solidity'
+Plug 'instant-markdown/vim-instant-markdown' " npm -g install instant-markdown-d
 
 call plug#end()
 
@@ -226,6 +227,25 @@ let g:vim_vue_plugin_config = {
       \'debug': 0,
       \}
 
+let g:instant_markdown_slow = 1 " no realtime update; re-renders on save.
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_allow_external_content = 1
+let g:instant_markdown_mathjax = 1
+let g:instant_markdown_autoscroll = 0
+let g:instant_markdown_python = 0
+
+let s:instant_markdown_running = 0
+function! s:toggle_instant_markdown()
+    if s:instant_markdown_running
+        InstantMarkdownStop
+        let s:instant_markdown_running = 0
+    else
+        InstantMarkdownPreview
+        let s:instant_markdown_running = 1
+    endif
+endfunction
+command! -nargs=0 InstantMarkdownToggle call s:toggle_instant_markdown()
+
 " #### Coloring ##################################
 
 if (&term == "screen-256color") || (&term =~ "term")
@@ -296,6 +316,9 @@ nmap <F8> :TagbarToggle<CR>
 
 " Toggle color columns
 nmap <F9> :ColorColumnToggle<CR>
+
+" Instant markdown
+nmap <F10> :InstantMarkdownToggle<CR>
 
 " Easy align
 xmap ga <Plug>(EasyAlign)

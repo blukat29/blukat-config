@@ -36,6 +36,13 @@ LITE=false
     export PATH="/usr/lib/go-1.7/bin/:$PATH"
     export PATH="$HOME/go/bin/:$PATH"
 
+    if which python3 >/dev/null; then
+        export PATH="$PATH:$(python3 -m site --user-base)/bin"
+    fi
+    if which python >/dev/null; then
+        export PATH="$PATH:$(python -m site --user-base)/bin"
+    fi
+
     export GOROOT="/usr/local/go"
     export GOPATH="$HOME/.local/go"
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

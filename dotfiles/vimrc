@@ -208,6 +208,7 @@ let g:jedi#show_call_signatures = 0
 
 " Flake8
 let g:flake8_show_in_gutter = 1
+let g:no_flake8_maps = 1 " No default <F7> map
 
 " CloseTag
 let g:closetag_html_style=1
@@ -322,7 +323,17 @@ cnoreabbrev Gbrowse GBrowse
 " Prevent writing to a file named ';'.
 cnoreabbrev w; w
 
-" <F5> Quickly compile C/C++
+" <:ga> Easy align
+xmap ga <Plug>(EasyAlign)
+
+" <F4> Remove trailing whitespaces
+hi TrailingWhitespace ctermbg=red
+match TrailingWhitespace /\s\+$/
+command! RemoveTrailingWhitespace :%s/\s\+$//
+nmap <F4> :RemoveTrailingWhitespace<CR>
+
+" <F5> Language-specific quick run
+" >>>> Quickly compile C/C++
 autocmd FileType c,cpp nnoremap <buffer> <F5> :w<CR>:make %<CR>
 autocmd FileType c,cpp inoremap <buffer> <F5> <Esc>:w<CR>:make %<CR>
 autocmd FileType c
@@ -334,16 +345,17 @@ autocmd FileType cpp
   \   setlocal makeprg=g++\ -o\ %< |
   \ endif
 
-" <F5> Quickly run python
-autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!python %<CR>
-autocmd FileType python inoremap <buffer> <F5> <Esc>:w<CR>:!python %<CR>
+" >>>> Quickly run python
+autocmd FileType python nmap <F5> :w<CR>:!python %<CR>
 
-" <F7> Remove trailing whitespaces
-" Trailing Whitespace
-hi TrailingWhitespace ctermbg=red
-match TrailingWhitespace /\s\+$/
-command! RemoveTrailingWhitespace :%s/\s\+$//
-nmap <F7> :RemoveTrailingWhitespace<CR>
+" >>>> Quickly run go
+autocmd FileType go nmap <F5> :w<CR>:GoRun<CR>
+
+" <F6> Language-specific tests
+autocmd FileType go nmap <F6> <Esc>:w<CR>:GoTestFunc<CR>
+
+" <F7> Language-specific linters and debuggers
+autocmd FileType python nmap <F7> :call flake8#Flake8()<CR>
 
 " <F8> TagBar plugin
 nmap <F8> :TagbarToggle<CR>
@@ -354,8 +366,10 @@ nmap <F9> :ColorColumnToggle<CR>
 " <F10> Open file in GitHub
 nmap <F10> :GBrowse<CR>
 
-" <F11> Instant markdown
-nmap <F11> :InstantMarkdownToggle<CR>
-
-" <:ga> Easy align
-xmap ga <Plug>(EasyAlign)
+" <F11> Language-specific docs; In Mac, disable 'see desktop' shortcut.
+autocmd FileType markdown nmap <buffer> <F11> :InstantMarkdownToggle<CR>
+autocmd FileType markdown imap <buffer> <F11> <Esc>:InstantMarkdownToggle<CR>
+autocmd FileType python nmap <buffer> <F11> :call jedi#show_documentation()<CR>
+autocmd FileType python imap <buffer> <F11> <Esc>:call jedi#show_documentation()<CR>
+autocmd FileType go nmap <buffer> <F11> :GoDocBrowser<CR>
+autocmd FileType go imap <buffer> <F11> <Esc>:GoDocBrowser<CR>

@@ -225,8 +225,9 @@ else
   let g:go_fmt_command   = 'gopls'
   let g:go_gopls_gofumpt = 1
 endif
+let g:go_updatetime                  = 300
 let g:go_auto_sameids                = 0
-let g:go_auto_type_info              = 0
+let g:go_auto_type_info              = 1
 let g:go_highlight_types             = 1
 let g:go_highlight_fields            = 0
 let g:go_highlight_functions         = 1

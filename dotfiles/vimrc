@@ -147,7 +147,10 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " Supertab defaults to omnicomplete
 " If there's no omnifunc for the filetype, or there's no omnifunc result,
 " falls back to <c-p> (text search)
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+function! SetOmnicomplete()
+    let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+endfunction
+autocmd Filetype go,python,c,cpp,javascript call SetOmnicomplete()
 
 let g:snipMate = { 'snippet_version' : 1 }
 

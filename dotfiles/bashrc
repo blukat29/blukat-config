@@ -227,19 +227,19 @@ LITE=false
 
     # Wrappers to scripts
     myip() {
-      python $SCRIPTS_DIR/myip.py $*
+      $SCRIPTS_DIR/myip.py $*
     }
 
     vbox () {
-      python $SCRIPTS_DIR/vbox.py $*
+      $SCRIPTS_DIR/vbox.py $*
     }
 
     git-change-url() {
-      python $SCRIPTS_DIR/git-change-url.py
+      $SCRIPTS_DIR/git-change-url.py
     }
 
     git-nopush() {
-      python $SCRIPTS_DIR/git-nopush.py
+      $SCRIPTS_DIR/git-nopush.py
     }
 
     maketex () {

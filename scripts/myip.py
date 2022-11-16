@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import socket
 import sys
 # http://stackoverflow.com/a/1267524

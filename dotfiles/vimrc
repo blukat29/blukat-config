@@ -25,12 +25,13 @@ Plug 'junegunn/seoul256.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Autocomplete
-Plug 'ervandew/supertab'            " Use <Tab>
+"Plug 'ervandew/supertab'            " Use <Tab>
 Plug 'MarcWeber/vim-addon-mw-utils' " dependency
 Plug 'tomtom/tlib_vim'              " dependency
 Plug 'garbas/vim-snipmate'          " driver
 Plug 'honza/vim-snippets'           " snippet database
 Plug 'junegunn/vim-easy-align'      " Align assignment statements
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server integration
 
 " Head-up display (HUD)
 Plug 'bling/vim-airline'      " Status line
@@ -150,15 +151,27 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 function! SetOmnicomplete()
     let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 endfunction
-autocmd Filetype go,python,c,cpp,javascript call SetOmnicomplete()
+autocmd Filetype go,python,c,cpp call SetOmnicomplete()
 
+" SnipMate
 let g:snipMate = { 'snippet_version' : 1 }
+
+" coc autocomplete and codebase navigation
+" <CR> to selected competion item
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Go to..
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " airline
 " Do not use unicode chars
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+" Design bar contents [abc    xyz...]
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_symbols.branch=''      " [b] branch

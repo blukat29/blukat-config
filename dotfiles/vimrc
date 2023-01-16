@@ -370,7 +370,7 @@ autocmd FileType cpp
   \ endif
 
 " >>>> Quickly run python
-autocmd FileType python nmap <F5> :w<CR>:!python %<CR>
+autocmd FileType python nmap <F5> :w<CR>:!python3 %<CR>
 
 " >>>> Quickly run go
 autocmd FileType go nmap <F5> :w<CR>:GoRun<CR>

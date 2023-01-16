@@ -21,6 +21,7 @@
     pk = cherry-pick
     vimdiff = difftool --tool=vimdiff
     pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    gone = "fetch --all -p"
 [credential]
     helper = cache --timeout=3600
 [color]

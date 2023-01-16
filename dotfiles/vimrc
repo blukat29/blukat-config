@@ -44,7 +44,7 @@ Plug 'tpope/vim-fugitive'     " Run git command, show branch
 Plug 'tpope/vim-rhubarb'  " Open GitHub URL
 
 " Language specific
-Plug 'davidhalter/jedi-vim'      " Python autocomplete
+"Plug 'davidhalter/jedi-vim'      " Python autocomplete
 Plug 'fisadev/vim-isort'         " Python import sort
 Plug 'nvie/vim-flake8'           " Python linter
 Plug 'agatan/vim-sort-include'   " C/C++ #include sort

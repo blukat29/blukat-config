@@ -164,7 +164,14 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gr <Plug>(coc-references-used)
+
+let g:coc_enable_locationlist = 0
+autocmd User CocLocationsChange CocList --normal --no-quit location
+
+let g:coc_user_config = {}
+let g:coc_user_config['list.normalMappings'] = {'<Tab>': 'do:jumpback'}
+"let g:coc_user_config['coc.preferences.jumpCommand'] = ':edit'
 
 " airline
 " Do not use unicode chars

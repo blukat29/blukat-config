@@ -373,6 +373,12 @@ LITE=false
         source_if_enabled $BASHRC_USE_completion "$(brew --prefix)/etc/bash_completion"
     fi
 
+    type pyenv >/dev/null 2>/dev/null
+    if [ "$?" = "0" ]; then
+        export PATH="$HOME/.pyenv/bin:$PATH"
+        eval "$(pyenv init -)"
+    fi
+
     source_if_exists /opt/openenclave/share/openenclave/openenclaverc
     source_if_exists "$SDKMAN_DIR/bin/sdkman-init.sh"
     source_if_exists "$HOME/.gvm/scripts/gvm"

@@ -295,7 +295,9 @@ LITE=false
       else
         dir="$1"
       fi
-      find "$dir" | egrep "*.(c|h|cc|cpp|hpp|py|go|java|sh|bash|yaml|yml)$" \
+      find "$dir" -type f \
+          | egrep -v "node_modules|artifacts|.git" \
+          | egrep ".*(c|h|cc|cpp|hpp|py|go|java|sh|bash|yaml|yml)" \
           | xargs wc -l | sort -n
     }
 

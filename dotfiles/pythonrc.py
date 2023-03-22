@@ -19,7 +19,7 @@ if 1:
     _HISTFILE = os.path.join(os.getenv('HOME'), '.config/.python_history')
 
     # Read history file
-    if os.path.exists(_HISTFILE):
+    if os.path.exists(_HISTFILE) and False:
         readline.read_history_file(_HISTFILE)
 
     # Set history file location

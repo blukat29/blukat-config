@@ -56,6 +56,7 @@ Plug 'tmux-plugins/vim-tmux'     " tmux.conf
 Plug 'fatih/vim-go'              " Golang
 Plug 'leafOfTree/vim-vue-plugin' " Vue.js
 Plug 'kchmck/vim-coffee-script'  " CoffeeScript
+Plug 'leafgarland/typescript-vim' " Typescript
 Plug 'tomlion/vim-solidity'      " Solidity
 Plug 'derekwyatt/vim-scala'      " Scala
 Plug 'instant-markdown/vim-instant-markdown' " Markdown
@@ -94,7 +95,7 @@ autocmd BufNewFile,BufRead gitconfig.common set filetype=gitconfig
 autocmd BufNewFile,BufRead vimrc set filetype=vim
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead *.md set filetype=markdown
-autocmd BufNewFile,BufRead *.ts set filetype=javascript " TypeScript
+autocmd BufNewFile,BufRead *.ts set filetype=typescript " TypeScript
 autocmd BufNewFile,BufRead *.ejs set filetype=html " EJS template
 autocmd BufNewFile,BufRead *.edl set filetype=cpp " Enclave EDL
 autocmd BufNewFile,BufRead *.gyp set filetype=javascript " GYP build system
@@ -104,6 +105,7 @@ autocmd BufNewFile,BufRead *.vue set filetype=html " Vue.js
 
 " Tab setting exceptions
 autocmd Filetype javascript setlocal expandtab ts=2 sw=2 sts=2
+autocmd Filetype typescript setlocal expandtab ts=2 sw=2 sts=2
 autocmd Filetype css setlocal expandtab ts=2 sw=2 sts=2
 autocmd Filetype html setlocal expandtab ts=2 sw=2 sts=2
 autocmd Filetype htmldjango setlocal expandtab ts=2 sw=2 sts=2
@@ -113,19 +115,18 @@ autocmd Filetype groovy setlocal expandtab ts=2 sw=2 sts=2
 
 " Override syntax highlighting
 " Highlights arrow function (=>), underscore.js (_), lodash (_), jquery ($) APIs.
-" Also highlights member variables.
 function! SetJsHi()
     syn match   javaScriptUtilLib /\(\(_\|\$\)\.\w\+\)/
     syn match   javaScriptArrow   /=>/
-    syn keyword javaScriptAsync   async
-    syn keyword javaScriptAwait   await
 
     hi  link    javaScriptUtilLib Repeat
     hi  link    javaScriptArrow   Keyword
-    hi  link    javaScriptAsync   Keyword
-    hi  link    javaScriptAwait   Statement
 endfunction
-autocmd BufNewFile,BufRead *.js call SetJsHi()
+function! SetTsHi()
+    syn match   javaScriptUtilLib /\(\(_\|\$\)\.\w\+\)/
+endfunction
+autocmd FileType javascript call SetJsHi()
+autocmd FileType typescript call SetJsHi()
 
 " #### Omnicomplete ##############################
 

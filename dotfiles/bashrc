@@ -360,8 +360,6 @@ LITE=false
     [ "$BASHRC_USE_nvm" = "1" ] && mkdir -p "$NVM_DIR"
     source_if_enabled $BASHRC_USE_nvm "$NVM_DIR/nvm.sh"
     source_if_enabled $BASHRC_USE_nvm "$NVM_DIR/bash_completion"
-    source_if_enabled $BASHRC_USE_nvm "/opt/homebrew/opt/nvm/nvm.sh"
-    source_if_enabled $BASHRC_USE_nvm "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
     if ! shopt -oq posix; then
       source_if_exists /etc/profile.d/bash_completion.sh

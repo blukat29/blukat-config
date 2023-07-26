@@ -35,6 +35,8 @@ LITE=false
     export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
     export PATH="$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin"
     export PATH="$HOME/go/bin/:$PATH"
+    export PATH="$HOME/.foundry/bin:$PATH"
+    export PATH="$HOME/klay/klaytn/build/bin/:$PATH"
 
     if which python3 >/dev/null; then
         export PATH="$PATH:$(python3 -m site --user-base)/bin"

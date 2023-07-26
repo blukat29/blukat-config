@@ -59,6 +59,7 @@ Plug 'kchmck/vim-coffee-script'  " CoffeeScript
 Plug 'leafgarland/typescript-vim' " Typescript
 Plug 'tomlion/vim-solidity'      " Solidity
 Plug 'derekwyatt/vim-scala'      " Scala
+Plug 'leafgarland/typescript-vim'            " Typescript
 Plug 'instant-markdown/vim-instant-markdown' " Markdown
 
 call plug#end()
@@ -172,6 +173,7 @@ autocmd User CocLocationsChange CocList --normal --no-quit location
 let g:coc_user_config = {}
 let g:coc_user_config['list.normalMappings'] = {'<Tab>': 'do:jumpback'}
 "let g:coc_user_config['coc.preferences.jumpCommand'] = ':edit'
+let g:coc_global_extensions = ['coc-tsserver']
 
 " airline
 " Do not use unicode chars

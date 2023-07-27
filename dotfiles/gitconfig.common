@@ -8,6 +8,7 @@
 [alias]
     lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an> %Creset'
     lga = log --all --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an> %Creset'
+    lm = log --merges --first-parent --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an> %Creset'
     lb = log --all --graph --simplify-by-decoration --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an> %Creset'
     s = status
     sv = diff --cached

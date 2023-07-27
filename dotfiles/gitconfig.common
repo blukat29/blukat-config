@@ -27,5 +27,7 @@
     helper = cache --timeout=3600
 [color]
     ui = auto
+[diff]
+    wsErrorHighlight = all
 [gpg]
     program = gpg

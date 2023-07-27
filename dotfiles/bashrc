@@ -386,6 +386,7 @@ LITE=false
     source_if_exists "$SDKMAN_DIR/bin/sdkman-init.sh"
     source_if_exists "$HOME/.gvm/scripts/gvm"
     source_if_exists "$HOME/.config/tabtab/bash/__tabtab.bash"
+    source_if_exists "$HOME/.cargo/env"
 
     unset -f source_if_exists
     unset -f source_if_enabled

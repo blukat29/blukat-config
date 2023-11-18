@@ -202,7 +202,6 @@ LITE=false
     # Docker
     alias dpa='docker ps -a'
     alias dim='docker images'
-    alias doco='docker-compose'
 
     # Other tool options
     alias tree='tree -C'
@@ -249,8 +248,11 @@ LITE=false
     }
 
     # Docker related
-    docker-enable () {
-      bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
+    doco () {
+        # Prefer docker compose (V2) over docker-compose (V1)
+        (docker compose version >/dev/null 2>&1) \
+            && (docker compose "$@") \
+            || (docker-compose "$@")
     }
 
     docker-remove-dangling-images () {

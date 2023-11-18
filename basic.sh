@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPT_DIR=$(dirname $0)
+SCRIPT_DIR=$(realpath $(dirname $0))
 
 # Original dotfiles in home directory are copied into $BACKUP_DIR
 if [ -z "$XDG_CONFIG_HOME" ]; then

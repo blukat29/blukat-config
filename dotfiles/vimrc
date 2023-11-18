@@ -57,9 +57,9 @@ Plug 'fatih/vim-go'              " Golang
 Plug 'leafOfTree/vim-vue-plugin' " Vue.js
 Plug 'kchmck/vim-coffee-script'  " CoffeeScript
 Plug 'leafgarland/typescript-vim' " Typescript
+Plug 'peitalin/vim-jsx-typescript' " React TSX
 Plug 'tomlion/vim-solidity'      " Solidity
 Plug 'derekwyatt/vim-scala'      " Scala
-Plug 'leafgarland/typescript-vim'            " Typescript
 Plug 'instant-markdown/vim-instant-markdown' " Markdown
 
 call plug#end()
@@ -106,6 +106,7 @@ autocmd BufNewFile,BufRead *.vue set filetype=html " Vue.js
 " Tab setting exceptions
 autocmd Filetype javascript setlocal expandtab ts=2 sw=2 sts=2
 autocmd Filetype typescript setlocal expandtab ts=2 sw=2 sts=2
+autocmd Filetype typescriptreact setlocal expandtab ts=2 sw=2 sts=2
 autocmd Filetype css setlocal expandtab ts=2 sw=2 sts=2
 autocmd Filetype html setlocal expandtab ts=2 sw=2 sts=2
 autocmd Filetype htmldjango setlocal expandtab ts=2 sw=2 sts=2

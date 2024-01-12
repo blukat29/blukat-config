@@ -8,7 +8,7 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
 fi
 BACKUP_DIR=$XDG_CONFIG_HOME/config.bak.d
 if [ ! -d "$BACKUP_DIR" ]; then
-  mkdir "$BACKUP_DIR"
+  mkdir -p "$BACKUP_DIR"
 fi
 
 relpath() {

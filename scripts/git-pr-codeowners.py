@@ -62,7 +62,7 @@ if __name__ == '__main__':
         num = sys.argv[1]
     else:
         num = "1708"
-    repo = "klaytn/klaytn"
+    repo = "kaiachain/kaia"
     remote = "upstream"
     print(repo, num, remote)
 

@@ -85,7 +85,6 @@ set tags=~/.vim/tags,tags;    " Read local tags file
 " #### File type specific ########################
 
 " File type mappings
-autocmd BufNewFile,BufRead Dockerfile set filetype=config
 autocmd BufNewFile,BufRead *.phps set filetype=php
 autocmd BufNewFile,BufRead *.cup set filetype=java
 autocmd BufNewFile,BufRead *.flex set filetype=java
@@ -102,6 +101,8 @@ autocmd BufNewFile,BufRead *.gyp set filetype=javascript " GYP build system
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy "Jenkins CI configuration
 autocmd BufNewFile,BufRead *.tmpl set filetype=gohtmltmpl " Go template
 autocmd BufNewFile,BufRead *.vue set filetype=html " Vue.js
+autocmd BufNewFile,BufRead Dockerfile set filetype=dockerfile
+autocmd BufNewFile,BufRead *.Dockerfile set filetype=dockerfile
 
 " Tab setting exceptions
 autocmd Filetype javascript setlocal expandtab ts=2 sw=2 sts=2

@@ -250,9 +250,11 @@ LITE=false
     # Docker related
     doco () {
         # Prefer docker compose (V2) over docker-compose (V1)
-        (docker compose version >/dev/null 2>&1) \
-            && (docker compose "$@") \
-            || (docker-compose "$@")
+        if docker compose version >/dev/null 2>&1; then
+            docker compose "$@"
+        else
+            docker-compose "$@"
+        fi
     }
 
     docker-remove-dangling-images () {
